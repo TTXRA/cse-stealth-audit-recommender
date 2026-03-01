@@ -1,0 +1,2 @@
+# cse-stealth-audit-recommender
+Repositório da pesquisa de mestrado sobre auditoria de qualidade de relato em avaliação furtiva de competências socioemocionais (CSE) e recomendação de famílias de modelos baseada em “literatura como dados”. Inclui checklist e manual de codificação (0/1/2, regra de NA), planilhas CSV versionadas (amostragem estratificada, auditoria e cenários), scripts em Python para cálculo de escores (0–100), índice de robustez  𝑅 R, reamostragem/IC95% e avaliação fora da amostra do recomendador (leave-one-study-out) com linhas de base.
