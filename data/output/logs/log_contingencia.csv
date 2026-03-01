@@ -1,0 +1,2 @@
+data_execucao,script,seed,n_alvo_total,min_por_estrato,fer_elegiveis,ser_elegiveis,multi_elegiveis,deficit_fer,deficit_ser,deficit_multi,acao,busca_complementar,aloc_fer,aloc_ser,aloc_multi,observacao
+2026-01-25T20:04:01,04_sorteio_amostra.py,2025,16,4,11,4,10,0,0,0,redistribuicao_proporcional,nao_aplicavel,6,4,6,sem busca complementar; texto integral assumido disponivel

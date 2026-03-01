@@ -1,0 +1,10 @@
+estrato,tipo,ordem,artigo_id,ano,titulo,venue,doi,tarefa,numero_estrato
+FER,titular,1,ID_15,2024,Cognitive Resonance in Emotional Decoding: A CNN-ResNetB0 Synergy,ICDT 2024,10.1109/ICDT61202.2024.10489327,FER,3
+FER,titular,2,ID_16,2024,Comparative Analysis of CNN and SVM Models for Facial Emotion Recognition,"International Conference on Electronics, Computing, Communication and Control Technology",10.1109/ICECCC61767.2024.10593953,FER,4
+FER,titular,3,ID_07,2022,An Adaptive Deep Belief Feature Learning Model for Cognitive Emotion Recognition,8th International Conference on Advanced Computing and Communication Systems,10.1109/ICACCS54159.2022.9785267,FER,1
+FER,titular,4,ID_39,2024,FacePsy: An Open-Source Affective Mobile Sensing,Proceedings of the ACM on Human-Computer Interaction,10.1145/3676505,FER,11
+FER,titular,5,ID_12,2024,Breaking New Ground in Affective Computing: Enhanced Facial Expression Classification via CNN-SVM Integration,Asia Pacific Conference on Innovation in Technology,10.1109/APCIT62007.2024.10673502,FER,2
+FER,titular,6,ID_25,2024,Facial Expression Recognition with Transfer Learning: A Deep Dive,IEEE TQCEBT 2024,10.1109/TQCEBT59414.2024.10545031,FER,9
+FER,suplente,1,ID_17,2023,Cross-Database Facial Expression Recognition using CNN with Attention Mechanism,IEEE ICCCNT 2023,10.1109/ICCCNT56998.2023.10308238,FER,5
+FER,suplente,2,ID_27,2023,Identification of Emotions From Facial Gestures in a Teaching Environment With the Use of Machine Learning Techniques,IEEE ACCESS,10.1109/ACCESS.2023.3267007,FER,10
+FER,suplente,3,ID_18,2023,Deep Learning for Facial Expression Recognition using EfficientNetB0,Global Conference on Information Technologies and Communications,10.1109/GCITC60406.2023.10426615,FER,6

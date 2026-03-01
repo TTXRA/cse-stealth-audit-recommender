@@ -1,0 +1,11 @@
+artigo_id,ano,tarefa,titulo,venue,doi,elegivel_etapa1,motivo_exclusao,observacoes_elegibilidade
+ID_38,2022,MULTI,Toward Personalized Affect-Aware Socially Assistive Robot Tutors for Long-Term Interventions with Children with Autism,ACM Transactions on Human-Robot Interaction,10.1145/3526111,,,
+ID_04,2023,MULTI,Advanced Deep Learning Architectures for Real-Time Human Emotion Recognition and Behavioral Prediction,"International Conference on Communication, Computer Sciences and Engineering",10.1109/IC3SE62002.2024.10592940,,,
+ID_08,2023,MULTI,An Approach of Analyzing Classroom Student Engagement in Multimodal Environment by Using Deep Learning,IEEE 9th International Women in Engineering Conference on Electrical and Computer Engineering,10.1109/WIECON-ECE60392.2023.10456488,,,
+ID_33,2023,MULTI,Multimodal Dyadic Impression Recognition via Listener Adaptive Cross-Domain Fusion,IEEE ICASSP 2023,10.1109/ICASSP49357.2023.10095072,,,
+ID_09,2024,MULTI,An Open-Source Benchmark of Deep Learning Models for Audio-Visual Apparent and Self-Reported Personality Recognition,IEEE Transactions on Affective Computing,10.1109/TAFFC.2024.3363710,,,
+ID_14,2024,MULTI,Cognitive Behavior-in-the-Loop: Towards an Attentive Driving in Intelligent Transportation Systems,IEEE Transactions on Industrial Informatics,10.1109/TII.2024.3452757,,,
+ID_19,2024,MULTI,Deep Learning-Based Emotion Recognition by Fusion of Facial Expressions and Speech Features,2nd World Conference on Communication & Computing,10.1109/WCONF61366.2024.10692119,,,
+ID_31,2024,MULTI,MSP-GEO Corpus: A Multimodal Database for Understanding Video-Learning Experience,International Conference on Multimodal Interaction,10.1145/3678957.3685737,,,
+ID_32,2024,MULTI,Multimodal Daily-Life Emotional Recognition Using Heart Rate and Speech Data From Wearables,IEEE ACCESS,10.1109/ACCESS.2024.3427111,,,
+ID_34,2024,MULTI,Multi-Rater Consensus Learning for Modeling Multiple Sparse Ratings of Affective Behaviour,IEEE Transactions on Affective Computing,10.1109/TAFFC.2023.3297270,,,

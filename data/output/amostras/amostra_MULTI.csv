@@ -1,0 +1,10 @@
+estrato,tipo,ordem,artigo_id,ano,titulo,venue,doi,tarefa,numero_estrato
+MULTI,titular,1,ID_14,2024,Cognitive Behavior-in-the-Loop: Towards an Attentive Driving in Intelligent Transportation Systems,IEEE Transactions on Industrial Informatics,10.1109/TII.2024.3452757,MULTI,4
+MULTI,titular,2,ID_31,2024,MSP-GEO Corpus: A Multimodal Database for Understanding Video-Learning Experience,International Conference on Multimodal Interaction,10.1145/3678957.3685737,MULTI,6
+MULTI,titular,3,ID_33,2023,Multimodal Dyadic Impression Recognition via Listener Adaptive Cross-Domain Fusion,IEEE ICASSP 2023,10.1109/ICASSP49357.2023.10095072,MULTI,8
+MULTI,titular,4,ID_38,2022,Toward Personalized Affect-Aware Socially Assistive Robot Tutors for Long-Term Interventions with Children with Autism,ACM Transactions on Human-Robot Interaction,10.1145/3526111,MULTI,10
+MULTI,titular,5,ID_08,2023,An Approach of Analyzing Classroom Student Engagement in Multimodal Environment by Using Deep Learning,IEEE 9th International Women in Engineering Conference on Electrical and Computer Engineering,10.1109/WIECON-ECE60392.2023.10456488,MULTI,2
+MULTI,titular,6,ID_09,2024,An Open-Source Benchmark of Deep Learning Models for Audio-Visual Apparent and Self-Reported Personality Recognition,IEEE Transactions on Affective Computing,10.1109/TAFFC.2024.3363710,MULTI,3
+MULTI,suplente,1,ID_19,2024,Deep Learning-Based Emotion Recognition by Fusion of Facial Expressions and Speech Features,2nd World Conference on Communication & Computing,10.1109/WCONF61366.2024.10692119,MULTI,5
+MULTI,suplente,2,ID_04,2023,Advanced Deep Learning Architectures for Real-Time Human Emotion Recognition and Behavioral Prediction,"International Conference on Communication, Computer Sciences and Engineering",10.1109/IC3SE62002.2024.10592940,MULTI,1
+MULTI,suplente,3,ID_34,2024,Multi-Rater Consensus Learning for Modeling Multiple Sparse Ratings of Affective Behaviour,IEEE Transactions on Affective Computing,10.1109/TAFFC.2023.3297270,MULTI,9

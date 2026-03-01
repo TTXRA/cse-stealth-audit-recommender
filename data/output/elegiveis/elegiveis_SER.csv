@@ -1,0 +1,5 @@
+artigo_id,ano,tarefa,titulo,venue,doi,elegivel_etapa1,motivo_exclusao,observacoes_elegibilidade
+ID_43,2022,SER,Privacy-preserving Speech Emotion Recognition through Semi-Supervised Federated Learning,IEEE PerCom Workshops 2022,10.1109/PerComWorkshops53856.2022.9767445,,,
+ID_42,2023,SER,"Episodic Memory For Domain-Adaptable, Robust Speech Emotion Recognition",Proc. Interspeech 2023,10.21437/Interspeech.2023-2111,,,
+ID_28,2024,SER,Identification of Emotions in a given speech audio clip by using ANN,International Conference on Emerging Technologies in Computer Science for Interdisciplinary Applications,,,,
+ID_41,2025,SER,Emotion Recognition in the Real-World: Passively Collecting and Estimating Emotions from Natural Speech Data of Individuals with Bipolar Disorder,IEEE Transactions on Affective Computing,10.1109/TAFFC.2024.3407683,,,
