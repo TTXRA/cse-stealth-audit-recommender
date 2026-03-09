@@ -4,9 +4,9 @@ I02,Anotação e Qualidade do Rótulo,1,1,"NA se rótulo é objetivo/automático
 I03,Escopo e Construto,1,1,"NA se não faz inferência sobre estados/traços, explicitado"
 I04,Pré-processamento e Características,0,1,"NA se declara sem transformações ou sem etapa computacional, explicitado"
 I05,Particionamento e Validação,1,1,"NA se não há protocolo preditivo, explicitado"
-I06,"Modelo, Hiperparâmetros e Treino",1,1,"NA se não há modelo treinável/etapa de treino, explicitado"
+I06,"Modelo, Hiperparâmetros e Treino",1,1,"NA se declara sem treinamento (método sem ajuste), explicitado"
 I07,Métricas e Incerteza,1,0,NA não permitido
-I08,Calibração,0,1,"NA se não produz probabilidades/scores comparáveis, explicitado"
+I08,Calibração,0,1,"NA se não produz probabilidades/escores (só rótulos), explicitado"
 I09,Subgrupos e Equidade,0,1,"NA se não há atributos de subgrupo disponíveis ou restrição, explicitado"
 I10,Robustez e Sensibilidade,0,1,"NA se não há protocolo preditivo nem avaliação experimental, explicitado"
 I11,Reprodutibilidade e Artefatos,1,0,NA não permitido
