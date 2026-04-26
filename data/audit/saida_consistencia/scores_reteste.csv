@@ -1,0 +1,7 @@
+artigo_id,estrato,soma_graus_aplicaveis,n_itens_aplicaveis,n_itens_na,score_global_reteste
+ID_12,FER,3,15,1,10.0
+ID_15,FER,2,15,1,6.666666666666667
+ID_19,MULTI,7,16,0,21.875
+ID_33,MULTI,9,16,0,28.125
+ID_41,SER,17,16,0,53.125
+ID_43,SER,14,15,1,46.666666666666664

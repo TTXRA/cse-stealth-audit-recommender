@@ -1,14 +1,7 @@
-from pathlib import Path
 import pandas as pd
 
-from utils import norm_text, normalize_columns, require_cols, require_unique, read_csv, sha256_file
-from config import (
-    OUT_LOGS_DIR,
-    OUT_PRISMA_DIR,
-    OUT_PRISMA,
-    AMOSTRA_POR_TAREFA,
-    ELEGIVEIS_POR_TAREFA,
-)
+from scripts.utils.common import norm_text, normalize_columns, require_cols, require_unique, read_csv, sha256_file
+from scripts.utils.config import (OUT_LOGS_DIR, OUT_PRISMA_DIR, OUT_PRISMA, AMOSTRA_POR_TAREFA, ELEGIVEIS_POR_TAREFA)
 
 OUT_LOGS_DIR.mkdir(parents=True, exist_ok=True)
 OUT_PRISMA_DIR.mkdir(parents=True, exist_ok=True)

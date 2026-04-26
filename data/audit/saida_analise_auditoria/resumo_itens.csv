@@ -1,0 +1,142 @@
+﻿config_pesos,estrato,item_id,item_label,n,media,mediana,q1,q3,ic95_media_inf,ic95_media_sup,ic95_mediana_inf,ic95_mediana_sup
+nucleares,FER,CAL,Calibracao,9,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+nucleares,FER,CST,Custo e Latencia,8,56.25,50.0,50.0,62.5,37.5,75.0,50.0,100.0
+nucleares,FER,DAD,Dados e Demografia,9,50.0,50.0,50.0,50.0,27.77777777777778,72.22222222222223,50.0,100.0
+nucleares,FER,ESC,Escopo e Construto,9,44.44444444444444,50.0,0.0,50.0,22.22222222222222,66.66666666666667,0.0,100.0
+nucleares,FER,ETH,"Etica, Privacidade e Uso Responsavel",9,16.666666666666668,0.0,0.0,0.0,0.0,38.888888888888886,0.0,50.0
+nucleares,FER,EXT,Testes entre Bases,9,11.11111111111111,0.0,0.0,0.0,0.0,33.333333333333336,0.0,0.0
+nucleares,FER,MET,Metricas e Incerteza,9,11.11111111111111,0.0,0.0,0.0,0.0,33.333333333333336,0.0,0.0
+nucleares,FER,MOD,"Modelo, Hiperparametros e Treino",9,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0
+nucleares,FER,PRE,Pre-processamento e Caracteristicas,9,61.111111111111114,50.0,50.0,50.0,50.0,72.22222222222223,50.0,50.0
+nucleares,FER,PRT,Particionamento e Validacao,9,27.77777777777778,0.0,0.0,50.0,5.555555555555555,50.0,0.0,50.0
+nucleares,FER,REP,Reprodutibilidade e Artefatos,9,5.555555555555555,0.0,0.0,0.0,0.0,16.666666666666668,0.0,0.0
+nucleares,FER,ROB,Robustez e Sensibilidade,8,31.25,0.0,0.0,62.5,0.0,62.5,0.0,75.0
+nucleares,FER,ROT,Anotacao e Qualidade do Rotulo,9,33.333333333333336,50.0,0.0,50.0,16.666666666666668,44.44444444444444,0.0,50.0
+nucleares,FER,SUB,Subgrupos e Equidade,9,16.666666666666668,0.0,0.0,50.0,0.0,33.333333333333336,0.0,50.0
+nucleares,FER,VZ,Prevencao de Vazamento,8,12.5,0.0,0.0,0.0,0.0,37.5,0.0,0.0
+nucleares,MULTI,CAL,Calibracao,9,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+nucleares,MULTI,CST,Custo e Latencia,9,50.0,50.0,50.0,50.0,33.333333333333336,66.66666666666667,50.0,50.0
+nucleares,MULTI,DAD,Dados e Demografia,9,44.44444444444444,50.0,50.0,50.0,27.77777777777778,61.111111111111114,50.0,50.0
+nucleares,MULTI,ESC,Escopo e Construto,9,61.111111111111114,50.0,50.0,100.0,33.333333333333336,83.33333333333333,0.0,100.0
+nucleares,MULTI,ETH,"Etica, Privacidade e Uso Responsavel",9,22.22222222222222,0.0,0.0,50.0,0.0,44.44444444444444,0.0,50.0
+nucleares,MULTI,EXT,Testes entre Bases,9,16.666666666666668,0.0,0.0,0.0,0.0,39.02777777777765,0.0,50.0
+nucleares,MULTI,MET,Metricas e Incerteza,9,33.333333333333336,0.0,0.0,100.0,10.833333333333348,66.66666666666667,0.0,100.0
+nucleares,MULTI,MOD,"Modelo, Hiperparametros e Treino",9,55.55555555555556,50.0,50.0,50.0,50.0,66.66666666666667,50.0,50.0
+nucleares,MULTI,PRE,Pre-processamento e Caracteristicas,9,72.22222222222223,100.0,50.0,100.0,50.0,94.44444444444444,50.0,100.0
+nucleares,MULTI,PRT,Particionamento e Validacao,9,44.44444444444444,50.0,0.0,50.0,22.22222222222222,66.66666666666667,0.0,100.0
+nucleares,MULTI,REP,Reprodutibilidade e Artefatos,9,11.11111111111111,0.0,0.0,0.0,0.0,22.22222222222222,0.0,0.0
+nucleares,MULTI,ROB,Robustez e Sensibilidade,9,50.0,50.0,50.0,50.0,33.333333333333336,66.66666666666667,50.0,50.0
+nucleares,MULTI,ROT,Anotacao e Qualidade do Rotulo,9,55.55555555555556,50.0,50.0,100.0,33.333333333333336,77.77777777777777,0.0,100.0
+nucleares,MULTI,SIN,Sincronizacao Multimodal,9,44.44444444444444,50.0,0.0,50.0,22.22222222222222,72.22222222222223,0.0,100.0
+nucleares,MULTI,SUB,Subgrupos e Equidade,9,22.22222222222222,0.0,0.0,50.0,5.555555555555555,38.888888888888886,0.0,50.0
+nucleares,MULTI,VZ,Prevencao de Vazamento,9,44.44444444444444,0.0,0.0,100.0,11.11111111111111,77.77777777777777,0.0,100.0
+nucleares,SER,CAL,Calibracao,4,12.5,0.0,0.0,12.5,0.0,37.5,0.0,50.0
+nucleares,SER,CST,Custo e Latencia,4,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0
+nucleares,SER,DAD,Dados e Demografia,4,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0
+nucleares,SER,ESC,Escopo e Construto,4,75.0,100.0,75.0,100.0,25.0,100.0,0.0,100.0
+nucleares,SER,ETH,"Etica, Privacidade e Uso Responsavel",4,37.5,25.0,0.0,62.5,0.0,87.5,0.0,100.0
+nucleares,SER,EXT,Testes entre Bases,4,37.5,25.0,0.0,62.5,0.0,75.0,0.0,100.0
+nucleares,SER,MET,Metricas e Incerteza,4,50.0,50.0,0.0,100.0,0.0,100.0,0.0,100.0
+nucleares,SER,MOD,"Modelo, Hiperparametros e Treino",4,75.0,75.0,50.0,100.0,50.0,100.0,50.0,100.0
+nucleares,SER,PRE,Pre-processamento e Caracteristicas,4,87.5,100.0,87.5,100.0,62.5,100.0,50.0,100.0
+nucleares,SER,PRT,Particionamento e Validacao,4,75.0,75.0,50.0,100.0,50.0,100.0,50.0,100.0
+nucleares,SER,REP,Reprodutibilidade e Artefatos,4,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+nucleares,SER,ROB,Robustez e Sensibilidade,4,75.0,100.0,75.0,100.0,25.0,100.0,0.0,100.0
+nucleares,SER,ROT,Anotacao e Qualidade do Rotulo,4,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0
+nucleares,SER,SIN,Sincronizacao Multimodal,2,50.0,50.0,25.0,75.0,0.0,100.0,0.0,100.0
+nucleares,SER,SUB,Subgrupos e Equidade,4,25.0,25.0,0.0,50.0,0.0,50.0,0.0,50.0
+nucleares,SER,VZ,Prevencao de Vazamento,4,75.0,100.0,75.0,100.0,25.0,100.0,0.0,100.0
+robustez,FER,CAL,Calibracao,9,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+robustez,FER,CST,Custo e Latencia,8,56.25,50.0,50.0,62.5,37.5,75.0,50.0,100.0
+robustez,FER,DAD,Dados e Demografia,9,50.0,50.0,50.0,50.0,27.77777777777778,72.22222222222223,0.0,100.0
+robustez,FER,ESC,Escopo e Construto,9,44.44444444444444,50.0,0.0,50.0,22.22222222222222,72.22222222222223,0.0,100.0
+robustez,FER,ETH,"Etica, Privacidade e Uso Responsavel",9,16.666666666666668,0.0,0.0,0.0,0.0,44.44444444444444,0.0,50.0
+robustez,FER,EXT,Testes entre Bases,9,11.11111111111111,0.0,0.0,0.0,0.0,33.333333333333336,0.0,0.0
+robustez,FER,MET,Metricas e Incerteza,9,11.11111111111111,0.0,0.0,0.0,0.0,33.333333333333336,0.0,0.0
+robustez,FER,MOD,"Modelo, Hiperparametros e Treino",9,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0
+robustez,FER,PRE,Pre-processamento e Caracteristicas,9,61.111111111111114,50.0,50.0,50.0,50.0,77.77777777777777,50.0,100.0
+robustez,FER,PRT,Particionamento e Validacao,9,27.77777777777778,0.0,0.0,50.0,5.555555555555555,50.0,0.0,50.0
+robustez,FER,REP,Reprodutibilidade e Artefatos,9,5.555555555555555,0.0,0.0,0.0,0.0,16.666666666666668,0.0,0.0
+robustez,FER,ROB,Robustez e Sensibilidade,8,31.25,0.0,0.0,62.5,0.0,62.5,0.0,75.0
+robustez,FER,ROT,Anotacao e Qualidade do Rotulo,9,33.333333333333336,50.0,0.0,50.0,16.666666666666668,50.0,0.0,50.0
+robustez,FER,SUB,Subgrupos e Equidade,9,16.666666666666668,0.0,0.0,50.0,0.0,33.333333333333336,0.0,50.0
+robustez,FER,VZ,Prevencao de Vazamento,8,12.5,0.0,0.0,0.0,0.0,37.5,0.0,0.0
+robustez,MULTI,CAL,Calibracao,9,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+robustez,MULTI,CST,Custo e Latencia,9,50.0,50.0,50.0,50.0,33.333333333333336,66.66666666666667,50.0,50.0
+robustez,MULTI,DAD,Dados e Demografia,9,44.44444444444444,50.0,50.0,50.0,27.77777777777778,61.111111111111114,0.0,50.0
+robustez,MULTI,ESC,Escopo e Construto,9,61.111111111111114,50.0,50.0,100.0,33.333333333333336,83.33333333333333,0.0,100.0
+robustez,MULTI,ETH,"Etica, Privacidade e Uso Responsavel",9,22.22222222222222,0.0,0.0,50.0,0.0,44.58333333333321,0.0,50.0
+robustez,MULTI,EXT,Testes entre Bases,9,16.666666666666668,0.0,0.0,0.0,0.0,38.888888888888886,0.0,50.0
+robustez,MULTI,MET,Metricas e Incerteza,9,33.333333333333336,0.0,0.0,100.0,11.11111111111111,66.66666666666667,0.0,100.0
+robustez,MULTI,MOD,"Modelo, Hiperparametros e Treino",9,55.55555555555556,50.0,50.0,50.0,50.0,66.66666666666667,50.0,50.0
+robustez,MULTI,PRE,Pre-processamento e Caracteristicas,9,72.22222222222223,100.0,50.0,100.0,50.0,94.44444444444444,50.0,100.0
+robustez,MULTI,PRT,Particionamento e Validacao,9,44.44444444444444,50.0,0.0,50.0,22.22222222222222,66.66666666666667,0.0,100.0
+robustez,MULTI,REP,Reprodutibilidade e Artefatos,9,11.11111111111111,0.0,0.0,0.0,0.0,27.77777777777778,0.0,50.0
+robustez,MULTI,ROB,Robustez e Sensibilidade,9,50.0,50.0,50.0,50.0,33.333333333333336,66.66666666666667,50.0,50.0
+robustez,MULTI,ROT,Anotacao e Qualidade do Rotulo,9,55.55555555555556,50.0,50.0,100.0,33.333333333333336,77.77777777777777,0.0,100.0
+robustez,MULTI,SIN,Sincronizacao Multimodal,9,44.44444444444444,50.0,0.0,50.0,22.22222222222222,72.22222222222223,0.0,100.0
+robustez,MULTI,SUB,Subgrupos e Equidade,9,22.22222222222222,0.0,0.0,50.0,5.555555555555555,38.888888888888886,0.0,50.0
+robustez,MULTI,VZ,Prevencao de Vazamento,9,44.44444444444444,0.0,0.0,100.0,11.11111111111111,77.77777777777777,0.0,100.0
+robustez,SER,CAL,Calibracao,4,12.5,0.0,0.0,12.5,0.0,37.5,0.0,50.0
+robustez,SER,CST,Custo e Latencia,4,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0
+robustez,SER,DAD,Dados e Demografia,4,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0
+robustez,SER,ESC,Escopo e Construto,4,75.0,100.0,75.0,100.0,25.0,100.0,0.0,100.0
+robustez,SER,ETH,"Etica, Privacidade e Uso Responsavel",4,37.5,25.0,0.0,62.5,0.0,75.0,0.0,100.0
+robustez,SER,EXT,Testes entre Bases,4,37.5,25.0,0.0,62.5,0.0,87.5,0.0,100.0
+robustez,SER,MET,Metricas e Incerteza,4,50.0,50.0,0.0,100.0,0.0,100.0,0.0,100.0
+robustez,SER,MOD,"Modelo, Hiperparametros e Treino",4,75.0,75.0,50.0,100.0,50.0,100.0,50.0,100.0
+robustez,SER,PRE,Pre-processamento e Caracteristicas,4,87.5,100.0,87.5,100.0,62.5,100.0,50.0,100.0
+robustez,SER,PRT,Particionamento e Validacao,4,75.0,75.0,50.0,100.0,50.0,100.0,50.0,100.0
+robustez,SER,REP,Reprodutibilidade e Artefatos,4,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+robustez,SER,ROB,Robustez e Sensibilidade,4,75.0,100.0,75.0,100.0,25.0,100.0,0.0,100.0
+robustez,SER,ROT,Anotacao e Qualidade do Rotulo,4,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0
+robustez,SER,SIN,Sincronizacao Multimodal,2,50.0,50.0,25.0,75.0,0.0,100.0,0.0,100.0
+robustez,SER,SUB,Subgrupos e Equidade,4,25.0,25.0,0.0,50.0,0.0,50.0,0.0,50.0
+robustez,SER,VZ,Prevencao de Vazamento,4,75.0,100.0,75.0,100.0,25.0,100.0,0.0,100.0
+uniforme,FER,CAL,Calibracao,9,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+uniforme,FER,CST,Custo e Latencia,8,56.25,50.0,50.0,62.5,37.5,75.0,50.0,75.62499999999943
+uniforme,FER,DAD,Dados e Demografia,9,50.0,50.0,50.0,50.0,27.77777777777778,72.22222222222223,0.0,100.0
+uniforme,FER,ESC,Escopo e Construto,9,44.44444444444444,50.0,0.0,50.0,22.22222222222222,66.66666666666667,0.0,100.0
+uniforme,FER,ETH,"Etica, Privacidade e Uso Responsavel",9,16.666666666666668,0.0,0.0,0.0,0.0,38.888888888888886,0.0,0.0
+uniforme,FER,EXT,Testes entre Bases,9,11.11111111111111,0.0,0.0,0.0,0.0,33.333333333333336,0.0,0.0
+uniforme,FER,MET,Metricas e Incerteza,9,11.11111111111111,0.0,0.0,0.0,0.0,33.333333333333336,0.0,0.0
+uniforme,FER,MOD,"Modelo, Hiperparametros e Treino",9,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0
+uniforme,FER,PRE,Pre-processamento e Caracteristicas,9,61.111111111111114,50.0,50.0,50.0,50.0,77.77777777777777,50.0,100.0
+uniforme,FER,PRT,Particionamento e Validacao,9,27.77777777777778,0.0,0.0,50.0,5.555555555555555,50.0,0.0,50.0
+uniforme,FER,REP,Reprodutibilidade e Artefatos,9,5.555555555555555,0.0,0.0,0.0,0.0,16.666666666666668,0.0,0.0
+uniforme,FER,ROB,Robustez e Sensibilidade,8,31.25,0.0,0.0,62.5,0.0,62.5,0.0,75.0
+uniforme,FER,ROT,Anotacao e Qualidade do Rotulo,9,33.333333333333336,50.0,0.0,50.0,16.666666666666668,50.0,0.0,50.0
+uniforme,FER,SUB,Subgrupos e Equidade,9,16.666666666666668,0.0,0.0,50.0,5.416666666666674,33.333333333333336,0.0,50.0
+uniforme,FER,VZ,Prevencao de Vazamento,8,12.5,0.0,0.0,0.0,0.0,37.5,0.0,0.0
+uniforme,MULTI,CAL,Calibracao,9,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+uniforme,MULTI,CST,Custo e Latencia,9,50.0,50.0,50.0,50.0,33.333333333333336,66.66666666666667,50.0,50.0
+uniforme,MULTI,DAD,Dados e Demografia,9,44.44444444444444,50.0,50.0,50.0,27.77777777777778,61.111111111111114,0.0,50.0
+uniforme,MULTI,ESC,Escopo e Construto,9,61.111111111111114,50.0,50.0,100.0,33.333333333333336,83.33333333333333,0.0,100.0
+uniforme,MULTI,ETH,"Etica, Privacidade e Uso Responsavel",9,22.22222222222222,0.0,0.0,50.0,0.0,44.44444444444444,0.0,50.0
+uniforme,MULTI,EXT,Testes entre Bases,9,16.666666666666668,0.0,0.0,0.0,0.0,38.888888888888886,0.0,50.0
+uniforme,MULTI,MET,Metricas e Incerteza,9,33.333333333333336,0.0,0.0,100.0,11.11111111111111,66.66666666666667,0.0,100.0
+uniforme,MULTI,MOD,"Modelo, Hiperparametros e Treino",9,55.55555555555556,50.0,50.0,50.0,50.0,66.66666666666667,50.0,50.0
+uniforme,MULTI,PRE,Pre-processamento e Caracteristicas,9,72.22222222222223,100.0,50.0,100.0,50.0,94.44444444444444,50.0,100.0
+uniforme,MULTI,PRT,Particionamento e Validacao,9,44.44444444444444,50.0,0.0,50.0,22.22222222222222,66.66666666666667,0.0,100.0
+uniforme,MULTI,REP,Reprodutibilidade e Artefatos,9,11.11111111111111,0.0,0.0,0.0,0.0,27.77777777777778,0.0,50.0
+uniforme,MULTI,ROB,Robustez e Sensibilidade,9,50.0,50.0,50.0,50.0,33.333333333333336,66.66666666666667,50.0,50.0
+uniforme,MULTI,ROT,Anotacao e Qualidade do Rotulo,9,55.55555555555556,50.0,50.0,100.0,27.77777777777778,77.77777777777777,0.0,100.0
+uniforme,MULTI,SIN,Sincronizacao Multimodal,9,44.44444444444444,50.0,0.0,50.0,22.22222222222222,72.22222222222223,0.0,100.0
+uniforme,MULTI,SUB,Subgrupos e Equidade,9,22.22222222222222,0.0,0.0,50.0,5.555555555555555,38.888888888888886,0.0,50.0
+uniforme,MULTI,VZ,Prevencao de Vazamento,9,44.44444444444444,0.0,0.0,100.0,11.11111111111111,77.77777777777777,0.0,100.0
+uniforme,SER,CAL,Calibracao,4,12.5,0.0,0.0,12.5,0.0,37.5,0.0,50.0
+uniforme,SER,CST,Custo e Latencia,4,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0
+uniforme,SER,DAD,Dados e Demografia,4,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0
+uniforme,SER,ESC,Escopo e Construto,4,75.0,100.0,75.0,100.0,25.0,100.0,0.0,100.0
+uniforme,SER,ETH,"Etica, Privacidade e Uso Responsavel",4,37.5,25.0,0.0,62.5,0.0,75.0,0.0,100.0
+uniforme,SER,EXT,Testes entre Bases,4,37.5,25.0,0.0,62.5,0.0,75.0,0.0,100.0
+uniforme,SER,MET,Metricas e Incerteza,4,50.0,50.0,0.0,100.0,0.0,100.0,0.0,100.0
+uniforme,SER,MOD,"Modelo, Hiperparametros e Treino",4,75.0,75.0,50.0,100.0,50.0,100.0,50.0,100.0
+uniforme,SER,PRE,Pre-processamento e Caracteristicas,4,87.5,100.0,87.5,100.0,62.5,100.0,50.0,100.0
+uniforme,SER,PRT,Particionamento e Validacao,4,75.0,75.0,50.0,100.0,50.0,100.0,50.0,100.0
+uniforme,SER,REP,Reprodutibilidade e Artefatos,4,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+uniforme,SER,ROB,Robustez e Sensibilidade,4,75.0,100.0,75.0,100.0,25.0,100.0,0.0,100.0
+uniforme,SER,ROT,Anotacao e Qualidade do Rotulo,4,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0
+uniforme,SER,SIN,Sincronizacao Multimodal,2,50.0,50.0,25.0,75.0,0.0,100.0,0.0,100.0
+uniforme,SER,SUB,Subgrupos e Equidade,4,25.0,25.0,0.0,50.0,0.0,50.0,0.0,50.0
+uniforme,SER,VZ,Prevencao de Vazamento,4,75.0,100.0,75.0,100.0,25.0,100.0,0.0,100.0

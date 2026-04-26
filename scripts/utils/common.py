@@ -1,5 +1,6 @@
 import hashlib
 import re
+import numpy as np
 import pandas as pd
 
 _RE_SPACES = re.compile(r"\s+")
@@ -18,10 +19,13 @@ def require_cols(df, cols, name):
     if miss:
         raise ValueError(f"Colunas obrigatórias ausentes em {name}: {miss}")
 
-def require_unique(df, col, name):
-    if df[col].duplicated().any():
-        dups = df.loc[df[col].duplicated(), col].tolist()
-        raise ValueError(f"{col} duplicado em {name}: " + ", ".join(dups))
+def require_unique(df, cols, name):
+    cols = [cols] if isinstance(cols, str) else list(cols)
+    dup = df.duplicated(cols, keep=False)
+    if dup.any():
+        raise ValueError(
+            f"Chave duplicada em {name} para {cols}:\n{df.loc[dup, cols].sort_values(cols).to_string(index=False)}"
+        )
 
 def parse_bin01(series, label, id_series):
     s = pd.to_numeric(series.map(norm_text), errors="coerce").astype("Int64")
@@ -42,3 +46,28 @@ def sha256_file(path):
         for chunk in iter(lambda: f.read(1024 * 1024), b""):
             h.update(chunk)
     return h.hexdigest()
+
+def parse_yes_no(x):
+    if pd.isna(x):
+        return np.nan
+    v = str(x).strip().lower()
+    mapa = {
+        "sim": "sim",
+        "yes": "sim",
+        "true": "sim",
+        "1": "sim",
+        "nao": "nao",
+        "não": "nao",
+        "no": "nao",
+        "false": "nao",
+        "0": "nao",
+    }
+    return mapa.get(v, v)
+
+def parse_fraction(x):
+    if pd.isna(x):
+        return np.nan
+    x = float(x)
+    if x > 1:
+        return x / 100.0
+    return x

@@ -1,17 +1,17 @@
 item_id,item_nome,nuclear,na_permitido,regra_NA_resumo
-I01,Dados e Demografia,1,1,"NA se não usa dados humanos e não há demografia pertinente, explicitado"
-I02,Anotação e Qualidade do Rótulo,1,1,"NA se rótulo é objetivo/automático, explicitado"
-I03,Escopo e Construto,1,1,"NA se não faz inferência sobre estados/traços, explicitado"
-I04,Pré-processamento e Características,0,1,"NA se declara sem transformações ou sem etapa computacional, explicitado"
-I05,Particionamento e Validação,1,1,"NA se não há protocolo preditivo, explicitado"
-I06,"Modelo, Hiperparâmetros e Treino",1,1,"NA se declara sem treinamento (método sem ajuste), explicitado"
-I07,Métricas e Incerteza,1,0,NA não permitido
-I08,Calibração,0,1,"NA se não produz probabilidades/escores (só rótulos), explicitado"
-I09,Subgrupos e Equidade,0,1,"NA se não há atributos de subgrupo disponíveis ou restrição, explicitado"
-I10,Robustez e Sensibilidade,0,1,"NA se não há protocolo preditivo nem avaliação experimental, explicitado"
-I11,Reprodutibilidade e Artefatos,1,0,NA não permitido
-I12,"Ética, Privacidade e Uso Responsável",0,1,"NA se não envolve dados pessoais/sensíveis nem riscos correlatos, explicitado"
-I13,Prevenção de Vazamento,1,1,"NA se não há protocolo preditivo, explicitado"
-I14,Testes entre Bases,1,1,"NA se declara inexistência de base externa compatível/viável, explicitado"
-I15,Custo e Latência,0,1,"NA se não há execução de treino nem inferência reportada, explicitado"
-I16,Sincronização Multimodal,0,1,"NA se estritamente unimodal, verificável"
+DAD,Dados e Demografia,1,1,"NA se não usa dados humanos e não há demografia pertinente, explicitado"
+ROT,Anotação e Qualidade do Rótulo,1,1,"NA se rótulo é objetivo/automático, explicitado"
+ESC,Escopo e Construto,1,1,"NA se não faz inferência sobre estados/traços, explicitado"
+PRE,Pré-processamento e Características,0,1,"NA se declara sem transformações ou sem etapa computacional, explicitado"
+PRT,Particionamento e Validação,1,1,"NA se não há protocolo preditivo, explicitado"
+MOD,"Modelo, Hiperparâmetros e Treino",1,1,"NA se declara sem treinamento (método sem ajuste), explicitado"
+MET,Métricas e Incerteza,1,0,NA não permitido
+CAL,Calibração,0,1,"NA se não produz probabilidades/escores (só rótulos), explicitado"
+SUB,Subgrupos e Equidade,0,1,"NA se não há atributos de subgrupo disponíveis ou restrição, explicitado"
+ROB,Robustez e Sensibilidade,0,1,"NA se não há protocolo preditivo nem avaliação experimental, explicitado"
+REP,Reprodutibilidade e Artefatos,1,0,NA não permitido
+ETH,"Ética, Privacidade e Uso Responsável",0,1,"NA se não envolve dados pessoais/sensíveis nem riscos correlatos, explicitado"
+VZ,Prevenção de Vazamento,1,1,"NA se não há protocolo preditivo, explicitado"
+EXT,Testes entre Bases,1,1,"NA se declara inexistência de base externa compatível/viável, explicitado"
+CST,Custo e Latência,0,1,"NA se não há execução de treino nem inferência reportada, explicitado"
+SIN,Sincronização Multimodal,0,1,"NA se estritamente unimodal, verificável"

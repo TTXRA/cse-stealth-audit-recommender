@@ -1,17 +1,7 @@
 import pandas as pd
-from utils import norm_text, normalize_columns, require_cols, require_unique, parse_bin01
-from config import (
-    IN_DIR,
-    MID_DIR,
-    OUT_ELEGIVEIS_DIR,
-    MID_CORPUS_JANELA,
-    INPUT_ROTULOS_ELEG,
-    MID_CORPUS_EMP_QUANT,
-    OUT_ELEG_FER,
-    OUT_ELEG_SER,
-    OUT_ELEG_MULTI,
-    TAREFAS_VALIDAS,
-)
+from scripts.utils.common import norm_text, normalize_columns, require_cols, require_unique, parse_bin01
+from scripts.utils.config import (IN_DIR, MID_DIR, OUT_ELEGIVEIS_DIR, MID_CORPUS_JANELA, INPUT_ROTULOS_ELEG,
+                                  MID_CORPUS_EMP_QUANT, OUT_ELEG_FER, OUT_ELEG_SER, OUT_ELEG_MULTI, TAREFAS_VALIDAS)
 
 IN_DIR.mkdir(parents=True, exist_ok=True)
 MID_DIR.mkdir(parents=True, exist_ok=True)

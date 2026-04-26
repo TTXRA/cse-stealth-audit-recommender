@@ -1,15 +1,8 @@
 import pandas as pd
-from utils import norm_text, normalize_columns, require_cols, require_unique, read_csv
-from config import (
-    IN_DIR,
-    MID_DIR,
-    INPUT_MAPEAMENTO_MASTER,
-    MID_CORPUS_PADRONIZADO,
-    MID_CORPUS_JANELA,
-    ANO_INICIO,
-    ANO_FIM,
-    TAREFAS_VALIDAS,
-)
+from scripts.utils.common import norm_text, normalize_columns, require_cols, require_unique, read_csv
+from scripts.utils.config import (IN_DIR, MID_DIR, INPUT_MAPEAMENTO_MASTER, MID_CORPUS_PADRONIZADO,
+                                  MID_CORPUS_JANELA, ANO_INICIO, ANO_FIM, TAREFAS_VALIDAS)
+
 
 def norm_tarefa(x):
     s = norm_text(x).upper()
@@ -17,13 +10,15 @@ def norm_tarefa(x):
         return "NA"
     return s
 
+
 def make_artigo_id(df):
     if "artigo_id" in df.columns and df["artigo_id"].astype(str).str.strip().ne("").any():
         df["artigo_id"] = df["artigo_id"].astype(str).str.strip()
         return df
     df = df.reset_index(drop=True)
-    df["artigo_id"] = df.index.map(lambda i: f"ID_{i+1:02d}")
+    df["artigo_id"] = df.index.map(lambda i: f"ID_{i + 1:02d}")
     return df
+
 
 IN_DIR.mkdir(parents=True, exist_ok=True)
 MID_DIR.mkdir(parents=True, exist_ok=True)

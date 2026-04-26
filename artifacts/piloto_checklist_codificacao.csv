@@ -1,97 +1,97 @@
 artigo_id,estrato,item_id,grau,NA,justificativa_NA,evidencia,observacoes
-ID_17,FER,I01,1,0,-,"Identifica datasets (RAF-DB, JAFFE, FER+), mas só reporta demografia de JAFFE e omite contagens exatas de split para todos.",Falha parcial em demografia.
-ID_17,FER,I02,0,0,-,"Lista classes, mas não detalha métricas de qualidade ou concordância dos rótulos (mesmo para o dataset corrigido FER+).",Confia cegamente no dataset.
-ID_17,FER,I03,1,0,-,Construto: 7 expressões faciais. Evidência: pixels via CNN. Aceita a validade do dataset sem análise crítica de construto.,Mapeamento direto e superficial.
-ID_17,FER,I04,1,0,-,"Lista técnicas de augmentation, mas falta dimensionamento exato do input. Sem referências fixas (código/config).",Falta dimensão do Input.
-ID_17,FER,I05,1,0,-,"Realiza Cross-Database (independente), mas falta detalhar cardinalidades internas e o split de validação é superficial.",Cross-dataset salva a nota.
-ID_17,FER,I06,0,0,-,"Arquiteturas listadas, mas omite hiperparâmetros fundamentais (Épocas, Batch size, LR). Sem seed.",Falha crítica de reprodutibilidade.
-ID_17,FER,I07,0,0,-,Usa Acurácia global como métrica principal em datasets desbalanceados. Nenhuma incerteza (IC/DP) reportada.,Inadequado e sem incerteza.
-ID_17,FER,I08,0,0,-,"Modelo gera saídas probabilísticas via Softmax, mas nenhuma métrica ou curva de calibração é apresentada.",Apenas rótulo final é avaliado.
-ID_17,FER,I09,0,0,-,"Menciona ""Japanese female"" para JAFFE, mas não estratifica a performance ou analisa viés entre grupos.",Demografia ignorada nos resultados.
-ID_17,FER,I10,1,0,-,"Robustez testada via Cross-Database. Sensibilidade mencionada (""várias combinações tentadas"") mas não reportada numericamente.",Apenas 1 teste válido.
-ID_17,FER,I11,0,0,-,"Nenhuma menção a repositório, link (GitHub) ou disponibilidade de código/pesos no texto.",Ausência total de artefatos.
-ID_17,FER,I12,0,0,-,"Usa imagens humanas, mas não reporta consentimento original, base ética (IRB) ou licença dos datasets.",Ignora privacidade e ética.
-ID_17,FER,I13,2,0,-,"Uso de ""Cross-Database Evaluation"" isolando fisicamente o treino (RAF-DB) do teste (JAFFE), eliminando vazamento de sujeito.",Regra algorítmica forte.
-ID_17,FER,I14,2,0,-,"Treina em uma base (RAF-DB) e testa quantitativamente em bases de domínios distintos (JAFFE, FER+).",Reporte claro de CDE.
-ID_17,FER,I15,1,0,-,"Cita Hardware (Tesla V100) e reporta redução no número de parâmetros (7M para 1.4M), mas omite tempos ou FPS.","Tem hardware, mas faltam tempos."
-ID_17,FER,I16,-,1,Estudo focado apenas em imagens faciais estáticas.,NA,Totalmente unimodal.
-ID_18,FER,I01,0,0,-,"Usa o dataset CK+48, mas não há detalhamento demográfico, critérios de inclusão ou cardinalidade explícita de classes.",Informações ausentes.
-ID_18,FER,I02,0,0,-,"Não relata quem anotou o CK+48, qual o protocolo de validação ou qualquer métrica de concordância.",Assume rótulo perfeito.
-ID_18,FER,I03,1,0,-,"Define o reconhecimento de expressões faciais, assumindo mapeamento 1:1 com emoção humana via CK+48, sem discussão teórica.",Limítrofe com 0 pela superficialidade.
-ID_18,FER,I04,1,0,-,"Menciona resize para 200x200, mas a descrição de augmentation e transformações adicionais é muito genérica.",Pipeline pouco detalhado.
-ID_18,FER,I05,0,0,-,"""Distinct data stores"" reportado vagamente, mas sem cardinais de split (ex: 80/20) e sem garantia de separação por sujeito.",Risco de leakage intra-dataset.
-ID_18,FER,I06,1,0,-,"Reporta épocas (13), batch (65) e otimizador (SGDM). Falta taxa de aprendizagem (LR) e não reporta seed.","Incompleto, mas com dados parciais."
-ID_18,FER,I07,0,0,-,"Métrica de destaque é Acurácia global, embora também reporte F1. Nenhuma barra de erro, DP ou IC nas avaliações.",Incerteza ausente.
-ID_18,FER,I08,0,0,-,"Saída é probabilística (Softmax), mas avaliam apenas a classe majoritária sem quantificar a calibração dessas predições.",Calibração ignorada.
-ID_18,FER,I09,0,0,-,"Não extrai, menciona ou avalia qualquer atributo demográfico no conjunto de dados. Equidade ignorada.",Sem subgrupos listados.
-ID_18,FER,I10,0,0,-,"Compara com outras arquiteturas (baseline externo), mas não realiza ablações internas de componentes ou testa sob ruído.","Benchmarking apenas, sem ablação."
-ID_18,FER,I11,0,0,-,"Menciona ter usado ""MATLAB"", mas não disponibiliza o arquivo, código ou repositório online.",Reprodutibilidade impossível.
-ID_18,FER,I12,0,0,-,"Utiliza faces humanas do CK+48, mas sem qualquer menção à aprovação do comitê de ética ou uso responsável.",-
-ID_18,FER,I13,0,0,-,"Divisão de dados de frames/vídeo sem regra declarada de isolamento de identidades, permitindo data leakage.",Menção genérica ao split.
-ID_18,FER,I14,0,0,-,"Usa apenas splits internos do dataset CK+48, não testando em nenhuma base externa.",Sem CDE.
-ID_18,FER,I15,0,0,-,"Diz apenas que o treino ""is conducted on a CPU"", sem especificações, parâmetros de FLOPs, consumo ou latência.",Vago demais para contar.
-ID_18,FER,I16,-,1,Apenas analisa imagens em escala de cinza.,NA,Unimodal.
-ID_19,MULTI,I01,1,0,-,"Identifica bases (FER2013, RAVDESS), com demografia parcial para áudio (12M/12F), mas falha em imagem e não detalha critérios.",Demografia restrita a 1 dataset.
-ID_19,MULTI,I02,0,0,-,"Menciona que são atores (RAVDESS), mas não reporta nenhuma métrica de qualidade, concordância ou validação dos rótulos em nenhuma base.",Não avalia rótulo.
-ID_19,MULTI,I03,1,0,-,"Construto é reconhecimento de emoções via pixels e áudio, assumindo a Tarefa como representação fiel, sem debate teórico profundo.",Sem mapeamento explícito.
-ID_19,MULTI,I04,1,0,-,"Resize (48x48) e MFCC listados, mas faltam muitos parâmetros numéricos das extrações de áudio.",Vago sobre parâmetros Librosa.
-ID_19,MULTI,I05,0,0,-,"Split aleatório (80:20) em dataset de atores de vídeo/fala, sem validação cruzada por sujeito. Alto risco de dependência.",Erro de dependência (leakage).
-ID_19,MULTI,I06,1,0,-,"Reporta épocas (20/50) e batch size (128), mas não especifica a LR ou semente (seed).",Parâmetros parciais.
-ID_19,MULTI,I07,0,0,-,"Métrica de foco é Acurácia global para classes múltiplas (69% fusion), sem apresentar SD, erro-padrão ou IC.",Falta reportar variância.
-ID_19,MULTI,I08,0,0,-,"Embora gerem scores na camada densa, a calibração de probabilidades nunca é avaliada quantitativa ou qualitativamente.",Ignoram as probabilidades.
-ID_19,MULTI,I09,0,0,-,"Tem dados de gênero (RAVDESS 12M/12F), mas os resultados são puramente agregados sem estratificação.",Atributo disponível mas não usado.
-ID_19,MULTI,I10,1,0,-,"Apresenta ablação de modalidade (desempenho áudio isolado vs vídeo vs fusão), mas não há testes de perturbação externa.",Apenas 1 teste de sensibilidade.
-ID_19,MULTI,I11,0,0,-,"Cita bibliotecas como OpenCV, Keras, TensorFlow, mas omite completamente link de repositório público.",Sem código.
-ID_19,MULTI,I12,0,0,-,"Uso de datasets públicos de pessoas (rosto/voz) sem discutir IRB, consentimento da licença ou riscos éticos.",-
-ID_19,MULTI,I13,0,0,-,"Divisão 80:20 simples em dados que possuem múltiplas frames/sessões por ator, sem regras de subject-independent.",Leakage claro.
-ID_19,MULTI,I14,0,0,-,Une as bases e realiza a divisão de 80:20 em todas elas conjuntamente (sem isolar um domínio para teste puro).,-
-ID_19,MULTI,I15,0,0,-,"Afirmações puramente qualitativas sobre a CNN ser mais ""rápida"", sem nenhuma especificação de hardware, ms, fps ou época.",Sem dados quantitativos de eficiência.
-ID_19,MULTI,I16,0,0,-,"Sistema multimodal, mas não descreve a janela, taxa ou como é feito o alinhamento temporal entre a frame e o áudio.",Fusão de decisão sem base temporal.
-ID_41,SER,I01,2,0,-,"Coleta própria rigorosa (PRIORI), critérios de inclusão/exclusão clínicos detalhados e demografia exaustiva (idade, raça, etc.).",100% preenchido.
-ID_41,SER,I02,2,0,-,Distingue autorrelato (EMA) e escalas clínicas. Reporta métricas sólidas de confiabilidade interna (Omega para digiBP).,Qualidade justificada com rigor.
-ID_41,SER,I03,2,0,-,"Mapeamento explícito excelente. Justifica a ligação entre as Evidências (fala passiva), o Construto (emoção) e o Alvo (humor).",Validado teoricamente.
-ID_41,SER,I04,2,0,-,"Especifica todos os passos de forma exaustiva: thresholds exatos (amp 1000), APIs específicas (Azure ASR), uso do Wav2Vec2/BERT.",Reprodutível em detalhes.
-ID_41,SER,I05,2,0,-,"Usa Leave-One-Participant-Out (LOSO), garantindo separação e independência das instâncias; Métricas e early stopping claros.",Independência garantida.
-ID_41,SER,I06,2,0,-,"Especifica rigorosamente arquitetura, LR (1e-3), Batch (32), Dropout (0.2), Paciência (15) e optimizador.",Excelente nível de detalhe (falta só seed).
-ID_41,SER,I07,2,0,-,Usa PCC para regressão (adequado) e relata os intervalos de confiança a 95% (95% CI) ou Mean ± SD para todos os achados.,Exemplar na incerteza.
-ID_41,SER,I08,2,0,-,"Otimiza e avalia por CCC (Concordance Correlation Coefficient), que é o padrão ouro para penalizar viés e escala na regressão (calibração).",CCC como evidência forte.
-ID_41,SER,I09,1,0,-,"Coleta e reporta os metadados. Plota visualmente as diferenças por diagnóstico (BPI vs BPII) e controla gênero no LMEM, mas falta métricas separadas em tabela.",Quase atingiu Grau 2.
-ID_41,SER,I10,2,0,-,Validação LOSO para robustez (sujeito) e teste sistemático (ablação) da contribuição individual de todas as features e fontes (EMA/Passivo).,Múltiplos testes detalhados.
-ID_41,SER,I11,0,0,-,"Descrevem pipeline robusto, mas não divulgam link para GitHub com as implementações computacionais usadas no paper.",-
-ID_41,SER,I12,2,0,-,"Excepcional: descreve IRB (HUM00197298), consentimento, deleção em nuvem, minimização e dedica seção à Ética e Vigilância.",Modelo de conformidade.
-ID_41,SER,I13,2,0,-,Estratégia de Leave-One-Participant-Out descrita explicitamente para garantir participant-independent analysis.,Sem risco de leakage.
-ID_41,SER,I14,0,0,-,"Embora usem um modelo treinado na base A para atuar na base B, não há ground truth de emoção na base B para quantificar acurácia cross-dataset.",Sem métrica de alvo final.
-ID_41,SER,I15,0,0,-,"Menciona que processa na ""nuvem"", mas o estudo possui foco essencialmente clínico e ignora qualquer medição de custo de inferência.",Nenhum custo temporal reportado.
-ID_41,SER,I16,2,0,-,Sincroniza dados assíncronos agregando-os por Dia e alinhando com a avaliação clínica numa tolerância de janela de 7 dias.,Método perfeitamente operacionalizado.
-ID_28,SER,I01,0,0,-,"Dataset originário do ""Kaggle website"" sem nome, sem DOI, impossível de rastrear e sem demografia reportada.",Impede reprodutibilidade.
-ID_28,SER,I02,0,0,-,Não existem informações sobre como os 2800 áudios foram rotulados ou por quem.,Dataset anônimo = rótulo cego.
-ID_28,SER,I03,0,0,-,A Tarefa (T) é inverificável (base fantasma). Inviabiliza conhecer o cenário ou o ambiente para justificar a inferência.,Base não identificada anula a nota.
-ID_28,SER,I04,1,0,-,"Reporta o pipeline MFCC (blocos e etapas) e taxa de reamostragem, mas omite parâmetros essenciais do janelamento.","Pre-proc listado, mas incompleto."
-ID_28,SER,I05,0,0,-,"Divisão 80:20 genérica. Como a base é cega, existe risco severo de dependência do locutor cruzando os conjuntos.",Risco de leakage óbvio.
-ID_28,SER,I06,1,0,-,"Cita estrutura de neurônios (embora com contradições de output), batch de 32 e Dropout, mas omite a LR.","Algumas métricas salvas, outras dúbias."
-ID_28,SER,I07,0,0,-,Usa Acurácia para classes que variam de 123 a 635 instâncias (falsamente alegando balanceamento) e sem incerteza.,Enganoso no desbalanceamento.
-ID_28,SER,I08,0,0,-,"Usa função Categorical Cross-Entropy, logo tem scores probabilísticos, mas a avaliação de calibração final inexiste.",Nenhuma calibração.
-ID_28,SER,I09,0,0,-,O dataset anônimo impede qualquer extração de metadados demográficos. Sem análises.,Impossível verificar equidade.
-ID_28,SER,I10,0,0,-,Nenhuma testagem sobre estabilidade com ruídos do áudio ou sensibilidade de parâmetros.,Apenas avalia um pipeline rígido.
-ID_28,SER,I11,0,0,-,"Diz ter usado Python e Flask, mas sem nenhum artefato repositório citado ou disponibilizado.",Falha geral.
-ID_28,SER,I12,0,0,-,"O uso de voz é uso de dado sensível, mas ignoraram completamente questões de licença, IRB ou ética do dataset Kaggle.",-
-ID_28,SER,I13,0,0,-,Split aleatório simples sem garantir sujeitos/locutores isolados no treino/teste. Data leakage não tratado.,Sem estratégia verificável.
-ID_28,SER,I14,0,0,-,Realiza apenas um holdout (split) padrão interno no dataset anônimo.,-
-ID_28,SER,I15,0,0,-,"Declaram textualmente que usaram ""checkpoints para ver o tempo que leva"", mas não escreveram o valor do tempo nos resultados.",Faltaram os dados no paper.
-ID_28,SER,I16,-,1,"""Identifying emotions within speech audio clips."" Não combinam com outra modalidade (fisiologia/vídeo).",NA,Somente áudio.
-ID_32,MULTI,I01,2,0,-,Descreve idade e gênero de cada um dos 6 datasets originais agregados e plota com clareza o desbalanceamento final das classes.,Fonte secundária impecável.
-ID_32,MULTI,I02,1,0,-,"Remapearam os rótulos de terceiros (ex: Feliz -> HVHA) explicando a lógica e a origem, mas sem reanotação ou métrica própria de concordância.",Sem validação empírica da conversão.
-ID_32,MULTI,I03,2,0,-,"Ótima operacionalização conectando o Modelo Circunflexo de Russell aos dados para justificar a tarefa em cenários ""daily life"".",Mapeamento explícito presente.
-ID_32,MULTI,I04,2,0,-,"Processos e parâmetros definidos explicitamente (Normalização detalhada por equação, Slicing de ±15s, Feature estacadas).",Rigor máximo no pipeline.
-ID_32,MULTI,I05,1,0,-,"Ótimo reporte dos testes de ablação em teste interno, mas o split de ""janelas de tempo"" da mesma pessoa permite leakage (sem LOSO).",Leakage penaliza.
-ID_32,MULTI,I06,2,0,-,"Define empiricamente quase todos os hiperparâmetros vitais em tabelas estritas de Ablation (Batch 32, Drop 0.5, Epoca 150, SGD).",Tabelas servem de config robusta.
-ID_32,MULTI,I07,1,0,-,"Adota o F1-score (adequado para sua base desbalanceada), porém todas as medições são pontuais escalares sem variância (SD/IC).","Métrica certa, sem variância."
-ID_32,MULTI,I08,0,0,-,"Mencionam ""Incerteza de Laplace"" para pesar modalidades, mas não checam se as predições Softmax finais correspondem a uma boa calibração.","Apenas procedimental interno, sem avaliação."
-ID_32,MULTI,I09,0,0,-,"A demografia detalhada foi coletada (ex: idades e gênero no RAVDESS e SAVEE), mas os resultados finais ignoraram completamente qualquer quebra.","Dados existem, análise não."
-ID_32,MULTI,I10,2,0,-,"Extensiva sensibilidade através de 13 ""Ablation Studies"" quantificados (tipo de rede, batch, optimizer, perda) + robustez de ruído no pré-proc.",Exemplar para testes internos.
-ID_32,MULTI,I11,0,0,-,"Muitas tabelas robustas, mas sem URL, DOI para GitHub ou os pesos do MER.",Sem repositório.
-ID_32,MULTI,I12,0,0,-,"Utilizam HR e fala (fisiológico/humano), mas o estudo ignora discussões sobre consentimento, termos de uso dos datasets base e política de dados.",Falta de menção a ética/dados sensíveis.
-ID_32,MULTI,I13,0,0,-,"Embora façam normalização local p/ evitar leakage de ""estatística"", dividem fatias temporais aleatoriamente entre os sets, causando vazamento de id.",Erro no tipo de independência.
-ID_32,MULTI,I14,0,0,-,"Eles combinam os 6 datasets (pool) no treino. Logo, o teste é num misto já visto e não mede se o modelo generaliza de um dataset para outro novo.",Não aplicam cross-dataset puro.
-ID_32,MULTI,I15,0,0,-,"O paper defende uma arquitetura ""lightweight"" várias vezes, mas nunca provam quantitativamente (nenhuma medição de ms, fps, ou FLOPs).","""Claim"" sem evidências numéricas."
-ID_32,MULTI,I16,1,0,-,"Modalidades independentes (bases distintas) associadas logicamente pela Classe/Rótulo para criar a ""multimodalidade"" (Fusão semântica).",Sem alinhamento temporal real.
+ID_17,FER,DAD,1,0,-,"Identifica datasets (RAF-DB, JAFFE, FER+), mas só reporta demografia de JAFFE e omite contagens exatas de split para todos.",Falha parcial em demografia.
+ID_17,FER,ROT,0,0,-,"Lista classes, mas não detalha métricas de qualidade ou concordância dos rótulos (mesmo para o dataset corrigido FER+).",Confia cegamente no dataset.
+ID_17,FER,ESC,1,0,-,Construto: 7 expressões faciais. Evidência: pixels via CNN. Aceita a validade do dataset sem análise crítica de construto.,Mapeamento direto e superficial.
+ID_17,FER,PRE,1,0,-,"Lista técnicas de augmentation, mas falta dimensionamento exato do input. Sem referências fixas (código/config).",Falta dimensão do Input.
+ID_17,FER,PRT,1,0,-,"Realiza Cross-Database (independente), mas falta detalhar cardinalidades internas e o split de validação é superficial.",Cross-dataset salva a nota.
+ID_17,FER,MOD,0,0,-,"Arquiteturas listadas, mas omite hiperparâmetros fundamentais (Épocas, Batch size, LR). Sem seed.",Falha crítica de reprodutibilidade.
+ID_17,FER,MET,0,0,-,Usa Acurácia global como métrica principal em datasets desbalanceados. Nenhuma incerteza (IC/DP) reportada.,Inadequado e sem incerteza.
+ID_17,FER,CAL,0,0,-,"Modelo gera saídas probabilísticas via Softmax, mas nenhuma métrica ou curva de calibração é apresentada.",Apenas rótulo final é avaliado.
+ID_17,FER,SUB,0,0,-,"Menciona ""Japanese female"" para JAFFE, mas não estratifica a performance ou analisa viés entre grupos.",Demografia ignorada nos resultados.
+ID_17,FER,ROB,1,0,-,"Robustez testada via Cross-Database. Sensibilidade mencionada (""várias combinações tentadas"") mas não reportada numericamente.",Apenas 1 teste válido.
+ID_17,FER,REP,0,0,-,"Nenhuma menção a repositório, link (GitHub) ou disponibilidade de código/pesos no texto.",Ausência total de artefatos.
+ID_17,FER,ETH,0,0,-,"Usa imagens humanas, mas não reporta consentimento original, base ética (IRB) ou licença dos datasets.",Ignora privacidade e ética.
+ID_17,FER,VZ,2,0,-,"Uso de ""Cross-Database Evaluation"" isolando fisicamente o treino (RAF-DB) do teste (JAFFE), eliminando vazamento de sujeito.",Regra algorítmica forte.
+ID_17,FER,EXT,2,0,-,"Treina em uma base (RAF-DB) e testa quantitativamente em bases de domínios distintos (JAFFE, FER+).",Reporte claro de CDE.
+ID_17,FER,CST,1,0,-,"Cita Hardware (Tesla V100) e reporta redução no número de parâmetros (7M para 1.4M), mas omite tempos ou FPS.","Tem hardware, mas faltam tempos."
+ID_17,FER,SIN,-,1,Estudo focado apenas em imagens faciais estáticas.,,Totalmente unimodal.
+ID_18,FER,DAD,0,0,-,"Usa o dataset CK+48, mas não há detalhamento demográfico, critérios de inclusão ou cardinalidade explícita de classes.",Informações ausentes.
+ID_18,FER,ROT,0,0,-,"Não relata quem anotou o CK+48, qual o protocolo de validação ou qualquer métrica de concordância.",Assume rótulo perfeito.
+ID_18,FER,ESC,1,0,-,"Define o reconhecimento de expressões faciais, assumindo mapeamento 1:1 com emoção humana via CK+48, sem discussão teórica.",Limítrofe com 0 pela superficialidade.
+ID_18,FER,PRE,1,0,-,"Menciona resize para 200x200, mas a descrição de augmentation e transformações adicionais é muito genérica.",Pipeline pouco detalhado.
+ID_18,FER,PRT,0,0,-,"""Distinct data stores"" reportado vagamente, mas sem cardinais de split (ex: 80/20) e sem garantia de separação por sujeito.",Risco de leakage intra-dataset.
+ID_18,FER,MOD,1,0,-,"Reporta épocas (13), batch (65) e otimizador (SGDM). Falta taxa de aprendizagem (LR) e não reporta seed.","Incompleto, mas com dados parciais."
+ID_18,FER,MET,0,0,-,"Métrica de destaque é Acurácia global, embora também reporte F1. Nenhuma barra de erro, DP ou IC nas avaliações.",Incerteza ausente.
+ID_18,FER,CAL,0,0,-,"Saída é probabilística (Softmax), mas avaliam apenas a classe majoritária sem quantificar a calibração dessas predições.",Calibração ignorada.
+ID_18,FER,SUB,0,0,-,"Não extrai, menciona ou avalia qualquer atributo demográfico no conjunto de dados. Equidade ignorada.",Sem subgrupos listados.
+ID_18,FER,ROB,0,0,-,"Compara com outras arquiteturas (baseline externo), mas não realiza ablações internas de componentes ou testa sob ruído.","Benchmarking apenas, sem ablação."
+ID_18,FER,REP,0,0,-,"Menciona ter usado ""MATLAB"", mas não disponibiliza o arquivo, código ou repositório online.",Reprodutibilidade impossível.
+ID_18,FER,ETH,0,0,-,"Utiliza faces humanas do CK+48, mas sem qualquer menção à aprovação do comitê de ética ou uso responsável.",-
+ID_18,FER,VZ,0,0,-,"Divisão de dados de frames/vídeo sem regra declarada de isolamento de identidades, permitindo data leakage.",Menção genérica ao split.
+ID_18,FER,EXT,0,0,-,"Usa apenas splits internos do dataset CK+48, não testando em nenhuma base externa.",Sem CDE.
+ID_18,FER,CST,0,0,-,"Diz apenas que o treino ""is conducted on a CPU"", sem especificações, parâmetros de FLOPs, consumo ou latência.",Vago demais para contar.
+ID_18,FER,SIN,-,1,Apenas analisa imagens em escala de cinza.,,Unimodal.
+ID_19,MULTI,DAD,1,0,-,"Identifica bases (FER2013, RAVDESS), com demografia parcial para áudio (12M/12F), mas falha em imagem e não detalha critérios.",Demografia restrita a 1 dataset.
+ID_19,MULTI,ROT,0,0,-,"Menciona que são atores (RAVDESS), mas não reporta nenhuma métrica de qualidade, concordância ou validação dos rótulos em nenhuma base.",Não avalia rótulo.
+ID_19,MULTI,ESC,1,0,-,"Construto é reconhecimento de emoções via pixels e áudio, assumindo a Tarefa como representação fiel, sem debate teórico profundo.",Sem mapeamento explícito.
+ID_19,MULTI,PRE,1,0,-,"Resize (48x48) e MFCC listados, mas faltam muitos parâmetros numéricos das extrações de áudio.",Vago sobre parâmetros Librosa.
+ID_19,MULTI,PRT,0,0,-,"Split aleatório (80:20) em dataset de atores de vídeo/fala, sem validação cruzada por sujeito. Alto risco de dependência.",Erro de dependência (leakage).
+ID_19,MULTI,MOD,1,0,-,"Reporta épocas (20/50) e batch size (128), mas não especifica a LR ou semente (seed).",Parâmetros parciais.
+ID_19,MULTI,MET,0,0,-,"Métrica de foco é Acurácia global para classes múltiplas (69% fusion), sem apresentar SD, erro-padrão ou IC.",Falta reportar variância.
+ID_19,MULTI,CAL,0,0,-,"Embora gerem scores na camada densa, a calibração de probabilidades nunca é avaliada quantitativa ou qualitativamente.",Ignoram as probabilidades.
+ID_19,MULTI,SUB,0,0,-,"Tem dados de gênero (RAVDESS 12M/12F), mas os resultados são puramente agregados sem estratificação.",Atributo disponível mas não usado.
+ID_19,MULTI,ROB,1,0,-,"Apresenta ablação de modalidade (desempenho áudio isolado vs vídeo vs fusão), mas não há testes de perturbação externa.",Apenas 1 teste de sensibilidade.
+ID_19,MULTI,REP,0,0,-,"Cita bibliotecas como OpenCV, Keras, TensorFlow, mas omite completamente link de repositório público.",Sem código.
+ID_19,MULTI,ETH,0,0,-,"Uso de datasets públicos de pessoas (rosto/voz) sem discutir IRB, consentimento da licença ou riscos éticos.",-
+ID_19,MULTI,VZ,0,0,-,"Divisão 80:20 simples em dados que possuem múltiplas frames/sessões por ator, sem regras de subject-independent.",Leakage claro.
+ID_19,MULTI,EXT,0,0,-,Une as bases e realiza a divisão de 80:20 em todas elas conjuntamente (sem isolar um domínio para teste puro).,-
+ID_19,MULTI,CST,0,0,-,"Afirmações puramente qualitativas sobre a CNN ser mais ""rápida"", sem nenhuma especificação de hardware, ms, fps ou época.",Sem dados quantitativos de eficiência.
+ID_19,MULTI,SIN,0,0,-,"Sistema multimodal, mas não descreve a janela, taxa ou como é feito o alinhamento temporal entre a frame e o áudio.",Fusão de decisão sem base temporal.
+ID_41,SER,DAD,2,0,-,"Coleta própria rigorosa (PRIORI), critérios de inclusão/exclusão clínicos detalhados e demografia exaustiva (idade, raça, etc.).",100% preenchido.
+ID_41,SER,ROT,2,0,-,Distingue autorrelato (EMA) e escalas clínicas. Reporta métricas sólidas de confiabilidade interna (Omega para digiBP).,Qualidade justificada com rigor.
+ID_41,SER,ESC,2,0,-,"Mapeamento explícito excelente. Justifica a ligação entre as Evidências (fala passiva), o Construto (emoção) e o Alvo (humor).",Validado teoricamente.
+ID_41,SER,PRE,2,0,-,"Especifica todos os passos de forma exaustiva: thresholds exatos (amp 1000), APIs específicas (Azure ASR), uso do Wav2Vec2/BERT.",Reprodutível em detalhes.
+ID_41,SER,PRT,2,0,-,"Usa Leave-One-Participant-Out (LOSO), garantindo separação e independência das instâncias; Métricas e early stopping claros.",Independência garantida.
+ID_41,SER,MOD,2,0,-,"Especifica rigorosamente arquitetura, LR (1e-3), Batch (32), Dropout (0.2), Paciência (15) e optimizador.",Excelente nível de detalhe (falta só seed).
+ID_41,SER,MET,2,0,-,Usa PCC para regressão (adequado) e relata os intervalos de confiança a 95% (95% CI) ou Mean ± SD para todos os achados.,Exemplar na incerteza.
+ID_41,SER,CAL,2,0,-,"Otimiza e avalia por CCC (Concordance Correlation Coefficient), que é o padrão ouro para penalizar viés e escala na regressão (calibração).",CCC como evidência forte.
+ID_41,SER,SUB,1,0,-,"Coleta e reporta os metadados. Plota visualmente as diferenças por diagnóstico (BPI vs BPII) e controla gênero no LMEM, mas falta métricas separadas em tabela.",Quase atingiu Grau 2.
+ID_41,SER,ROB,2,0,-,Validação LOSO para robustez (sujeito) e teste sistemático (ablação) da contribuição individual de todas as features e fontes (EMA/Passivo).,Múltiplos testes detalhados.
+ID_41,SER,REP,0,0,-,"Descrevem pipeline robusto, mas não divulgam link para GitHub com as implementações computacionais usadas no paper.",-
+ID_41,SER,ETH,2,0,-,"Excepcional: descreve IRB (HUM00197298), consentimento, deleção em nuvem, minimização e dedica seção à Ética e Vigilância.",Modelo de conformidade.
+ID_41,SER,VZ,2,0,-,Estratégia de Leave-One-Participant-Out descrita explicitamente para garantir participant-independent analysis.,Sem risco de leakage.
+ID_41,SER,EXT,0,0,-,"Embora usem um modelo treinado na base A para atuar na base B, não há ground truth de emoção na base B para quantificar acurácia cross-dataset.",Sem métrica de alvo final.
+ID_41,SER,CST,0,0,-,"Menciona que processa na ""nuvem"", mas o estudo possui foco essencialmente clínico e ignora qualquer medição de custo de inferência.",Nenhum custo temporal reportado.
+ID_41,SER,SIN,2,0,-,Sincroniza dados assíncronos agregando-os por Dia e alinhando com a avaliação clínica numa tolerância de janela de 7 dias.,Método perfeitamente operacionalizado.
+ID_28,SER,DAD,0,0,-,"Dataset originário do ""Kaggle website"" sem nome, sem DOI, impossível de rastrear e sem demografia reportada.",Impede reprodutibilidade.
+ID_28,SER,ROT,0,0,-,Não existem informações sobre como os 2800 áudios foram rotulados ou por quem.,Dataset anônimo = rótulo cego.
+ID_28,SER,ESC,0,0,-,A Tarefa (T) é inverificável (base fantasma). Inviabiliza conhecer o cenário ou o ambiente para justificar a inferência.,Base não identificada anula a nota.
+ID_28,SER,PRE,1,0,-,"Reporta o pipeline MFCC (blocos e etapas) e taxa de reamostragem, mas omite parâmetros essenciais do janelamento.","Pre-proc listado, mas incompleto."
+ID_28,SER,PRT,0,0,-,"Divisão 80:20 genérica. Como a base é cega, existe risco severo de dependência do locutor cruzando os conjuntos.",Risco de leakage óbvio.
+ID_28,SER,MOD,1,0,-,"Cita estrutura de neurônios (embora com contradições de output), batch de 32 e Dropout, mas omite a LR.","Algumas métricas salvas, outras dúbias."
+ID_28,SER,MET,0,0,-,Usa Acurácia para classes que variam de 123 a 635 instâncias (falsamente alegando balanceamento) e sem incerteza.,Enganoso no desbalanceamento.
+ID_28,SER,CAL,0,0,-,"Usa função Categorical Cross-Entropy, logo tem scores probabilísticos, mas a avaliação de calibração final inexiste.",Nenhuma calibração.
+ID_28,SER,SUB,0,0,-,O dataset anônimo impede qualquer extração de metadados demográficos. Sem análises.,Impossível verificar equidade.
+ID_28,SER,ROB,0,0,-,Nenhuma testagem sobre estabilidade com ruídos do áudio ou sensibilidade de parâmetros.,Apenas avalia um pipeline rígido.
+ID_28,SER,REP,0,0,-,"Diz ter usado Python e Flask, mas sem nenhum artefato repositório citado ou disponibilizado.",Falha geral.
+ID_28,SER,ETH,0,0,-,"O uso de voz é uso de dado sensível, mas ignoraram completamente questões de licença, IRB ou ética do dataset Kaggle.",-
+ID_28,SER,VZ,0,0,-,Split aleatório simples sem garantir sujeitos/locutores isolados no treino/teste. Data leakage não tratado.,Sem estratégia verificável.
+ID_28,SER,EXT,0,0,-,Realiza apenas um holdout (split) padrão interno no dataset anônimo.,-
+ID_28,SER,CST,0,0,-,"Declaram textualmente que usaram ""checkpoints para ver o tempo que leva"", mas não escreveram o valor do tempo nos resultados.",Faltaram os dados no paper.
+ID_28,SER,SIN,-,1,"""Identifying emotions within speech audio clips."" Não combinam com outra modalidade (fisiologia/vídeo).",,Somente áudio.
+ID_32,MULTI,DAD,2,0,-,Descreve idade e gênero de cada um dos 6 datasets originais agregados e plota com clareza o desbalanceamento final das classes.,Fonte secundária impecável.
+ID_32,MULTI,ROT,1,0,-,"Remapearam os rótulos de terceiros (ex: Feliz -> HVHA) explicando a lógica e a origem, mas sem reanotação ou métrica própria de concordância.",Sem validação empírica da conversão.
+ID_32,MULTI,ESC,2,0,-,"Ótima operacionalização conectando o Modelo Circunflexo de Russell aos dados para justificar a tarefa em cenários ""daily life"".",Mapeamento explícito presente.
+ID_32,MULTI,PRE,2,0,-,"Processos e parâmetros definidos explicitamente (Normalização detalhada por equação, Slicing de ±15s, Feature estacadas).",Rigor máximo no pipeline.
+ID_32,MULTI,PRT,1,0,-,"Ótimo reporte dos testes de ablação em teste interno, mas o split de ""janelas de tempo"" da mesma pessoa permite leakage (sem LOSO).",Leakage penaliza.
+ID_32,MULTI,MOD,2,0,-,"Define empiricamente quase todos os hiperparâmetros vitais em tabelas estritas de Ablation (Batch 32, Drop 0.5, Epoca 150, SGD).",Tabelas servem de config robusta.
+ID_32,MULTI,MET,1,0,-,"Adota o F1-score (adequado para sua base desbalanceada), porém todas as medições são pontuais escalares sem variância (SD/IC).","Métrica certa, sem variância."
+ID_32,MULTI,CAL,0,0,-,"Mencionam ""Incerteza de Laplace"" para pesar modalidades, mas não checam se as predições Softmax finais correspondem a uma boa calibração.","Apenas procedimental interno, sem avaliação."
+ID_32,MULTI,SUB,0,0,-,"A demografia detalhada foi coletada (ex: idades e gênero no RAVDESS e SAVEE), mas os resultados finais ignoraram completamente qualquer quebra.","Dados existem, análise não."
+ID_32,MULTI,ROB,2,0,-,"Extensiva sensibilidade através de 13 ""Ablation Studies"" quantificados (tipo de rede, batch, optimizer, perda) + robustez de ruído no pré-proc.",Exemplar para testes internos.
+ID_32,MULTI,REP,0,0,-,"Muitas tabelas robustas, mas sem URL, DOI para GitHub ou os pesos do MER.",Sem repositório.
+ID_32,MULTI,ETH,0,0,-,"Utilizam HR e fala (fisiológico/humano), mas o estudo ignora discussões sobre consentimento, termos de uso dos datasets base e política de dados.",Falta de menção a ética/dados sensíveis.
+ID_32,MULTI,VZ,0,0,-,"Embora façam normalização local p/ evitar leakage de ""estatística"", dividem fatias temporais aleatoriamente entre os sets, causando vazamento de id.",Erro no tipo de independência.
+ID_32,MULTI,EXT,0,0,-,"Eles combinam os 6 datasets (pool) no treino. Logo, o teste é num misto já visto e não mede se o modelo generaliza de um dataset para outro novo.",Não aplicam cross-dataset puro.
+ID_32,MULTI,CST,0,0,-,"O paper defende uma arquitetura ""lightweight"" várias vezes, mas nunca provam quantitativamente (nenhuma medição de ms, fps, ou FLOPs).","""Claim"" sem evidências numéricas."
+ID_32,MULTI,SIN,1,0,-,"Modalidades independentes (bases distintas) associadas logicamente pela Classe/Rótulo para criar a ""multimodalidade"" (Fusão semântica).",Sem alinhamento temporal real.

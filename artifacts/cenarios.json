@@ -1,0 +1,1494 @@
+[
+  {
+    "artigo_id": "ID_04",
+    "artigo_titulo": "Advanced Deep Learning Architectures for Real-Time Human Emotion Recognition and Behavioral Prediction",
+    "dataset_id": "NA",
+    "modalidade": "MULTIMODAL",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "NA",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "fisiologia",
+      "audio",
+      "video"
+    ],
+    "modelo_familia": "Multimodal",
+    "modelo_especifico": "NA",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.9,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Resultado principal do modelo multimodal híbrido proposto, reportado na Tabela 1."
+  },
+  {
+    "artigo_id": "ID_07",
+    "artigo_titulo": "An Adaptive Deep Belief Feature Learning Model for Cognitive Emotion Recognition",
+    "dataset_id": "RAVDESS",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 7356,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "ANN",
+    "modelo_especifico": "Non-Specific Emotion Recognition",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.95,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Baseline ANN reportado na Tabela II."
+  },
+  {
+    "artigo_id": "ID_07",
+    "artigo_titulo": "An Adaptive Deep Belief Feature Learning Model for Cognitive Emotion Recognition",
+    "dataset_id": "RAVDESS",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 7356,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "ANN",
+    "modelo_especifico": "Robust Emotion Recognition",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.88,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Baseline ANN reportado na Tabela II."
+  },
+  {
+    "artigo_id": "ID_07",
+    "artigo_titulo": "An Adaptive Deep Belief Feature Learning Model for Cognitive Emotion Recognition",
+    "dataset_id": "RAVDESS",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 7356,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "ANN",
+    "modelo_especifico": "Similarity Matching Recognition",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.927,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Baseline ANN reportado na Tabela II."
+  },
+  {
+    "artigo_id": "ID_07",
+    "artigo_titulo": "An Adaptive Deep Belief Feature Learning Model for Cognitive Emotion Recognition",
+    "dataset_id": "RAVDESS",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 7356,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "ANN",
+    "modelo_especifico": "Joint Orientation-Based Recognition",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.919,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Baseline ANN reportado na Tabela II."
+  },
+  {
+    "artigo_id": "ID_07",
+    "artigo_titulo": "An Adaptive Deep Belief Feature Learning Model for Cognitive Emotion Recognition",
+    "dataset_id": "RAVDESS",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 7356,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "CNN-GLM",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.9609,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Baseline CNN-GLM reportado na Tabela 2."
+  },
+  {
+    "artigo_id": "ID_07",
+    "artigo_titulo": "An Adaptive Deep Belief Feature Learning Model for Cognitive Emotion Recognition",
+    "dataset_id": "RAVDESS",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 7356,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "ANN",
+    "modelo_especifico": "DBFL",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.98,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Resultado principal do modelo DBFL, reportado na Tabela II."
+  },
+  {
+    "artigo_id": "ID_08",
+    "artigo_titulo": "An Approach of Analyzing Classroom Student Engagement in Multimodal Environment by Using Deep Learning",
+    "dataset_id": "RAVDESS",
+    "modalidade": "SER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 2879,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "audio"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "NA",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.9287,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Resultado unimodal de fala no RAVDESS."
+  },
+  {
+    "artigo_id": "ID_08",
+    "artigo_titulo": "An Approach of Analyzing Classroom Student Engagement in Multimodal Environment by Using Deep Learning",
+    "dataset_id": "RAVDESS",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 2879,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "NA",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.9477,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Resultado unimodal facial no RAVDESS."
+  },
+  {
+    "artigo_id": "ID_08",
+    "artigo_titulo": "An Approach of Analyzing Classroom Student Engagement in Multimodal Environment by Using Deep Learning",
+    "dataset_id": "RAVDESS",
+    "modalidade": "MULTIMODAL",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 2879,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video",
+      "audio"
+    ],
+    "modelo_familia": "Multimodal",
+    "modelo_especifico": "NA",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.6936,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Resultado de fusão multimodal áudio-vídeo no RAVDESS."
+  },
+  {
+    "artigo_id": "ID_09",
+    "artigo_titulo": "An Open-Source Benchmark of Deep Learning Models for Audio-Visual Apparent and Self-Reported Personality Recognition",
+    "dataset_id": "ChaLearn First Impression",
+    "modalidade": "HER",
+    "tarefa": "regressao",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": 10000,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "HRNet",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "CCC"
+    ],
+    "metrica_principal_valor": 0.6148,
+    "augmentations": [
+      "center crop",
+      "random horizontal flip"
+    ],
+    "code_available": "sim",
+    "weights_available": "sim",
+    "observacoes": "APR no ChaLearn First Impression. CCC médio do modelo HRNet extraído da Tabela V (p. 9)."
+  },
+  {
+    "artigo_id": "ID_09",
+    "artigo_titulo": "An Open-Source Benchmark of Deep Learning Models for Audio-Visual Apparent and Self-Reported Personality Recognition",
+    "dataset_id": "ChaLearn First Impression",
+    "modalidade": "HER",
+    "tarefa": "regressao",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": 10000,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "Transformer",
+    "modelo_especifico": "VAT",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "CCC"
+    ],
+    "metrica_principal_valor": 0.6298,
+    "augmentations": [
+      "center crop",
+      "random horizontal flip"
+    ],
+    "code_available": "sim",
+    "weights_available": "sim",
+    "observacoes": "APR no ChaLearn First Impression. CCC médio do modelo VAT extraído da Tabela V (p. 9)."
+  },
+  {
+    "artigo_id": "ID_09",
+    "artigo_titulo": "An Open-Source Benchmark of Deep Learning Models for Audio-Visual Apparent and Self-Reported Personality Recognition",
+    "dataset_id": "ChaLearn First Impression",
+    "modalidade": "HER",
+    "tarefa": "regressao",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": 10000,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "audio"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "CRNet",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "CCC"
+    ],
+    "metrica_principal_valor": 0.3707,
+    "augmentations": "NA",
+    "code_available": "sim",
+    "weights_available": "sim",
+    "observacoes": "APR no ChaLearn First Impression. CCC médio do modelo CRNet extraído da Tabela V (p. 9)."
+  },
+  {
+    "artigo_id": "ID_09",
+    "artigo_titulo": "An Open-Source Benchmark of Deep Learning Models for Audio-Visual Apparent and Self-Reported Personality Recognition",
+    "dataset_id": "ChaLearn First Impression",
+    "modalidade": "HER",
+    "tarefa": "regressao",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": 10000,
+    "pretreino": "sim",
+    "modalidades_presentes": [
+      "audio"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "VGGish",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "CCC"
+    ],
+    "metrica_principal_valor": 0.4213,
+    "augmentations": "NA",
+    "code_available": "sim",
+    "weights_available": "sim",
+    "observacoes": "APR no ChaLearn First Impression. CCC médio do modelo VGGish extraído da Tabela V (p. 9)."
+  },
+  {
+    "artigo_id": "ID_12",
+    "artigo_titulo": "Breaking New Ground in Affective Computing: Enhanced Facial Expression Classification via CNN-SVM Integration",
+    "dataset_id": "NA",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "NA",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "CNN",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.9338,
+    "augmentations": [
+      "rotation",
+      "scale",
+      "horizontal flipping"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Baseline CNN avaliado no artigo. Dataset descrito apenas como public sources, sem identificação nominal do corpus; técnicas de augmentation citadas na metodologia."
+  },
+  {
+    "artigo_id": "ID_12",
+    "artigo_titulo": "Breaking New Ground in Affective Computing: Enhanced Facial Expression Classification via CNN-SVM Integration",
+    "dataset_id": "NA",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "NA",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "RNN",
+    "modelo_especifico": "RNN",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.8852,
+    "augmentations": [
+      "rotation",
+      "scale",
+      "horizontal flipping"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Baseline RNN avaliado no artigo. Dataset descrito apenas como public sources, sem identificação nominal do corpus; técnicas de augmentation citadas na metodologia."
+  },
+  {
+    "artigo_id": "ID_12",
+    "artigo_titulo": "Breaking New Ground in Affective Computing: Enhanced Facial Expression Classification via CNN-SVM Integration",
+    "dataset_id": "NA",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "NA",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "SVM",
+    "modelo_especifico": "SVM",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.9017,
+    "augmentations": [
+      "rotation",
+      "scale",
+      "horizontal flipping"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Baseline SVM avaliado no artigo. Dataset descrito apenas como public sources, sem identificação nominal do corpus; técnicas de augmentation citadas na metodologia."
+  },
+  {
+    "artigo_id": "ID_12",
+    "artigo_titulo": "Breaking New Ground in Affective Computing: Enhanced Facial Expression Classification via CNN-SVM Integration",
+    "dataset_id": "NA",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "NA",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "RF",
+    "modelo_especifico": "RF",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.9217,
+    "augmentations": [
+      "rotation",
+      "scale",
+      "horizontal flipping"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Baseline RF avaliado no artigo. Dataset descrito apenas como public sources, sem identificação nominal do corpus; técnicas de augmentation citadas na metodologia."
+  },
+  {
+    "artigo_id": "ID_12",
+    "artigo_titulo": "Breaking New Ground in Affective Computing: Enhanced Facial Expression Classification via CNN-SVM Integration",
+    "dataset_id": "NA",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "NA",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "Ensemble_ML",
+    "modelo_especifico": "CNN+SVM",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.9795,
+    "augmentations": [
+      "rotation",
+      "scale",
+      "horizontal flipping"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Modelo híbrido CNN+SVM classificado como Ensemble_ML. Dataset descrito apenas como public sources, sem identificação nominal do corpus; técnicas de augmentation citadas na metodologia."
+  },
+  {
+    "artigo_id": "ID_14",
+    "artigo_titulo": "Cognitive Behavior-in-the-Loop: Towards an Attentive Driving in Intelligent Transportation Systems",
+    "dataset_id": "State Farm",
+    "modalidade": "HER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "misto",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": 22400,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "Capsule Network",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "F1_MACRO"
+    ],
+    "metrica_principal_valor": 0.89,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Avaliação de detecção de distração no dataset State Farm."
+  },
+  {
+    "artigo_id": "ID_14",
+    "artigo_titulo": "Cognitive Behavior-in-the-Loop: Towards an Attentive Driving in Intelligent Transportation Systems",
+    "dataset_id": "DEAP",
+    "modalidade": "HER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "fisiologia"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "1-D CNN",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.87,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Avaliação de reconhecimento afetivo no DEAP com sinais fisiológicos e modelo 1-D CNN."
+  },
+  {
+    "artigo_id": "ID_15",
+    "artigo_titulo": "Cognitive Resonance in Emotional Decoding: A CNN-ResNetB0 Synergy",
+    "dataset_id": "Human Face Emotions (Kaggle)",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "NA",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "CNN",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.98,
+    "augmentations": [
+      "cropping",
+      "rotation",
+      "flipping"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Modelo avaliado no dataset Human Face Emotions (Kaggle)."
+  },
+  {
+    "artigo_id": "ID_16",
+    "artigo_titulo": "Comparative Analysis of CNN and SVM Models for Facial Emotion Recognition",
+    "dataset_id": "NA",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "NA",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "CNN",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "F1_MACRO"
+    ],
+    "metrica_principal_valor": 0.9257,
+    "augmentations": [
+      "rotation",
+      "zoom",
+      "horizontal flipping"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Macro-F1 priorizado em relação à acurácia na avaliação multiclasse."
+  },
+  {
+    "artigo_id": "ID_16",
+    "artigo_titulo": "Comparative Analysis of CNN and SVM Models for Facial Emotion Recognition",
+    "dataset_id": "NA",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "NA",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "SVM",
+    "modelo_especifico": "SVM",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "F1_MACRO"
+    ],
+    "metrica_principal_valor": 0.8924,
+    "augmentations": [
+      "rotation",
+      "zoom",
+      "horizontal flipping"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Baseline SVM comparado no estudo."
+  },
+  {
+    "artigo_id": "ID_17",
+    "artigo_titulo": "Cross-Database Facial Expression Recognition using CNN with Attention Mechanism",
+    "dataset_id": "RAF-DB",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 15339,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "MobileNet",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.7105,
+    "augmentations": [
+      "rotation",
+      "horizontal-flip",
+      "shear",
+      "width shift",
+      "height shift",
+      "zoom",
+      "rescale"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Baseline intra-dataset em RAF-DB."
+  },
+  {
+    "artigo_id": "ID_17",
+    "artigo_titulo": "Cross-Database Facial Expression Recognition using CNN with Attention Mechanism",
+    "dataset_id": "RAF-DB",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 15339,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "XceptionNet",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.7985,
+    "augmentations": [
+      "rotation",
+      "horizontal-flip",
+      "shear",
+      "width shift",
+      "height shift",
+      "zoom",
+      "rescale"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Baseline intra-dataset em RAF-DB."
+  },
+  {
+    "artigo_id": "ID_17",
+    "artigo_titulo": "Cross-Database Facial Expression Recognition using CNN with Attention Mechanism",
+    "dataset_id": "RAF-DB",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 15339,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "DenseNet121",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.8145,
+    "augmentations": [
+      "rotation",
+      "horizontal-flip",
+      "shear",
+      "width shift",
+      "height shift",
+      "zoom",
+      "rescale"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Baseline intra-dataset em RAF-DB."
+  },
+  {
+    "artigo_id": "ID_17",
+    "artigo_titulo": "Cross-Database Facial Expression Recognition using CNN with Attention Mechanism",
+    "dataset_id": "RAF-DB",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 15339,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "ABD",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.8164,
+    "augmentations": [
+      "rotation",
+      "horizontal-flip",
+      "shear",
+      "width shift",
+      "height shift",
+      "zoom",
+      "rescale"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Baseline intra-dataset em RAF-DB."
+  },
+  {
+    "artigo_id": "ID_17",
+    "artigo_titulo": "Cross-Database Facial Expression Recognition using CNN with Attention Mechanism",
+    "dataset_id": "RAF-DB",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 15339,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "MABD",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.8213,
+    "augmentations": [
+      "rotation",
+      "horizontal-flip",
+      "shear",
+      "width shift",
+      "height shift",
+      "zoom",
+      "rescale"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Baseline intra-dataset em RAF-DB; ambiente de coleta preenchido via fallback do dataset."
+  },
+  {
+    "artigo_id": "ID_17",
+    "artigo_titulo": "Cross-Database Facial Expression Recognition using CNN with Attention Mechanism",
+    "dataset_id": "JAFFE",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 15339,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "MABD",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "sim",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.2336,
+    "augmentations": [
+      "rotation",
+      "horizontal-flip",
+      "shear",
+      "width shift",
+      "height shift",
+      "zoom",
+      "rescale"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Avaliação cross-dataset com treino em RAF-DB e teste em JAFFE."
+  },
+  {
+    "artigo_id": "ID_17",
+    "artigo_titulo": "Cross-Database Facial Expression Recognition using CNN with Attention Mechanism",
+    "dataset_id": "FER+",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "misto",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 15339,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "MABD",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "sim",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.6332,
+    "augmentations": [
+      "rotation",
+      "horizontal-flip",
+      "shear",
+      "width shift",
+      "height shift",
+      "zoom",
+      "rescale"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Avaliação cross-dataset com treino em RAF-DB e teste em FER+."
+  },
+  {
+    "artigo_id": "ID_18",
+    "artigo_titulo": "Deep Learning for Facial Expression Recognition using EffeicienteNetB0",
+    "dataset_id": "CK+",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": "NA",
+    "pretreino": "sim",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "EfficientNetB0",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "F1_MACRO"
+    ],
+    "metrica_principal_valor": 0.7368,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Ambiente de coleta preenchido via fallback do CK+; macro-F1 priorizado como métrica principal."
+  },
+  {
+    "artigo_id": "ID_19",
+    "artigo_titulo": "Deep Learning-Based Emotion Recognition by Fusion of Facial Expressions and Speech Features",
+    "dataset_id": "FER-2013",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "misto",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 35000,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "CNN",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.86,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Resultado unimodal facial no FER-2013."
+  },
+  {
+    "artigo_id": "ID_19",
+    "artigo_titulo": "Deep Learning-Based Emotion Recognition by Fusion of Facial Expressions and Speech Features",
+    "dataset_id": "CK+",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 1000,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "CNN",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.86,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Resultado unimodal facial no CK+."
+  },
+  {
+    "artigo_id": "ID_19",
+    "artigo_titulo": "Deep Learning-Based Emotion Recognition by Fusion of Facial Expressions and Speech Features",
+    "dataset_id": "RAVDESS",
+    "modalidade": "SER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": 1440,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "audio"
+    ],
+    "modelo_familia": "RNN",
+    "modelo_especifico": "LSTM",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.61,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Resultado unimodal de fala no RAVDESS com modelo LSTM."
+  },
+  {
+    "artigo_id": "ID_19",
+    "artigo_titulo": "Deep Learning-Based Emotion Recognition by Fusion of Facial Expressions and Speech Features",
+    "dataset_id": "RAVDESS",
+    "modalidade": "MULTIMODAL",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": 1440,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video",
+      "audio"
+    ],
+    "modelo_familia": "Multimodal",
+    "modelo_especifico": "NA",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.69,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Resultado de fusão multimodal unindo CNN para faces e LSTM para áudio no RAVDESS."
+  },
+  {
+    "artigo_id": "ID_41",
+    "artigo_titulo": "Emotion Recognition in the Real-World: Passively Collecting and Estimating Emotions from Natural Speech Data of Individuals with Bipolar Disorder",
+    "dataset_id": "PRIORI",
+    "modalidade": "SER",
+    "tarefa": "regressao",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": "NA",
+    "pretreino": "sim",
+    "modalidades_presentes": [
+      "audio",
+      "texto"
+    ],
+    "modelo_familia": "Transformer",
+    "modelo_especifico": "Wav2Vec2 + BERT",
+    "protocolo_person_indep": "sim",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "PCC"
+    ],
+    "metrica_principal_valor": 0.74,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Modelo áudio-texto com protocolo person-independent no corpus PRIORI."
+  },
+  {
+    "artigo_id": "ID_42",
+    "artigo_titulo": "Episodic Memory For Domain-Adaptable, Robust Speech Emotion Recognition",
+    "dataset_id": "MSP-Podcast",
+    "modalidade": "MULTIMODAL",
+    "tarefa": "regressao",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": 40727,
+    "pretreino": "sim",
+    "modalidades_presentes": [
+      "audio",
+      "texto"
+    ],
+    "modelo_familia": "Multimodal",
+    "modelo_especifico": "NA",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "sim",
+    "metricas_principais": [
+      "CCC"
+    ],
+    "metrica_principal_valor": 0.453,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Modelo multimodal de referência reportado no artigo para SER com áudio e texto."
+  },
+  {
+    "artigo_id": "ID_42",
+    "artigo_titulo": "Episodic Memory For Domain-Adaptable, Robust Speech Emotion Recognition",
+    "dataset_id": "MSP-Podcast",
+    "modalidade": "MULTIMODAL",
+    "tarefa": "regressao",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": 40727,
+    "pretreino": "sim",
+    "modalidades_presentes": [
+      "audio",
+      "texto"
+    ],
+    "modelo_familia": "Multimodal",
+    "modelo_especifico": "ExpeR",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "sim",
+    "metricas_principais": [
+      "CCC"
+    ],
+    "metrica_principal_valor": 0.504,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Modelo ExpeR avaliado em SER com áudio e texto; protocolo cross-dataset."
+  },
+  {
+    "artigo_id": "ID_42",
+    "artigo_titulo": "Episodic Memory For Domain-Adaptable, Robust Speech Emotion Recognition",
+    "dataset_id": "MSP-Podcast",
+    "modalidade": "MULTIMODAL",
+    "tarefa": "regressao",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": 40727,
+    "pretreino": "sim",
+    "modalidades_presentes": [
+      "audio",
+      "texto"
+    ],
+    "modelo_familia": "Multimodal",
+    "modelo_especifico": "GEM",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "sim",
+    "metricas_principais": [
+      "CCC"
+    ],
+    "metrica_principal_valor": 0.527,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Modelo GEM avaliado em SER com áudio e texto; protocolo cross-dataset."
+  },
+  {
+    "artigo_id": "ID_39",
+    "artigo_titulo": "FacePsy - An Open-Source Affective Mobile Sensing System - Analyzing Facial Behavior and Head Gesture for Depression Detection in Naturalistic Settings",
+    "dataset_id": "FacePsy",
+    "modalidade": "HER",
+    "tarefa": "deteccao",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": 544,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "Boosting_ML",
+    "modelo_especifico": "LightGBM (Feature Selection hybrid)",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "AUC"
+    ],
+    "metrica_principal_valor": 0.81,
+    "augmentations": "NA",
+    "code_available": "sim",
+    "weights_available": "nao",
+    "observacoes": "Detecção de episódios depressivos vs. não depressivos em ambiente naturalístico. Melhor modelo híbrido com feature selection e LightGBM, avaliado com LOPDO; AUROC=0.81 e F1=0.67. SMOTE foi usado como oversampling no treino, não como augmentation."
+  },
+  {
+    "artigo_id": "ID_25",
+    "artigo_titulo": "Facial Expression Recognition with Transfer Learning: A Deep Dive",
+    "dataset_id": "CK+",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": "NA",
+    "pretreino": "sim",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "DenseNet121",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "F1_MACRO"
+    ],
+    "metrica_principal_valor": 0.98,
+    "augmentations": [
+      "rescaling",
+      "brightness variations",
+      "horizontal flips"
+    ],
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Ambiente de coleta preenchido via fallback do dataset; F1-score reportado como métrica principal."
+  },
+  {
+    "artigo_id": "ID_27",
+    "artigo_titulo": "Identification of Emotions From Facial Gestures in a Teaching Environment With the Use of Machine Learning Techniques",
+    "dataset_id": "NA",
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "misto",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 6300,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "CNN",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.699,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Modelo avaliado em contexto educacional; o artigo não identifica nominalmente o dataset."
+  },
+  {
+    "artigo_id": "ID_28",
+    "artigo_titulo": "Identification of Emotions in a Given Speech Audio Clip by using ANN",
+    "dataset_id": "NA",
+    "modalidade": "SER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "NA",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": 2800,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "audio"
+    ],
+    "modelo_familia": "ANN",
+    "modelo_especifico": "ANN",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "ACC"
+    ],
+    "metrica_principal_valor": 0.9567,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Dataset retirado do Kaggle; acurácia reportada no conjunto de teste."
+  },
+  {
+    "artigo_id": "ID_31",
+    "artigo_titulo": "MSP-GEO Corpus: A Multimodal Database for Understanding Video-Learning Experience",
+    "dataset_id": "MSP-GEO",
+    "modalidade": "HER",
+    "tarefa": "regressao",
+    "ambiente_coleta": "misto",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video"
+    ],
+    "modelo_familia": "RNN",
+    "modelo_especifico": "BiLSTM",
+    "protocolo_person_indep": "sim",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "CCC"
+    ],
+    "metrica_principal_valor": 0.552,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Regressão contínua de engajamento, boredom e confusion em contexto educacional; tratado como HER. O corpus é multimodal, mas esta linha representa o experimento visual/facial extraído."
+  },
+  {
+    "artigo_id": "ID_34",
+    "artigo_titulo": "Multi-Rater Consensus Learning for Modeling Multiple Sparse Ratings of Affective Behaviour",
+    "dataset_id": "EmoPain",
+    "modalidade": "MULTIMODAL",
+    "tarefa": "deteccao",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video",
+      "fisiologia"
+    ],
+    "modelo_familia": "ANN",
+    "modelo_especifico": "MRCL",
+    "protocolo_person_indep": "sim",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "F1_MACRO"
+    ],
+    "metrica_principal_valor": 0.778,
+    "augmentations": "NA",
+    "code_available": "sim",
+    "weights_available": "nao",
+    "observacoes": "Tarefa binária de guarding vs. not guarding com sinais multimodais (cinemática corporal + sEMG); GPE F1=0.778."
+  },
+  {
+    "artigo_id": "ID_34",
+    "artigo_titulo": "Multi-Rater Consensus Learning for Modeling Multiple Sparse Ratings of Affective Behaviour",
+    "dataset_id": "EmoPain",
+    "modalidade": "MULTIMODAL",
+    "tarefa": "deteccao",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video",
+      "fisiologia"
+    ],
+    "modelo_familia": "RF",
+    "modelo_especifico": "RF",
+    "protocolo_person_indep": "sim",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "F1_MACRO"
+    ],
+    "metrica_principal_valor": 0.688,
+    "augmentations": "NA",
+    "code_available": "sim",
+    "weights_available": "nao",
+    "observacoes": "Baseline RF no EmoPain para guarding vs. not guarding com sinais multimodais; mantida como multiclasse por compatibilidade taxonômica da planilha."
+  },
+  {
+    "artigo_id": "ID_34",
+    "artigo_titulo": "Multi-Rater Consensus Learning for Modeling Multiple Sparse Ratings of Affective Behaviour",
+    "dataset_id": "EmoPain",
+    "modalidade": "MULTIMODAL",
+    "tarefa": "deteccao",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video",
+      "fisiologia"
+    ],
+    "modelo_familia": "Boosting_ML",
+    "modelo_especifico": "Boosting",
+    "protocolo_person_indep": "sim",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "F1_MACRO"
+    ],
+    "metrica_principal_valor": 0.636,
+    "augmentations": "NA",
+    "code_available": "sim",
+    "weights_available": "nao",
+    "observacoes": "Baseline Boosting no EmoPain para guarding vs. not guarding com sinais multimodais; mantida como multiclasse por compatibilidade taxonômica da planilha."
+  },
+  {
+    "artigo_id": "ID_34",
+    "artigo_titulo": "Multi-Rater Consensus Learning for Modeling Multiple Sparse Ratings of Affective Behaviour",
+    "dataset_id": "EmoPain",
+    "modalidade": "MULTIMODAL",
+    "tarefa": "deteccao",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "nao",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video",
+      "fisiologia"
+    ],
+    "modelo_familia": "ANN",
+    "modelo_especifico": "Logistic",
+    "protocolo_person_indep": "sim",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "F1_MACRO"
+    ],
+    "metrica_principal_valor": 0.7,
+    "augmentations": "NA",
+    "code_available": "sim",
+    "weights_available": "nao",
+    "observacoes": "Baseline logístico linear no EmoPain para guarding vs. not guarding com sinais multimodais; mantida como multiclasse por compatibilidade taxonômica da planilha."
+  },
+  {
+    "artigo_id": "ID_33",
+    "artigo_titulo": "Multimodal Dyadic Impression Recognition via Listener Adaptive Cross-Domain Fusion",
+    "dataset_id": "Dyadic IMPRESSION",
+    "modalidade": "MULTIMODAL",
+    "tarefa": "regressao",
+    "ambiente_coleta": "misto",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": 44923,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "audio",
+      "video",
+      "fisiologia"
+    ],
+    "modelo_familia": "Multimodal",
+    "modelo_especifico": "Listener Adaptive Cross-Domain Fusion",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "CCC"
+    ],
+    "metrica_principal_valor": 0.788,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "CCC extraído para a dimensão de Competência."
+  },
+  {
+    "artigo_id": "ID_43",
+    "artigo_titulo": "Privacy-preserving Speech Emotion Recognition through Semi-Supervised Federated Learning",
+    "dataset_id": "IEMOCAP",
+    "modalidade": "SER",
+    "tarefa": "multiclasse",
+    "ambiente_coleta": "controlado",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": "NA",
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "audio"
+    ],
+    "modelo_familia": "CNN",
+    "modelo_especifico": "Attention-based CNN",
+    "protocolo_person_indep": "sim",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "AB"
+    ],
+    "metrica_principal_valor": 0.6052,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "A métrica refere-se à acurácia não ponderada (UA), aqui registrada como AB, no regime speaker independent supervisionado com FL."
+  },
+  {
+    "artigo_id": "ID_38",
+    "artigo_titulo": "Toward Personalized Affect-Aware Socially Assistive Robot Tutors for Long-Term Interventions with Children with Autism",
+    "dataset_id": "NA",
+    "modalidade": "MULTIMODAL",
+    "tarefa": "deteccao",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": 138703,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video",
+      "audio"
+    ],
+    "modelo_familia": "Boosting_ML",
+    "modelo_especifico": "XGBoost with s-DA (Arousal)",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "AUC"
+    ],
+    "metrica_principal_valor": 0.92,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Rótulos binários de arousal (positivo/neutro vs. negativo); AUROC ponderado de 0.92 para o modelo personalizado XGBoost com s-DA."
+  },
+  {
+    "artigo_id": "ID_38",
+    "artigo_titulo": "Toward Personalized Affect-Aware Socially Assistive Robot Tutors for Long-Term Interventions with Children with Autism",
+    "dataset_id": "NA",
+    "modalidade": "MULTIMODAL",
+    "tarefa": "deteccao",
+    "ambiente_coleta": "selvagem",
+    "dependencia_temporal": "sim",
+    "n_amostras_total": 138703,
+    "pretreino": "nao",
+    "modalidades_presentes": [
+      "video",
+      "audio"
+    ],
+    "modelo_familia": "Boosting_ML",
+    "modelo_especifico": "XGBoost with s-DA (Valence)",
+    "protocolo_person_indep": "nao",
+    "protocolo_cross_dataset": "nao",
+    "metricas_principais": [
+      "AUC"
+    ],
+    "metrica_principal_valor": 0.86,
+    "augmentations": "NA",
+    "code_available": "nao",
+    "weights_available": "nao",
+    "observacoes": "Rótulos binários de valence (positivo/neutro vs. negativo); AUROC ponderado de 0.86 para o modelo personalizado XGBoost com s-DA."
+  }
+]

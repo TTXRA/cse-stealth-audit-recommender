@@ -1,0 +1,17 @@
+﻿item_id,item_label,nucleares,robustez,uniforme,delta_rank_uniforme_nucleares,delta_rank_uniforme_robustez
+CAL,Calibracao,1,1,1,0,0
+REP,Reprodutibilidade e Artefatos,2,2,2,0,0
+EXT,Testes entre Bases,3,3,3,0,0
+SUB,Subgrupos e Equidade,4,4,4,0,0
+ETH,"Etica, Privacidade e Uso Responsavel",5,5,5,0,0
+MET,Metricas e Incerteza,6,6,6,0,0
+VZ,Prevencao de Vazamento,7,7,7,0,0
+PRT,Particionamento e Validacao,8,8,8,0,0
+SIN,Sincronizacao Multimodal,9,9,9,0,0
+ROT,Anotacao e Qualidade do Rotulo,9,9,9,0,0
+ROB,Robustez e Sensibilidade,10,10,10,0,0
+DAD,Dados e Demografia,11,11,11,0,0
+CST,Custo e Latencia,12,12,12,0,0
+ESC,Escopo e Construto,13,13,13,0,0
+MOD,"Modelo, Hiperparametros e Treino",13,13,13,0,0
+PRE,Pre-processamento e Caracteristicas,14,14,14,0,0

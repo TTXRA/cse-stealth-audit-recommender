@@ -1,0 +1,4 @@
+﻿comparacao,spearman_rho_rank_itens,p_valor,p_fmt,sobreposicao_bottom5
+nucleares_vs_robustez,1.0,0.0,<1e-300,5
+uniforme_vs_nucleares,1.0,0.0,<1e-300,5
+uniforme_vs_robustez,1.0,0.0,<1e-300,5

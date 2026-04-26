@@ -4,27 +4,16 @@ import json
 import numpy as np
 import pandas as pd
 
-from utils import norm_text, normalize_columns, require_cols, require_unique, read_csv, sha256_file
-from config import (
-    OUT_AMOSTRAS_DIR,
-    OUT_LOGS_DIR,
-    ELEGIVEIS_POR_TAREFA,
-    AMOSTRA_POR_TAREFA,
-    OUT_REGISTRO_SORTEIO,
-    MID_CORPUS_EMP_QUANT,
-    RNG_SEED,
-    N_ALVO_TOTAL,
-    MIN_POR_ESTRATO,
-    N_SUPLENTES,
-    META_COLS,
-    OUT_LOG_CONTINGENCIA,
-    OUT_ALOCACAO_SORTEIO,
-)
+from scripts.utils.common import norm_text, normalize_columns, require_cols, require_unique, read_csv, sha256_file
+from scripts.utils.config import (OUT_AMOSTRAS_DIR, OUT_LOGS_DIR, ELEGIVEIS_POR_TAREFA, AMOSTRA_POR_TAREFA,
+                                  OUT_REGISTRO_SORTEIO, MID_CORPUS_EMP_QUANT, RNG_SEED, N_ALVO_TOTAL, MIN_POR_ESTRATO,
+                                  N_SUPLENTES, META_COLS, OUT_LOG_CONTINGENCIA, OUT_ALOCACAO_SORTEIO)
 
 OUT_AMOSTRAS_DIR.mkdir(parents=True, exist_ok=True)
 OUT_LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
 ESTRATOS = ["FER", "SER", "MULTI"]
+
 
 def read_ids(path):
     df = read_csv(path)
@@ -34,6 +23,7 @@ def read_ids(path):
     df = df[df["artigo_id"].ne("")]
     require_unique(df, "artigo_id", path.name)
     return df["artigo_id"].tolist()
+
 
 def read_meta():
     df = read_csv(MID_CORPUS_EMP_QUANT)
@@ -48,6 +38,7 @@ def read_meta():
     df = df[META_COLS].copy()
     df["ano"] = pd.to_numeric(df["ano"].map(norm_text), errors="coerce").astype("Int64")
     return df
+
 
 def redistribui(n_eleg, n_alvo_total, min_por_estrato):
     base = {e: min(int(min_por_estrato), int(n_eleg[e])) for e in ESTRATOS}
@@ -77,6 +68,7 @@ def redistribui(n_eleg, n_alvo_total, min_por_estrato):
                     aloc[e2] += 1
                     break
     return aloc
+
 
 def sortear_estrato(estrato, df_meta_stratum, n_titulares, n_suplentes, rng):
     df = df_meta_stratum.copy()
@@ -110,11 +102,13 @@ def sortear_estrato(estrato, df_meta_stratum, n_titulares, n_suplentes, rng):
     sup_ids = suplentes["artigo_id"].tolist()
     return out_df, tit_ids, sup_ids, len(df)
 
+
 def validate_params():
     if int(N_ALVO_TOTAL) <= 0 or int(MIN_POR_ESTRATO) < 0:
         raise ValueError("Parâmetros inválidos.")
     if int(MIN_POR_ESTRATO) * len(ESTRATOS) > int(N_ALVO_TOTAL):
         raise ValueError("MIN_POR_ESTRATO * n_estratos não pode ser maior que N_ALVO_TOTAL.")
+
 
 def main():
     validate_params()
@@ -162,7 +156,8 @@ def main():
     log.to_csv(OUT_LOG_CONTINGENCIA, index=False)
     OUT_LOG_CONTINGENCIA.with_suffix(".sha256").write_text(sha256_file(OUT_LOG_CONTINGENCIA) + "\n", encoding="utf-8")
 
-    pd.DataFrame([{"estrato": e, "n_titulares_planejado": aloc[e], "n_elegiveis": counts[e]} for e in ESTRATOS]).to_csv(OUT_ALOCACAO_SORTEIO, index=False)
+    pd.DataFrame([{"estrato": e, "n_titulares_planejado": aloc[e], "n_elegiveis": counts[e]} for e in ESTRATOS]).to_csv(
+        OUT_ALOCACAO_SORTEIO, index=False)
     OUT_ALOCACAO_SORTEIO.with_suffix(".sha256").write_text(sha256_file(OUT_ALOCACAO_SORTEIO) + "\n", encoding="utf-8")
 
     rng = np.random.default_rng(RNG_SEED)
@@ -192,6 +187,7 @@ def main():
 
     pd.DataFrame(registro_rows).to_csv(OUT_REGISTRO_SORTEIO, index=False)
     OUT_REGISTRO_SORTEIO.with_suffix(".sha256").write_text(sha256_file(OUT_REGISTRO_SORTEIO) + "\n", encoding="utf-8")
+
 
 if __name__ == "__main__":
     main()
