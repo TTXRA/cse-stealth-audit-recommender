@@ -126,3 +126,88 @@ DATASETS_BASE_MULTICLASSE_PADRAO = {
     "JAFFE",
     "RAF-DB",
 }
+
+MAPA_FAMILIAS = {
+    "boosting_ml": "Boosting_ML",
+    "ensemble_ml": "Ensemble_ML",
+    "transformer": "Transformer",
+    "multimodal": "Multimodal",
+    "cnn": "CNN",
+    "rnn": "RNN",
+    "ann": "ANN",
+    "svm": "SVM",
+    "rf": "RF",
+    "hmm": "HMM",
+    "crf": "CRF",
+    "autoencoder": "Autoencoder",
+}
+
+DOMINIOS = {
+    "modalidade": {"FER", "SER", "MULTIMODAL", "HER"},
+    "tarefa": {"multiclasse", "multilabel", "regressao", "deteccao"},
+    "ambiente_coleta": {"controlado", "misto", "selvagem", "NA"},
+    "dependencia_temporal": {"sim", "nao", "NA"},
+    "pretreino": {"sim", "nao"},
+    "modelo_familia": {
+        "CNN",
+        "Transformer",
+        "RNN",
+        "ANN",
+        "SVM",
+        "RF",
+        "Boosting_ML",
+        "Ensemble_ML",
+        "HMM",
+        "CRF",
+        "Autoencoder",
+        "Multimodal",
+    },
+}
+
+COLUNAS_OBRIGATORIAS = {
+    "artigo_id",
+    "modalidade",
+    "tarefa",
+    "modelo_familia",
+    "R",
+    "metrica_principal_valor",
+}
+
+COLUNAS_NUMERICAS = {"R", "metrica_principal_valor"}
+COLUNAS_LISTA = {"modalidades_presentes", "metricas_principais", "augmentations"}
+
+ARQUIVO_SAIDA_ROBUSTEZ_CLEAN = OUT_ROBUSTEZ_DIR / "robustez_cenarios_clean.csv"
+ARQUIVO_ISSUES_ROBUSTEZ = OUT_ROBUSTEZ_DIR / "robustez_cenarios_issues.csv"
+ARQUIVO_RANKING_RECOMENDACAO = OUT_ROBUSTEZ_DIR / "ranking_recomendacao.csv"
+ARQUIVO_LOG_RECOMENDACAO = OUT_ROBUSTEZ_DIR / "log_recomendacao.json"
+
+FILTROS_OBRIGATORIOS = ["modalidade", "tarefa"]
+
+FILTROS_OPCIONAIS = [
+    "dataset_id",
+    "ambiente_coleta",
+    "modalidades_presentes",
+    "pretreino",
+    "dependencia_temporal",
+]
+
+COLUNAS_RANKING = [
+    "ordem",
+    "modelo_familia",
+    "filtros_utilizados",
+    "filtros_relaxados",
+    "status_suporte",
+    "elegivel_principal",
+    "R_medio",
+    "ic95_inf",
+    "ic95_sup",
+    "largura_ic95",
+    "n_artigos",
+    "n_experimentos",
+]
+
+RECOMENDACAO_N_BOOTSTRAP = 1000
+RECOMENDACAO_RANDOM_SEED = RNG_SEED
+RECOMENDACAO_MIN_OBSERVACOES_AGREGADAS = 3
+RECOMENDACAO_MIN_FAMILIAS = 2
+RECOMENDACAO_MIN_ARTIGOS_POR_FAMILIA = 2

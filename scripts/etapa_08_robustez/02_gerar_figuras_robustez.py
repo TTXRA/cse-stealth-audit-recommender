@@ -85,7 +85,9 @@ def plot_r_modalidade(df, arquivo):
                 ha='center',
                 va='bottom',
                 fontsize=8.5,
-                bbox=dict(boxstyle='round,pad=0.18', fc='white', ec='black', lw=0.7, alpha=0.95)
+                zorder=20,
+                clip_on=False,
+                bbox=dict(boxstyle='round,pad=0.18', fc='white', ec='black', lw=0.7, alpha=0.98)
             )
 
     ax.set_xticks(xpos)

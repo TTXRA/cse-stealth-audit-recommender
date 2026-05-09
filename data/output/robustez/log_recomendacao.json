@@ -1,0 +1,29 @@
+{
+  "query": {
+    "modalidade": "FER",
+    "tarefa": "multiclasse",
+    "pretreino": "nao",
+    "dataset_id": null,
+    "ambiente_coleta": null,
+    "dependencia_temporal": null,
+    "modalidades_presentes": null
+  },
+  "filtros_obrigatorios": [
+    "modalidade",
+    "tarefa"
+  ],
+  "filtros_opcionais_solicitados": [
+    "pretreino"
+  ],
+  "filtros_opcionais_utilizados": [
+    "pretreino"
+  ],
+  "filtros_relaxados": [],
+  "linhas_elegiveis": 25,
+  "observacoes_agregadas": 14,
+  "familias_candidatas": 6,
+  "familias_principais": 2,
+  "abstencao": false,
+  "motivo_abstencao": null,
+  "familia_recomendada": "CNN"
+}
