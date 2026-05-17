@@ -94,13 +94,23 @@ def parse_fraction(x):
     return x
 
 
-def is_missing(value):
+_MISSING_TEXT_VALUES = {"", "nan", "none", "null"}
+
+
+def is_missing(value, extra_values=None, empty_collections=False):
     if value is None:
         return True
+
     if isinstance(value, str):
-        return value.strip() == ""
+        values = _MISSING_TEXT_VALUES | {str(v).strip().lower() for v in extra_values or ()}
+        return value.strip().lower() in values
+
+    if empty_collections and isinstance(value, (list, tuple, set, dict)):
+        return len(value) == 0
+
     if isinstance(value, (float, np.floating)):
         return bool(np.isnan(value))
+
     try:
         return bool(pd.isna(value))
     except (TypeError, ValueError):

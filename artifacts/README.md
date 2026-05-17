@@ -1,129 +1,107 @@
-## Visão geral
+# Diretório `artifacts`
 
-Este arquivo documenta a base `cenarios`, construída para a **Etapa (vii): Extração Estruturada de Cenários e Construção do Dicionário de Dados**.
-
-A unidade de análise da base é o **experimento**, isto é, cada linha representa uma combinação rastreável de:
-
-- artigo
-- conjunto de dados
-- configuração de modelo
-- condição experimental relevante
-
-A base foi organizada para apoiar as etapas seguintes do estudo, especialmente:
-
-- cálculo do índice de robustez por experimento
-- recomendação de famílias de modelos
-- avaliação fora da amostra por estudo (`artigo_id`)
+Este diretório reúne instrumentos, modelos de planilha, bases estruturadas e documentos de apoio usados nas etapas de auditoria, extração de cenários e recomendação.
 
 ## Arquivos
 
-- `cenarios.csv`
-- `cenarios.json`
+```text
+artifacts/
+  auditoria_modelo.csv
+  cenarios.csv
+  cenarios.json
+  itens_checklist.csv
+  piloto_checklist_codificacao.csv
+  protocolo_extracao_cenarios.md
+  README.md
+```
 
-Ambos contêm os mesmos registros, em formatos diferentes.
+## `itens_checklist.csv`
 
-## Resumo da versão
+Contém os itens do checklist de relato usados para auditar os artigos.
 
-- Linhas: **53**
-- Artigos únicos (`artigo_id`): **22**
-- Modalidades presentes: **FER, HER, MULTIMODAL, SER**
-- Tarefas presentes: **detecao, multiclasse, regressao**
-- Famílias de modelos presentes: **ANN, Boosting_ML, CNN, Ensemble_ML, Multimodal, RF, RNN, SVM, Transformer**
+Cada item representa um eixo ou componente de relato, com identificação, definição, regra de pontuação e indicação de aplicabilidade quando pertinente.
 
-## Regras gerais de construção
+Este arquivo serve como base para:
 
-1. Cada linha representa um experimento distinto.
-2. A extração foi feita exclusivamente a partir do conteúdo publicado nos artigos.
-3. Quando necessário, decisões de codificação foram registradas em `observacoes`.
-4. Valores percentuais foram normalizados para o intervalo `[0,1]`.
-5. Campos com listas no CSV foram serializados como **JSON válido em texto**.
-6. O campo `artigo_id` foi incorporado a partir do arquivo de mapeamento mestre.
-7. Em casos ambíguos, adotou-se postura conservadora, priorizando precisão sobre completude.
+- aplicação da auditoria principal;
+- cálculo do escore de aderência;
+- identificação de itens nucleares;
+- cálculo da subescala de robustez usada no índice `R`.
 
-## Convenções de ausência
+## `auditoria_modelo.csv`
 
-Nesta base, ausências devem ser interpretadas como **NA**, respeitando o domínio de cada campo.
+Modelo de planilha para codificação da auditoria.
 
-- no **CSV**, ausências podem aparecer como `NA` ou, excepcionalmente, como célula vazia;
-- no **JSON**, ausências podem aparecer como `null`.
+A unidade esperada é a combinação artigo por item, com campos como:
 
-Na interpretação analítica, esses casos devem ser tratados como **informação ausente**.
+- `artigo_id`;
+- `estrato`;
+- `item_id`;
+- `grau`;
+- `NA`;
+- `justificativa_NA`;
+- `evidencia`;
+- `observacoes`.
 
-### Regra para campos binários com padrão negativo
+A escala de pontuação é ordinal, com valores `0`, `1` e `2`. Itens marcados como `NA` devem ter justificativa técnica.
 
-Nos campos binários com padrão negativo definido no esquema, a ausência de menção explícita no artigo é codificada como `nao`, e não como `NA`.
+## `piloto_checklist_codificacao.csv`
 
-Isso se aplica especialmente a:
+Arquivo associado à etapa piloto de aplicação do checklist.
 
-- `pretreino`
-- `protocolo_person_indep`
-- `protocolo_cross_dataset`
+Seu objetivo é apoiar a revisão inicial do instrumento, permitindo registrar dificuldades de interpretação, casos-limite e ajustes necessários nas âncoras de pontuação.
 
-Assim, `NA` deve ser reservado aos campos cujo esquema admite ausência sem imputação binária.
+## `cenarios.csv`
 
-## Dicionário de dados
+Base principal de cenários experimentais extraídos da literatura auditada.
 
-| Campo | Tipo esperado | Descrição | Domínio / Regra |
-|---|---|---|---|
-| `artigo_id` | string | Identificador único do artigo no mapeamento mestre | obrigatório |
-| `artigo_titulo` | string | Título do artigo fonte | obrigatório |
-| `dataset_id` | string ou NA | Conjunto de dados utilizado | livre; usar NA quando ausente |
-| `modalidade` | string | Modalidade principal do estudo | `FER`, `SER`, `MULTIMODAL`, `HER` |
-| `tarefa` | string | Tipo de tarefa | `multiclasse`, `multilabel`, `regressao`, `detecao` |
-| `ambiente_coleta` | string ou NA | Ambiente de coleta do conjunto de dados | `controlado`, `misto`, `selvagem`, `NA` |
-| `dependencia_temporal` | string ou NA | Dependência temporal entre amostras | `sim`, `nao`, `NA` |
-| `n_amostras_total` | inteiro ou NA | Total de amostras usadas no treino | inteiro positivo ou NA |
-| `pretreino` | string | Indica uso de pré-treinamento / transferência | `sim`, `nao` |
-| `modalidades_presentes` | lista JSON ou NA | Modalidades presentes no experimento | subconjunto de `["video","audio","texto","fisiologia","conhecimento"]` |
-| `modelo_familia` | string | Família do modelo | `CNN`, `Transformer`, `RNN`, `ANN`, `SVM`, `RF`, `Boosting_ML`, `Ensemble_ML`, `HMM`, `CRF`, `Autoencoder`, `Multimodal` |
-| `modelo_especifico` | string ou NA | Nome específico do modelo | livre; usar NA quando ausente |
-| `protocolo_person_indep` | string | Indica divisão independente por sujeito/pessoa | `sim`, `nao` |
-| `protocolo_cross_dataset` | string | Indica teste entre conjuntos de dados | `sim`, `nao` |
-| `metricas_principais` | lista JSON ou NA | Métrica(s) principal(is) reportada(s) | lista JSON válida |
-| `metrica_principal_valor` | float ou NA | Valor da métrica principal | número em `[0,1]` ou NA |
-| `augmentations` | lista JSON ou NA | Técnicas de aumento de dados | lista JSON válida ou NA |
-| `code_available` | string ou NA | Indica disponibilidade de código | `sim`, `nao`, `NA` |
-| `weights_available` | string ou NA | Indica disponibilidade de pesos | `sim`, `nao`, `NA` |
-| `observacoes` | string ou NA | Registro de decisões, ressalvas e contexto de extração | livre |
+A unidade de análise é o experimento, isto é, uma combinação de:
 
-## Regras de normalização adotadas
+- artigo;
+- conjunto de dados;
+- configuração de modelo;
+- protocolo experimental;
+- métrica principal.
 
-### Métricas
+Essa base é usada como entrada para o cálculo do índice de robustez `R` e para o recomendador de famílias de modelos.
 
-Os nomes das métricas foram padronizados, quando aplicável, para formas consistentes, como por exemplo:
+## `cenarios.json`
 
-- `ACC`
-- `AB`
-- `AUC`
-- `CCC`
-- `PCC`
-- `F1_MACRO`
+Versão em JSON da base `cenarios.csv`.
 
-### Hierarquia de seleção da métrica principal
+Contém os mesmos registros em formato estruturado, útil para inspeção, validação ou integração com outras ferramentas.
 
-A seleção da métrica principal seguiu prioridade condicional ao tipo de tarefa:
+## `protocolo_extracao_cenarios.md`
 
-- para **classificação** e **detecção**, priorizou-se `F1_MACRO`, depois `AB` e, por fim, `ACC`;
-- para **regressão**, priorizou-se `CCC` e depois `PCC`;
-- métricas como `AUC` e, quando pertinente, `EER` foram admitidas quando o artigo as declarava explicitamente como principais ou co-principais.
+Documento metodológico com regras para extração, normalização e codificação dos cenários experimentais.
 
-Quando o artigo apresentava múltiplas métricas, buscou-se preservar apenas a métrica principal ou as co-principais efetivamente assumidas pelo próprio estudo.
+Deve ser usado para orientar decisões como:
 
-### Valores numéricos
+- o que conta como experimento distinto;
+- como registrar múltiplos conjuntos de dados;
+- como mapear modelos específicos para famílias;
+- como normalizar métricas;
+- como tratar campos ausentes;
+- quando usar `NA`;
+- como registrar observações e ambiguidades.
 
-- métricas originalmente em porcentagem foram convertidas para fração em `[0,1]`;
-- valores não explicitamente reportados foram mantidos como NA;
-- `metrica_principal_valor` não deve conter texto livre.
+## Convenções principais
 
-### Listas em CSV
+- Valores percentuais devem ser normalizados para o intervalo `[0,1]`.
+- Campos de lista em CSV devem ser registrados como JSON válido em texto.
+- Ausências informacionais devem ser registradas como `NA` quando o domínio do campo permitir.
+- Campos binários com padrão negativo devem usar `nao` quando a ausência de menção explícita for interpretada como ausência do atributo.
+- Decisões ambíguas devem ser registradas em campo de observação.
 
-Os campos abaixo foram gravados como texto JSON no CSV:
+## Relação com os scripts
 
-- `modalidades_presentes`
-- `metricas_principais`
-- `augmentations`
+Arquivos deste diretório são consumidos principalmente por scripts das etapas:
 
-Exemplo:
+- `etapa_06_auditoria`: cálculo de escores e análise da auditoria;
+- `etapa_08_robustez`: cálculo do índice `R`;
+- `etapa_09_recomendador`: validação da base e ranking de famílias;
+- `etapa_10_avaliacao_loso`: avaliação fora da amostra.
 
-```json
-["video", "audio"]
+## Observações de versionamento
+
+Alterações nos arquivos deste diretório devem ser registradas no controle de versão, pois podem alterar diretamente os resultados da auditoria, do índice de robustez e da recomendação.

@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "Se você utilizar este repositório, cite-o conforme os metadados abaixo."
+title: "CSE Stealth Audit Recommender"
+authors:
+  - family-names: "Teixeira"
+    given-names: "Thiago"
+version: "0.1.0"
+date-released: "2026-05-17"
+repository-code: "https://github.com/TTXRA/cse-stealth-audit-recommender"
+license: "MIT AND CC-BY-4.0"
+keywords:
+  - "competências socioemocionais"
+  - "avaliação furtiva"
+  - "checklist de relato"
+  - "robustez"
+  - "sistema de recomendação"
+abstract: "Repositório com artefatos, dados estruturados e scripts para auditoria de relato, cálculo de índice de robustez e recomendação de famílias de modelos em avaliação furtiva de competências socioemocionais."

@@ -73,7 +73,7 @@ TIPOS E FORMATAÇÃO
 Use exatamente estes domínios:
 
 - modalidade: FER | SER | MULTIMODAL | HER
-- tarefa: multiclasse | multilabel | regressao | detecao
+- tarefa: multiclasse | multilabel | regressao | deteccao
 - ambiente_coleta: controlado | misto | selvagem | NA
 - dependencia_temporal: sim | nao | NA
 - n_amostras_total: inteiro positivo ou NA
@@ -131,7 +131,7 @@ tarefa
 - multiclasse para classificação com mais de duas classes exclusivas
 - multilabel para múltiplos rótulos simultâneos
 - regressao para saída contínua
-- detecao para detecção/localização
+- deteccao para detecção/localização
 
 ambiente_coleta
 - Use o valor explicitamente descrito no artigo.
@@ -236,7 +236,7 @@ Para tarefa = regressao, use esta prioridade:
 1. CCC
 2. PCC
 
-Para tarefa = multiclasse, multilabel ou detecao, use esta prioridade:
+Para tarefa = multiclasse, multilabel ou deteccao, use esta prioridade:
 1. macroF1
 2. balanced_accuracy
 3. ACC
@@ -251,7 +251,7 @@ Regras:
 - Se metricas_principais estiver preenchida e o valor numérico correspondente estiver disponível no artigo, metrica_principal_valor não pode ser NA.
 - Use NA em metrica_principal_valor somente se o artigo não fornecer um valor agregado comparável para a métrica principal.
 - Se o artigo declarar duas ou mais métricas co-principais, inclua todas em metricas_principais, mas em metrica_principal_valor use o valor da métrica de maior prioridade conforme a tarefa.
-- Se EER ou AUC forem explicitamente declaradas como métricas principais ou co-principais, elas podem ser mantidas em metricas_principais mesmo quando a tarefa for multiclasse, multilabel ou detecao.
+- Se EER ou AUC forem explicitamente declaradas como métricas principais ou co-principais, elas podem ser mantidas em metricas_principais mesmo quando a tarefa for multiclasse, multilabel ou deteccao.
 - Se o artigo reportar várias tabelas, folds, splits, bases-alvo ou variações para o mesmo dataset e mesmo modelo, escolha apenas o resultado principal/final do experimento.
 - Não gere linhas duplicadas apenas porque há múltiplas tabelas secundárias.
 - Quando houver escolha entre várias tabelas ou variantes para definir o resultado principal, registre o critério em observacoes.

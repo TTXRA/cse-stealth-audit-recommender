@@ -1,0 +1,44 @@
+{
+  "entrada": "C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\cse-stealth-audit-recommender\\data\\output\\robustez\\robustez_cenarios_clean.csv",
+  "saida_avaliacao": "C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\cse-stealth-audit-recommender\\data\\output\\avaliacao_loso\\avaliacao_loso.csv",
+  "saida_resumo": "C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\cse-stealth-audit-recommender\\data\\output\\avaliacao_loso\\resumo_avaliacao_loso.csv",
+  "saida_grafico_deltas": "C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\cse-stealth-audit-recommender\\data\\output\\avaliacao_loso\\grafico_deltas_baselines.png",
+  "n_cenarios": 318,
+  "n_artigos": 22,
+  "top_k": 3,
+  "n_random": 500,
+  "seed": 2025,
+  "n_bootstrap": 1000,
+  "lambdas": [
+    0.3,
+    0.5,
+    0.7,
+    0.9
+  ],
+  "alvos_avaliados": [
+    {
+      "analise": "R",
+      "coluna": "R"
+    },
+    {
+      "analise": "M",
+      "coluna": "M"
+    },
+    {
+      "analise": "R_lambda_0.3",
+      "coluna": "R_lambda_0_3"
+    },
+    {
+      "analise": "R_lambda_0.5",
+      "coluna": "R_lambda_0_5"
+    },
+    {
+      "analise": "R_lambda_0.7",
+      "coluna": "R_lambda_0_7"
+    },
+    {
+      "analise": "R_lambda_0.9",
+      "coluna": "R_lambda_0_9"
+    }
+  ]
+}

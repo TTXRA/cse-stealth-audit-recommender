@@ -6,11 +6,11 @@ from scripts.utils.config import (
     DATASETS_BASE_MULTICLASSE_PADRAO,
     ITENS_W,
     ARQUIVO_CENARIOS,
-    ARQUIVO_AUDITORIA,
+    INPUT_AUDITORIA,
     ARQUIVO_SAIDA_ROBUSTEZ,
     ARQUIVO_RESUMO_MODALIDADE,
     ARQUIVO_RESUMO_FAMILIA,
-    LAMBDA_R,
+    LAMBDA_R_PADRAO,
 )
 
 
@@ -135,7 +135,7 @@ def executar():
     ARQUIVO_SAIDA_ROBUSTEZ.parent.mkdir(parents=True, exist_ok=True)
 
     cenarios = read_csv(ARQUIVO_CENARIOS)
-    auditoria = read_csv(ARQUIVO_AUDITORIA)
+    auditoria = read_csv(INPUT_AUDITORIA)
 
     cenarios["artigo_id"] = cenarios["artigo_id"].astype(str).str.strip()
     cenarios["M"] = pd.to_numeric(
@@ -170,9 +170,9 @@ def executar():
         axis=1,
     )
 
-    resultado["lambda_r"] = LAMBDA_R
+    resultado["lambda_r"] = LAMBDA_R_PADRAO
     resultado["R"] = resultado["W"] * (
-        LAMBDA_R * resultado["P_norm"] + (1 - LAMBDA_R) * resultado["S_linha"]
+            LAMBDA_R_PADRAO * resultado["P_norm"] + (1 - LAMBDA_R_PADRAO) * resultado["S_linha"]
     )
 
     colunas_saida = [
