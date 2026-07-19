@@ -10,12 +10,14 @@ O projeto reúne instrumentos de auditoria, bases tabulares, scripts de processa
 artifacts/
 data/
 scripts/
+webapp/
 README.md
 ```
 
 - `artifacts/`: instrumentos, modelos de planilha, checklist, cenários extraídos e protocolo de extração.
 - `data/`: dados brutos, intermediários, auditoria, amostragem, robustez, recomendação e avaliação fora da amostra.
 - `scripts/`: códigos Python organizados por etapa da pesquisa.
+- `webapp/`: interface Streamlit para consulta, atualização das bases e recomendação.
 
 ## Principais etapas implementadas
 
@@ -39,7 +41,41 @@ numpy
 scipy
 scikit-learn
 matplotlib
+streamlit
 ```
+
+## Interface web
+
+A interface local em `webapp/` permite consultar e cadastrar artigos, consultar
+ou realizar auditorias em uma seção própria, explorar e adicionar cenários
+experimentais, gerar novas recomendações e executar o fluxo científico completo.
+Ela reutiliza diretamente os dados e as rotinas de `scripts/`.
+
+Após instalar as dependências, inicie-a pela raiz do repositório:
+
+```bash
+python webapp/run.py
+```
+
+Os detalhes de uso, persistência e rastreabilidade estão em `webapp/README.md`.
+
+### Publicação pelo GitHub
+
+O repositório está preparado para o Streamlit Community Cloud. Na criação do app,
+selecione este repositório, a branch desejada e o arquivo principal
+`webapp/app.py`. As dependências são instaladas a partir de `requirements.txt` e
+o tema está em `.streamlit/config.toml`.
+
+Para que artigos, auditorias, cenários e sorteios não sejam perdidos após uma
+reinicialização do serviço, configure no painel **Secrets** uma conexão PostgreSQL:
+
+```toml
+CSE_DATABASE_URL = "postgresql://usuario:senha@host:5432/banco?sslmode=require"
+```
+
+O exemplo está em `.streamlit/secrets.toml.example`. Sem essa variável, a
+interface continua funcionando com os CSVs locais, comportamento adequado para
+desenvolvimento, mas não oferece persistência durável em hospedagens efêmeras.
 
 ## Execução geral
 
