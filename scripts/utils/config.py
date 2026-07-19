@@ -1,3 +1,5 @@
+import os
+from datetime import date
 from pathlib import Path
 
 
@@ -7,6 +9,8 @@ DATA_DIR = ROOT_DIR / "data"
 ARTIFACTS_DIR = ROOT_DIR / "artifacts"
 
 RAW_DIR = DATA_DIR / "raw"
+# Alias preservado para compatibilidade com os scripts da etapa de corpus.
+IN_DIR = RAW_DIR
 MID_DIR = DATA_DIR / "intermediate"
 OUT_DIR = DATA_DIR / "output"
 AUDIT_DIR = DATA_DIR / "audit"
@@ -39,14 +43,13 @@ OUT_AMOSTRA_MULTI = OUT_AMOSTRAS_DIR / "amostra_MULTI.csv"
 OUT_REGISTRO_SORTEIO = OUT_LOGS_DIR / "registro_sorteio.csv"
 
 ANO_INICIO = 2021
-ANO_FIM = 2025
+ANO_FIM = date.today().year
 
 TAREFAS_VALIDAS = {"FER", "SER", "MULTI", "NA"}
 
 RNG_SEED = 2025
-N_ALVO_TOTAL = 16
-MIN_POR_ESTRATO = 4
-N_TITULARES = 8
+N_ALVO_TOTAL = int(os.environ.get("CSE_N_ALVO_TOTAL", "16"))
+MIN_POR_ESTRATO = int(os.environ.get("CSE_MIN_POR_ESTRATO", "4"))
 N_SUPLENTES = 3
 
 META_COLS = ["artigo_id", "ano", "titulo", "venue", "doi", "tarefa"]
