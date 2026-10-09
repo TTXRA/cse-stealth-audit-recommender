@@ -20,6 +20,12 @@ scripts/
 
 ## Configuração central
 
+Instale as dependências conforme o [README principal](../README.md) e inclua
+a raiz do repositório no caminho de importação antes dos comandos abaixo:
+`$env:PYTHONPATH = (Get-Location).Path` no PowerShell ou
+`export PYTHONPATH="$PWD${PYTHONPATH:+:$PYTHONPATH}"` em Linux/macOS.
+Reexecute em uma cópia de trabalho, pois as saídas podem ser sobrescritas.
+
 O arquivo `scripts/utils/config.py` centraliza caminhos, parâmetros e constantes do projeto, incluindo:
 
 - diretórios de entrada e saída;

@@ -1,10 +1,18 @@
+English | [Português](README.pt-BR.md)
+
 # cse-stealth-audit-recommender
 
-Repositório da pesquisa de mestrado sobre auditoria de qualidade de relato em avaliação furtiva de competências socioemocionais (CSE) e recomendação de famílias de modelos baseada em literatura como dados.
+Research repository for auditing reporting quality in stealth assessment of social-emotional competencies and recommending model families using literature as data. It contains auditing instruments, tabular data, processing scripts, intermediate results, and analytical outputs supporting the stages of the master's research.
 
-O projeto reúne instrumentos de auditoria, bases tabulares, scripts de processamento, resultados intermediários e saídas analíticas para apoiar a reprodução das etapas propostas na pesquisa.
+## Relationship to the scientific article
 
-## Estrutura do repositório
+This repository provides the computational materials and instruments associated with the master's research and the following scientific article:
+
+*Auditing Reporting Quality in Affective Computing for Stealth Assessment: Development and Evaluation of a 16-Item Checklist*.
+
+Publication details have not been supplied. No archival DOI has been assigned during this preparation. Version `1.0.0` in [CITATION.cff](CITATION.cff) identifies the intended archival version; no tag or release has been created.
+
+## Repository structure
 
 ```text
 artifacts/
@@ -12,74 +20,93 @@ data/
 scripts/
 webapp/
 README.md
+README.pt-BR.md
+CITATION.cff
+LICENSE
+LICENSE-CODE
+requirements.txt
 ```
 
-- `artifacts/`: instrumentos, modelos de planilha, checklist, cenários extraídos e protocolo de extração.
-- `data/`: dados brutos, intermediários, auditoria, amostragem, robustez, recomendação e avaliação fora da amostra.
-- `scripts/`: códigos Python organizados por etapa da pesquisa.
-- `webapp/`: interface Streamlit para consulta, atualização das bases e recomendação.
+- [artifacts/](artifacts/): instruments, spreadsheet templates, checklist, extracted scenarios, and the extraction protocol.
+- [data/](data/): raw and intermediate data, audit records, sampling, robustness, recommendations, and leave-one-study-out evaluation.
+- [scripts/](scripts/): Python code organized by research stage.
+- [webapp/](webapp/): Streamlit interface for consultation, data entry, and recommendations.
 
-## Principais etapas implementadas
+See the directory guides for [artifacts](artifacts/README.md), [data](data/README.md), [scripts](scripts/README.md), and [the web interface](webapp/README.md). These detailed guides remain in Portuguese; this README provides the main instructions in English.
 
-1. Padronização do corpus e filtragem de elegibilidade.
-2. Amostragem estratificada com sorteio reprodutível.
-3. Auditoria de relato com checklist 0/1/2 e regra de NA.
-4. Teste--reteste e métricas de consistência.
-5. Cálculo de escores de aderência e análise de sensibilidade.
-6. Extração estruturada de cenários experimentais.
-7. Cálculo do índice de robustez `R`.
-8. Recomendação de famílias de modelos.
-9. Avaliação fora da amostra por validação deixando um estudo de fora.
+## Implemented research stages
 
-## Requisitos
+1. Corpus standardization and eligibility filtering.
+2. Stratified sampling with a reproducible random draw.
+3. Reporting-quality auditing using a 0/1/2 checklist and an NA rule.
+4. Test–retest assessment and consistency metrics.
+5. Adherence scores and sensitivity analysis.
+6. Structured extraction of experimental scenarios.
+7. Computation of the robustness index `R`.
+8. Model-family recommendation.
+9. Out-of-sample evaluation through leave-one-study-out validation.
 
-O projeto utiliza Python 3.x e as seguintes bibliotecas principais:
+## Requirements and installation
 
-```text
-pandas
-numpy
-scipy
-scikit-learn
-matplotlib
-streamlit
+Use Python 3.10 or newer; the interface was checked locally with Python 3.11.9. Dependencies and version ranges are declared in [requirements.txt](requirements.txt). The external imports are covered by pandas, NumPy, SciPy, scikit-learn, Matplotlib, Altair, Streamlit, and psycopg.
+
+From the repository root, create a virtual environment:
+
+```bash
+python -m venv .venv
 ```
 
-## Interface web
+Activate it with `.venv\Scripts\Activate.ps1` in PowerShell or `source .venv/bin/activate` on Linux/macOS, then install the dependencies:
 
-A interface local em `webapp/` permite consultar e cadastrar artigos, consultar
-ou realizar auditorias em uma seção própria, explorar e adicionar cenários
-experimentais, gerar novas recomendações e executar o fluxo científico completo.
-Ela reutiliza diretamente os dados e as rotinas de `scripts/`.
+```bash
+python -m pip install -r requirements.txt
+```
 
-Após instalar as dependências, inicie-a pela raiz do repositório:
+If activation is unavailable, use the virtual environment's Python executable directly. Dependencies are declared as version ranges, not a fully locked environment.
+
+## Web interface
+
+The published interface is [Evidência CSE](https://evidencia-cse.streamlit.app). Its **Como usar** (How to use) section explains the workflow, fields, ranking, support requirements, and abstention. The interface itself is in Portuguese.
+
+The local interface lets users consult or register articles, consult or perform audits in a dedicated section, explore or add experimental scenarios, generate recommendations, and execute the complete scientific workflow. It directly reuses the data and routines in `scripts/`.
+
+After installing dependencies, start it from the repository root:
 
 ```bash
 python webapp/run.py
 ```
 
-Os detalhes de uso, persistência e rastreabilidade estão em `webapp/README.md`.
+Usage, persistence, and traceability details are in [webapp/README.md](webapp/README.md).
 
-### Publicação pelo GitHub
+### Deployment from GitHub
 
-O repositório está preparado para o Streamlit Community Cloud. Na criação do app,
-selecione este repositório, a branch desejada e o arquivo principal
-`webapp/app.py`. As dependências são instaladas a partir de `requirements.txt` e
-o tema está em `.streamlit/config.toml`.
+For Streamlit Community Cloud, select this repository, the desired branch, and `webapp/app.py` as the entrypoint. Dependencies are installed from `requirements.txt`; the theme is configured in `.streamlit/config.toml`.
 
-Para que artigos, auditorias, cenários e sorteios não sejam perdidos após uma
-reinicialização do serviço, configure no painel **Secrets** uma conexão PostgreSQL:
+For articles, audits, scenarios, and sampling records to survive service restarts, configure a PostgreSQL connection in the application's **Secrets** panel:
 
 ```toml
 CSE_DATABASE_URL = "postgresql://usuario:senha@host:5432/banco?sslmode=require"
 ```
 
-O exemplo está em `.streamlit/secrets.toml.example`. Sem essa variável, a
-interface continua funcionando com os CSVs locais, comportamento adequado para
-desenvolvimento, mas não oferece persistência durável em hospedagens efêmeras.
+This is a placeholder, not a credential. The format is also provided in [.streamlit/secrets.toml.example](.streamlit/secrets.toml.example). Without this setting, the interface uses local CSV files, which is suitable for development but does not provide durable storage on ephemeral hosting services.
 
-## Execução geral
+## Running the research workflow
 
-A execução esperada segue a ordem dos scripts em `scripts/`:
+Run the following commands in a working copy: they regenerate outputs and can overwrite existing artifacts. Article coding and scenario extraction are human-produced inputs already supplied in the repository, not automated stages.
+
+Before running the scripts, add the repository root to Python's import path:
+
+```powershell
+# PowerShell, from the repository root
+$env:PYTHONPATH = (Get-Location).Path
+```
+
+```bash
+# Linux/macOS, from the repository root
+export PYTHONPATH="$PWD${PYTHONPATH:+:$PYTHONPATH}"
+```
+
+Then run the stages in order:
 
 ```bash
 python scripts/etapa_01_corpus/01_padronizar_master.py
@@ -98,34 +125,64 @@ python scripts/etapa_09_recomendador/02_recomendar_familias.py
 python scripts/etapa_10_avaliacao_loso/01_avaliar_recomendador.py
 ```
 
-## Reprodutibilidade
+## Reproducibility and terminology
 
-Os caminhos, sementes, parâmetros de amostragem e constantes de análise estão centralizados em `scripts/utils/config.py`. Os artefatos de saída relevantes incluem arquivos `.sha256` para verificação de integridade quando aplicável.
+[scripts/utils/config.py](scripts/utils/config.py) centralizes paths, seeds, sampling parameters, and analysis constants. The default random seed is `2025`. Some outputs include `.sha256` files for integrity checking; see the line-ending limitation below before verifying downloaded artifacts.
 
-A semente padrão adotada nos scripts é `2025`.
+In article, sample, pilot, audit, and retest tables, `modalidade` identifies FER, SER, or MULTI. Analysis tables use the same column without duplicating the classification.
 
-## Artefatos principais
+In scenarios, `modalidade` identifies the operational category (FER, SER, MULTIMODAL, or HER), while `canais_dados_presentes` records input channels such as video, audio, text, and physiological signals. This identifier is used in CSV and JSON files, scripts, and the interface.
 
-Nas bases de artigos, amostras, piloto, auditoria e reteste, `modalidade`
-identifica FER, SER ou MULTI. As tabelas de análise usam a mesma coluna,
-sem duplicar a classificação do artigo.
+`tarefa` identifies the learning problem: `multiclasse`, `multilabel`, `regressao`, or `deteccao`. A stratum is a sampling group formed by stratification by modality; files use `modalidade` to record the article category rather than a second field for the same classification. Machine-readable field names and categorical values remain in their original language.
 
-Nos cenários, `modalidade` identifica a categoria operacional (FER, SER,
-MULTIMODAL ou HER), enquanto `canais_dados_presentes` registra os canais de
-entrada do experimento, como vídeo, áudio, texto e fisiologia. Esse identificador
-é utilizado nos CSV, JSON, scripts e na interface.
+## Data provenance and main artifacts
 
-`tarefa` identifica o problema de aprendizagem: multiclasse, multilabel,
-regressão ou detecção. Estrato é o grupo amostral formado pela estratificação
-por modalidade; os arquivos usam a coluna `modalidade` para registrar a categoria
-dos artigos de cada grupo, sem um segundo campo para a mesma classificação.
+[data/raw/mapeamento_master.csv](data/raw/mapeamento_master.csv) records the metadata of the 43 mapped studies. Eligibility labels are in [data/raw/rotulos_elegibilidade.csv](data/raw/rotulos_elegibilidade.csv). The audit covers 22 articles, and the scenario base contains 53 experiments extracted from the audited literature. The repository supplies literature-derived records, not the original datasets used by the studies.
 
-- `artifacts/itens_checklist.csv`: itens do checklist de relato.
-- `artifacts/auditoria_modelo.csv`: modelo de planilha para auditoria.
-- `artifacts/piloto_checklist_codificacao.csv`: exemplo ou base de piloto de codificação.
-- `artifacts/cenarios.csv`: cenários experimentais extraídos.
-- `data/audit/auditoria.csv`: auditoria principal.
-- `data/audit/reteste.csv`: base de recodificação para teste--reteste.
-- `data/output/robustez/robustez_cenarios.csv`: índice de robustez por cenário.
-- `data/output/robustez/ranking_recomendacao.csv`: ranking de famílias recomendado.
-- `data/output/avaliacao_loso/avaliacao_loso.csv`: avaliação deixando um estudo de fora.
+- [artifacts/itens_checklist.csv](artifacts/itens_checklist.csv): the 16 checklist items, identifiers, names, core-item flags, NA permission, and summarized NA rules.
+- [artifacts/auditoria_modelo.csv](artifacts/auditoria_modelo.csv): audit spreadsheet template.
+- [artifacts/piloto_checklist_codificacao.csv](artifacts/piloto_checklist_codificacao.csv): pilot coding records.
+- [artifacts/protocolo_extracao_cenarios.md](artifacts/protocolo_extracao_cenarios.md): scenario extraction and normalization protocol.
+- [artifacts/cenarios_README.md](artifacts/cenarios_README.md): scenario data dictionary.
+- [artifacts/cenarios.csv](artifacts/cenarios.csv) and [artifacts/cenarios.json](artifacts/cenarios.json): extracted scenarios.
+- [data/audit/auditoria.csv](data/audit/auditoria.csv): main audit.
+- [data/audit/reteste.csv](data/audit/reteste.csv): test–retest recoding records.
+- [data/output/robustez/robustez_cenarios.csv](data/output/robustez/robustez_cenarios.csv): scenario-level robustness index.
+- [data/output/robustez/ranking_recomendacao.csv](data/output/robustez/ranking_recomendacao.csv): model-family ranking.
+- [data/output/avaliacao_loso/avaliacao_loso.csv](data/output/avaliacao_loso/avaliacao_loso.csv): leave-one-study-out evaluation.
+
+The complete checklist scoring-anchor manual is not included in this snapshot. The extraction protocol documents scenarios, not the complete audit scoring manual.
+
+## Limitations and preservation of the version
+
+- Evidence is limited to the selected literature and its available reporting; it does not guarantee performance in new applications.
+- The recommender uses deterministic rules and support requirements and may abstain when evidence is insufficient to compare model families.
+- Dependency ranges do not fully freeze the execution environment.
+- `ANO_FIM` is derived from the current year in `scripts/utils/config.py`; environment variables can also affect sampling. New executions should record their environment, date, and configuration rather than assume identical results solely from the random seed.
+- Existing hashes refer to local bytes with CRLF line endings. Git normalizes text files to LF, so some hashes do not directly match GitHub downloads. This unresolved archival issue is documented in [ARCHIVAL_READINESS.md](ARCHIVAL_READINESS.md).
+- The sampling log includes local paths already present in public history. These scientific records were preserved during preparation with the author's authorization.
+
+## Authors, institution, and contact
+
+- [Thiago Teixeira](https://orcid.org/0009-0005-0385-2895).
+- [Simone Nasser de Matos](https://orcid.org/0000-0002-5362-2343).
+- [Helyane Bronoski Borges](https://orcid.org/0000-0002-9153-3819).
+
+Federal University of Technology -- Paraná (UTFPR), Ponta Grossa, Paraná, Brazil.
+
+Corresponding author: Thiago Teixeira — [thiago.070790@alunos.utfpr.edu.br](mailto:thiago.070790@alunos.utfpr.edu.br).
+
+## Citation
+
+See [CITATION.cff](CITATION.cff) for authors, ORCIDs, the intended version `1.0.0`, and the preferred citation to the associated article. When reusing the repository, also record the actual commit or version used. Release date, DOI, and journal details have not been invented; they can be completed when available.
+
+## Licenses
+
+- Source code: [MIT](LICENSE-CODE).
+- Documents, tabular data, and other non-code artifacts: [CC BY 4.0](LICENSE).
+
+The existing licenses have been preserved. Providing literature-derived records does not grant rights to third-party articles or datasets.
+
+## Archival preparation status
+
+See [ARCHIVAL_READINESS.md](ARCHIVAL_READINESS.md) for checks and outstanding items. `CITATION.cff` supplies metadata for future GitHub–Zenodo integration; no additional `.zenodo.json` was needed. No tag, release, or Zenodo deposit has been created.

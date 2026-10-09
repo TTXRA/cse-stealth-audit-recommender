@@ -1,5 +1,16 @@
 # Changelog
 
+## [Unreleased] — preparation for v1.0.0
+
+### Documentation and metadata
+- Added the English README and preserved the Portuguese documentation in README.pt-BR.md.
+- Updated citation metadata with the three authors, ORCIDs, institution, corresponding contact, and associated article title.
+- Documented installation, Python import-path setup, existing licenses, and archival limitations.
+- Recorded line-ending/hash discrepancies, local paths in the sampling log, and the missing complete scoring-anchor manual as pre-release items.
+- Added ignore rules for IDE settings and macOS metadata; already tracked IDE settings remain unchanged pending cleanup approval.
+- No research scripts, data, results, dependencies, or scientific artifacts were changed in this preparation.
+- No release, tag, release date, or archival DOI has been assigned for v1.0.0.
+
 ## [Não lançado] - 2026-10-07
 
 ### Alterado
@@ -16,9 +27,9 @@
   operacional do cenário.
 - Atualização dos artefatos derivados e dos respectivos arquivos de integridade.
 
-## [1.0.0] - 2026-XX-XX
+## Planned v1.0.0 (not released)
 
-Versão estável associada à dissertação.
+Escopo planejado para a versão associada à dissertação e ao artigo; sem data de lançamento definida.
 
 ### Incluído
 - Checklist de relato.

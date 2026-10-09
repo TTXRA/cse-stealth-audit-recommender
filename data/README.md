@@ -110,10 +110,18 @@ Algumas saídas possuem arquivos `.sha256` correspondentes. Eles registram o res
 Exemplo de verificação:
 
 ```bash
-sha256sum -c data/output/logs/registro_sorteio.sha256
+python -c "from pathlib import Path; import hashlib; p=Path('data/output/logs/registro_sorteio.csv'); expected=Path('data/output/logs/registro_sorteio.sha256').read_text().strip(); print('OK' if hashlib.sha256(p.read_bytes()).hexdigest()==expected else 'Mismatch')"
 ```
 
 ## Observações de uso
+
+Neste projeto, os arquivos de hash contêm o resumo hexadecimal, sem o nome do
+arquivo; por isso, não são entradas diretas para `sha256sum -c`. A verificação
+acima compara os bytes disponíveis com o hash registrado. As terminações de
+linha CRLF da cópia local diferem das terminações LF armazenadas pelo Git;
+alguns hashes não conferem diretamente após baixar o repositório. Consulte
+[a pendência de arquivamento](../ARCHIVAL_READINESS.md). Nenhum arquivo de
+resultado ou hash foi alterado durante essa preparação documental.
 
 - Arquivos em `raw/` devem ser tratados como entrada original.
 - Arquivos em `intermediate/` podem ser recriados a partir dos scripts da etapa 01.
