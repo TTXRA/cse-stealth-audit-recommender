@@ -1,3 +1,4 @@
+# Dependências compartilhadas pela interface web e pelo fluxo científico.
 altair>=5
 matplotlib>=3.8
 numpy>=1.26
