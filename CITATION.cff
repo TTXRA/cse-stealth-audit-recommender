@@ -1,49 +1,35 @@
 cff-version: 1.2.0
-message: If you use this repository, cite the associated article described in preferred-citation and identify
-  the repository version or commit used.
+message: "If you use this repository, please cite this research software and identify the version used."
+
 type: software
-title: CSE Stealth Audit Recommender
-authors: &id001
-- family-names: Teixeira
-  given-names: Thiago
-  orcid: https://orcid.org/0009-0005-0385-2895
-  affiliation: Federal University of Technology -- Paraná (UTFPR), Ponta Grossa, Paraná, Brazil
-- family-names: Matos
-  given-names: Simone Nasser de
-  orcid: https://orcid.org/0000-0002-5362-2343
-  affiliation: Federal University of Technology -- Paraná (UTFPR), Ponta Grossa, Paraná, Brazil
-- family-names: Borges
-  given-names: Helyane Bronoski
-  orcid: https://orcid.org/0000-0002-9153-3819
-  affiliation: Federal University of Technology -- Paraná (UTFPR), Ponta Grossa, Paraná, Brazil
-contact:
-- family-names: Teixeira
-  given-names: Thiago
-  orcid: https://orcid.org/0009-0005-0385-2895
-  affiliation: Federal University of Technology -- Paraná (UTFPR), Ponta Grossa, Paraná, Brazil
-  email: thiago.070790@alunos.utfpr.edu.br
+
+title: "CSE Stealth Audit Recommender"
+
 version: 1.0.0
-repository-code: https://github.com/TTXRA/cse-stealth-audit-recommender
-url: https://evidencia-cse.streamlit.app
-license:
-- MIT
-- CC-BY-4.0
+
+authors:
+  - family-names: "Teixeira"
+    given-names: "Thiago"
+    orcid: "https://orcid.org/0009-0005-0385-2895"
+    affiliation: "Federal University of Technology -- Paraná (UTFPR), Ponta Grossa, Paraná, Brazil"
+
+  - family-names: "Matos"
+    given-names: "Simone Nasser de"
+    orcid: "https://orcid.org/0000-0002-5362-2343"
+    affiliation: "Federal University of Technology -- Paraná (UTFPR), Ponta Grossa, Paraná, Brazil"
+
+  - family-names: "Borges"
+    given-names: "Helyane Bronoski"
+    orcid: "https://orcid.org/0000-0002-9153-3819"
+    affiliation: "Federal University of Technology -- Paraná (UTFPR), Ponta Grossa, Paraná, Brazil"
+
 keywords:
-- affective computing
-- stealth assessment
-- social-emotional competencies
-- reporting quality
-- checklist
-- robustness
-- model-family recommendation
-abstract: 'Research software, structured literature-derived records, and supporting instruments for reporting-quality
-  auditing, robustness assessment, and model-family recommendation in stealth assessment. Associated article:
-  Auditing Reporting Quality in Affective Computing for Stealth Assessment: Development and Evaluation
-  of a 16-Item Checklist. Version 1.0.0 is being prepared for archival; no release date or archival DOI
-  has been assigned. Source code is licensed under MIT; documents, tabular data, and non-code artifacts
-  are licensed under CC BY 4.0.'
-preferred-citation:
-  type: article
-  title: 'Auditing Reporting Quality in Affective Computing for Stealth Assessment: Development and Evaluation
-    of a 16-Item Checklist'
-  authors: *id001
+  - "affective computing"
+  - "stealth assessment"
+  - "social-emotional competencies"
+  - "reporting quality"
+  - "checklist"
+  - "robustness"
+  - "model-family recommendation"
+
+abstract: "Research software, structured literature-derived records, and supporting instruments for reporting-quality auditing, robustness assessment, and model-family recommendation in stealth assessment."
