@@ -100,7 +100,7 @@ st.markdown(
         color: var(--muted);
         width: 100%;
         max-width: none;
-        white-space: nowrap;
+        white-space: normal;
         font-size: 1.02rem;
         line-height: 1.65;
     }
