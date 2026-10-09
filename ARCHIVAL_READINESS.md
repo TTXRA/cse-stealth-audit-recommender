@@ -34,9 +34,9 @@ Zenodo deposit, release date, or archival DOI has been created or assigned.
 
 ## Preservation and dependency checks
 
-Scientific scripts, interface code, tabular data, JSON records, matrices,
+During the original documentation-only preparation, scientific scripts, interface code, tabular data, JSON records, matrices,
 figures, outputs, hashes, generated analytical reports, and `requirements.txt`
-are preserved byte for byte against the initial local snapshot. No pipeline,
+were preserved byte for byte against the initial local snapshot. No pipeline,
 notebook, analysis, sampling, or result-generating command was executed.
 
 Static inspection found external imports of Altair, Matplotlib, NumPy, pandas,
@@ -74,10 +74,11 @@ existing local interface environment uses Python 3.11.9.
    Supply an authorized copy or a stable reference before claiming that the
    instrument can be applied independently from this repository alone.
 3. **Local paths in the sampling log.**
-   `data/output/logs/registro_sorteio.csv` contains local user-directory paths
-   already present in public history. Values are not reproduced in this report.
-   The author explicitly authorized the documentation-only push while preserving
-   this protected file. Any later sanitization requires separate authorization.
+   Resolved in the current file with the author's subsequent explicit approval:
+   the three values in `arquivo_amostra_csv` now use repository-relative paths.
+   All other fields, selected articles, parameters, and scientific results are
+   unchanged. The log's own SHA-256 was updated; no pipeline was executed and no
+   script was modified. Earlier Git commits retain the original absolute paths.
 4. **Tracked IDE settings.** Seven files in `.idea/` were already tracked.
    The ignore rule prevents new IDE files from being added, but does not remove
    tracked files. Existing files were deliberately preserved; review whether to
@@ -96,11 +97,15 @@ existing local interface environment uses Python 3.11.9.
 Inspection of tracked text files found no token, private key, or non-placeholder
 database credential matching the checked patterns. The PostgreSQL connection
 strings in documentation and the example configuration are placeholders.
-The local-path finding above remains documented. This static inspection is not
+The former local-path finding and its resolution remain documented. This static inspection is not
 a guarantee that every historical commit is free of sensitive information.
 
-## Scope of this commit
+## Scope of the original preparation commit
 
 Only README documentation, citation metadata, this readiness report, the
 changelog, and necessary ignore rules belong to the preparation commit.
 All protected scientific files and existing licenses remain unchanged.
+
+The subsequent author-approved path-only correction changes the sampling log
+and its corresponding hash, and updates documentation to record the resolution.
+It does not change the sampling logic or the generated study results.

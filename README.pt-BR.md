@@ -216,8 +216,9 @@ Para detalhes dos arquivos, consulte [data/README.md](data/README.md) e
   de linha CRLF. O Git normaliza arquivos textuais para LF; por isso, alguns
   hashes não conferem diretamente no arquivo baixado do GitHub. Essa pendência
   está registrada em [ARCHIVAL_READINESS.md](ARCHIVAL_READINESS.md).
-- O registro de sorteio inclui caminhos locais já presentes no histórico público.
-  Esses registros foram preservados nesta preparação, com autorização do autor.
+- O registro de sorteio usa caminhos relativos ao repositório. Os caminhos
+  absolutos originais permanecem em commits anteriores; a alteração apenas dos
+  caminhos preserva parâmetros, artigos sorteados e resultados.
 
 ## Autores, instituição e contato
 

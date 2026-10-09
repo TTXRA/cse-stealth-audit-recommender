@@ -2,6 +2,11 @@
 
 ## [Unreleased] — preparation for v1.0.0
 
+### Sampling-log path correction
+- With the author's explicit approval, replaced the three absolute local paths in `arquivo_amostra_csv` with repository-relative paths and updated the log's SHA-256.
+- Preserved every other log field, sampling parameter, selected article, and scientific result; no script or pipeline was changed or executed.
+- Original paths remain in earlier Git commits.
+
 ### Documentation and metadata
 - Added the English README and preserved the Portuguese documentation in README.pt-BR.md.
 - Updated citation metadata with the three authors, ORCIDs, institution, corresponding contact, and associated article title.

@@ -160,7 +160,7 @@ The complete checklist scoring-anchor manual is not included in this snapshot. T
 - Dependency ranges do not fully freeze the execution environment.
 - `ANO_FIM` is derived from the current year in `scripts/utils/config.py`; environment variables can also affect sampling. New executions should record their environment, date, and configuration rather than assume identical results solely from the random seed.
 - Existing hashes refer to local bytes with CRLF line endings. Git normalizes text files to LF, so some hashes do not directly match GitHub downloads. This unresolved archival issue is documented in [ARCHIVAL_READINESS.md](ARCHIVAL_READINESS.md).
-- The sampling log includes local paths already present in public history. These scientific records were preserved during preparation with the author's authorization.
+- The sampling log uses repository-relative paths. Original absolute paths remain in earlier Git commits; the path-only update preserves sampling parameters, selected articles, and results.
 
 ## Authors, institution, and contact
 
