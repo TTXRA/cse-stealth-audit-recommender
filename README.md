@@ -106,6 +106,20 @@ A semente padrão adotada nos scripts é `2025`.
 
 ## Artefatos principais
 
+Nas bases de artigos, amostras, piloto, auditoria e reteste, `modalidade`
+identifica FER, SER ou MULTI. As tabelas de análise usam a mesma coluna,
+sem duplicar a classificação do artigo.
+
+Nos cenários, `modalidade` identifica a categoria operacional (FER, SER,
+MULTIMODAL ou HER), enquanto `canais_dados_presentes` registra os canais de
+entrada do experimento, como vídeo, áudio, texto e fisiologia. Esse identificador
+é utilizado nos CSV, JSON, scripts e na interface.
+
+`tarefa` identifica o problema de aprendizagem: multiclasse, multilabel,
+regressão ou detecção. Estrato é o grupo amostral formado pela estratificação
+por modalidade; os arquivos usam a coluna `modalidade` para registrar a categoria
+dos artigos de cada grupo, sem um segundo campo para a mesma classificação.
+
 - `artifacts/itens_checklist.csv`: itens do checklist de relato.
 - `artifacts/auditoria_modelo.csv`: modelo de planilha para auditoria.
 - `artifacts/piloto_checklist_codificacao.csv`: exemplo ou base de piloto de codificação.

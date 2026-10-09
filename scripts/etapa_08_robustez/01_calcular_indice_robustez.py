@@ -185,7 +185,7 @@ def executar():
         "dependencia_temporal",
         "n_amostras_total",
         "pretreino",
-        "modalidades_presentes",
+        "canais_dados_presentes",
         "modelo_familia",
         "modelo_especifico",
         "protocolo_person_indep",

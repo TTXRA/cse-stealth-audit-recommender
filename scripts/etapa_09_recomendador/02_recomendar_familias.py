@@ -79,8 +79,8 @@ def recomendar_familias(query):
     if "dataset_id" in df.columns:
         df["dataset_id"] = df["dataset_id"].map(as_text)
 
-    if "modalidades_presentes" in df.columns:
-        df["modalidades_presentes"] = df["modalidades_presentes"].map(normalizar_lista)
+    if "canais_dados_presentes" in df.columns:
+        df["canais_dados_presentes"] = df["canais_dados_presentes"].map(normalizar_lista)
 
     query_normalizada = {}
 
@@ -89,7 +89,7 @@ def recomendar_familias(query):
             query_normalizada[key] = None
         elif key == "dataset_id":
             query_normalizada[key] = as_text(value)
-        elif key == "modalidades_presentes":
+        elif key == "canais_dados_presentes":
             query_normalizada[key] = normalizar_lista(value)
         else:
             query_normalizada[key] = normalizar_dominio(key, value)
@@ -247,7 +247,7 @@ def executar():
         "dataset_id": None,
         "ambiente_coleta": None,
         "dependencia_temporal": None,
-        "modalidades_presentes": None,
+        "canais_dados_presentes": None,
     }
 
     print(json.dumps(recomendar_familias(query), ensure_ascii=False, indent=2))

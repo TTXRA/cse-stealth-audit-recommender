@@ -65,7 +65,7 @@ Scripts:
 
 Finalidade:
 
-- sortear a amostra estratificada por tarefa;
+- sortear a amostra estratificada por modalidade;
 - gerar listas de titulares e suplentes;
 - registrar semente, parâmetros e alocação;
 - gerar arquivos de rastreabilidade e hashes.

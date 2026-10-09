@@ -49,6 +49,11 @@ from webapp.services import (  # noqa: E402
     sampling_configuration,
     save_article_audit,
 )
+from scripts.utils.config import (  # noqa: E402
+    RECOMENDACAO_MIN_ARTIGOS_POR_FAMILIA,
+    RECOMENDACAO_MIN_FAMILIAS,
+    RECOMENDACAO_MIN_OBSERVACOES_AGREGADAS,
+)
 
 try:
     STORAGE_STATUS = prepare_storage()
@@ -237,6 +242,7 @@ def render_overview() -> None:
     cols[2].metric("Cenários experimentais", summary["scenarios"])
     cols[3].metric("Famílias observadas", summary["families"])
 
+    st.info("Primeiro acesso? Abra **Como usar** no menu lateral para conhecer os campos e interpretar os resultados.")
     st.subheader("Como a interface organiza o fluxo")
     st.markdown(
         """
@@ -264,6 +270,145 @@ def render_overview() -> None:
         families = scenarios.groupby("modelo_familia").size().sort_values(ascending=False)
         st.caption("Cenários por família de modelo")
         horizontal_bar_chart(families, "#c96f2d", "Cenários")
+
+
+def render_help() -> None:
+    hero(
+        "Guia de uso",
+        "Como usar a Evidência CSE",
+        "Entenda por onde começar, como preencher os campos e o que os resultados significam.",
+    )
+    start_tab, fields_tab, results_tab, questions_tab = st.tabs(
+        ["Primeiros passos", "Entenda os campos", "Leia os resultados", "Dúvidas frequentes"]
+    )
+
+    with start_tab:
+        st.subheader("Quero consultar uma recomendação")
+        st.markdown(
+            """
+            A base já contém artigos auditados e cenários experimentais. Você pode usá-la sem cadastrar novos dados.
+
+            1. Abra **Recomendação** no menu lateral.
+            2. Escolha a **modalidade** e a **tarefa**. As opções de tarefa acompanham a evidência disponível para a modalidade selecionada.
+            3. Se necessário, selecione o conjunto de dados, o ambiente de coleta e os demais filtros. **Qualquer** deixa aquele filtro sem restrição.
+            4. Clique em **Gerar recomendação** e confira a família indicada, o suporte e os filtros eventualmente relaxados.
+            5. Consulte o ranking e, se desejar, use **Baixar ranking em CSV** para guardar o resultado.
+
+            Por exemplo, para consultar classificação de expressões faciais, selecione **FER** e **multiclasse**.
+            Comece com os filtros opcionais em **Qualquer** e depois especifique as condições do seu cenário.
+            """
+        )
+        st.subheader("Quero acrescentar evidências à base")
+        st.markdown(
+            """
+            1. Em **Artigos**, consulte o cadastro ou adicione um artigo com seus metadados e a indicação de resultados empíricos e quantitativos.
+            2. Em **Elegibilidade**, confira os critérios, os artigos elegíveis e os parâmetros antes de gerar o sorteio da amostra.
+            3. Em **Auditoria**, registre os 16 itens dos artigos selecionados, com evidências e justificativas.
+            4. Em **Cenários**, acrescente os experimentos de um artigo auditado. Cada cenário reúne conjunto de dados, modelo, condições experimentais e resultado.
+            5. Volte a **Recomendação** para consultar a evidência atualizada. Ao guardar um cenário, a interface também recalcula a robustez e valida a base do recomendador.
+
+            **Executar fluxo** serve para atualizar todas as saídas derivadas após revisar as entradas.
+            Consultar a base e gerar uma recomendação não exige executar o fluxo completo.
+            """
+        )
+
+    with fields_tab:
+        st.subheader("Modalidade, tarefa e canais de dados")
+        st.markdown(
+            """
+            | Campo | O que representa | Como usar |
+            | --- | --- | --- |
+            | **Modalidade** | Categoria operacional do artigo ou cenário. | Nos cenários: FER, SER, MULTIMODAL ou HER. No cadastro de artigos, MULTI identifica multimodal. |
+            | **Tarefa** | Problema de aprendizagem. | Multiclasse: escolher entre várias classes; multilabel: atribuir vários rótulos; regressão: estimar um valor; detecção: identificar a ocorrência do alvo. |
+            | **Canais de dados presentes** | Fontes de informação usadas no experimento. | Vídeo, áudio, texto, fisiologia ou conhecimento. Não confundir esses canais com a categoria modalidade. |
+            | **Ambiente de coleta** | Condições em que os dados foram obtidos. | Controlado, misto ou selvagem; use NA quando a informação não estiver disponível. |
+            | **Dependência temporal** | Uso de relações temporais no experimento. | Indique sim, não ou NA conforme a evidência registrada. |
+            | **Pré-treinamento** | Uso de um modelo previamente treinado. | Indique sim ou não conforme o experimento. |
+
+            **Estrato** é o grupo amostral formado pela estratificação por modalidade.
+            Nas tabelas e formulários, a coluna **Modalidade** identifica a categoria usada para formar esses grupos.
+            """
+        )
+        st.subheader("Ao preencher uma auditoria ou um cenário")
+        st.markdown(
+            """
+            - **Campos com asterisco** são obrigatórios.
+            - **Pontuação da auditoria:** use 0, 1 ou 2 conforme as âncoras do manual; use NA apenas quando o item permitir e registre a justificativa.
+            - **Evidência:** indique onde a informação pode ser encontrada no artigo, como seção, página, tabela ou figura.
+            - **Valor da métrica principal:** o formulário recebe valores entre 0 e 1; uma acurácia de 85% deve ser informada como 0,85.
+            - **Total de amostras:** use 0 quando não informado, conforme a orientação do formulário.
+            - **Observações:** registre decisões de extração, condições específicas e ressalvas que ajudem a interpretar o experimento.
+            """
+        )
+
+    with results_tab:
+        st.subheader("O que significa o índice de robustez R?")
+        st.markdown(
+            "R combina desempenho normalizado em relação a uma linha de base operacional, "
+            "sinal de protocolo experimental e qualidade de relato voltada à robustez. "
+            "Um R maior indica uma avaliação mais favorável segundo esses critérios; "
+            "ele não é uma porcentagem de acertos nem uma garantia de desempenho em um novo experimento."
+        )
+        st.subheader("Como ler o ranking")
+        st.markdown(
+            f"""
+            - **Suporte principal:** a família possui evidências de pelo menos **{RECOMENDACAO_MIN_ARTIGOS_POR_FAMILIA} artigos distintos** na consulta atendida. Essas famílias aparecem antes das exploratórias.
+            - **Suporte exploratório:** a família tem menos artigos que o mínimo exigido para suporte principal. Ela pode aparecer com R alto e, ainda assim, não ser escolhida.
+            - **R médio:** para cada artigo e família, os cenários são resumidos pela mediana de R; o ranking usa a média desses valores entre artigos.
+            - **IC95%:** intervalo calculado por reamostragem que expressa a incerteza da estimativa. Considere-o junto com o número de artigos disponíveis.
+            - **Artigos e experimentos:** mostram a quantidade de estudos distintos e de cenários que sustentam cada família.
+
+            A recomendação escolhe a família com maior R médio **entre as que atendem ao suporte principal**.
+            Em empates, considera mais artigos, menor largura do intervalo e, por fim, o nome da família.
+            """
+        )
+        st.subheader("Filtros relaxados e abstenção")
+        st.markdown(
+            f"""
+            Quando os filtros deixam pouca evidência, o sistema pode retirar restrições opcionais progressivamente.
+            **Modalidade e tarefa são sempre preservadas.** Os filtros relaxados aparecem no resultado;
+            confira se a comparação ainda corresponde às condições de interesse.
+
+            A recomendação exige pelo menos **{RECOMENDACAO_MIN_OBSERVACOES_AGREGADAS} evidências agregadas por artigo e família**
+            e **{RECOMENDACAO_MIN_FAMILIAS} famílias com suporte principal**.
+            Se esses critérios não forem atendidos mesmo após relaxar os filtros opcionais, ocorre **abstenção**.
+            Isso significa que a base não oferece suporte mínimo para recomendar, embora possa apresentar um ranking exploratório.
+            """
+        )
+
+    with questions_tab:
+        with st.expander("Por que uma tarefa ou um filtro não aparece?"):
+            st.write(
+                "As opções da recomendação são extraídas dos cenários disponíveis. "
+                "Os filtros seguintes acompanham as escolhas anteriores. "
+                "Se uma opção não aparecer, consulte Cenários para verificar a evidência cadastrada."
+            )
+        with st.expander("Por que um artigo não aparece para auditoria ou inclusão de cenários?"):
+            st.write(
+                "A auditoria é restrita aos titulares e suplentes selecionados na amostra. "
+                "O formulário de auditoria apresenta os que ainda não têm os 16 itens completos. "
+                "Para adicionar cenários, o artigo precisa estar auditado. "
+                "Confira a seleção em Elegibilidade e a situação do artigo em Auditoria."
+            )
+        with st.expander("Mudei os filtros. O resultado anterior ainda vale?"):
+            st.write(
+                "Clique novamente em Gerar recomendação. A interface identifica mudanças nos parâmetros "
+                "e solicita uma nova consulta antes de apresentar o ranking correspondente."
+            )
+        with st.expander("Preciso executar o fluxo completo a cada consulta?"):
+            st.write(
+                "Não. Gerar recomendação já atualiza a robustez e valida a base necessária à consulta. "
+                "Use Executar fluxo quando quiser recalcular também amostragem, consistência, "
+                "escores, figuras e avaliação após revisar os dados de entrada. "
+                "Essa ação gera novamente a amostra e atualiza as saídas da pesquisa."
+            )
+        with st.expander("Os registros que eu salvo ficam guardados?"):
+            st.write(
+                "Os registros são gravados nas bases usadas pelo sistema, com cópias de segurança antes das alterações. "
+                "A consulta e os downloads permitem conferir os dados registrados. "
+                "Em uma instalação local, os dados ficam na pasta do projeto; "
+                "em uma instalação hospedada, a conservação entre reinicializações depende do armazenamento persistente configurado."
+            )
 
 
 def render_articles() -> None:
@@ -299,7 +444,7 @@ def render_articles() -> None:
                     "titulo",
                     "ano",
                     "venue",
-                    "tarefa",
+                    "modalidade",
                     "doi",
                 ]
             ],
@@ -310,7 +455,7 @@ def render_articles() -> None:
                 "titulo": st.column_config.TextColumn("Título", width="large"),
                 "ano": "Ano",
                 "venue": "Veículo",
-                "tarefa": "Estrato",
+                "modalidade": "Modalidade",
                 "doi": "DOI",
             },
         )
@@ -337,7 +482,7 @@ def render_articles() -> None:
                 value=datetime.now().year,
                 step=1,
             )
-            stratum = second.selectbox("Estrato *", ["NA", "FER", "SER", "MULTI"])
+            modality = second.selectbox("Modalidade *", ["NA", "FER", "SER", "MULTI"])
             venue = third.text_input("Veículo de publicação", placeholder="Periódico ou conferência")
             doi = st.text_input("DOI", placeholder="10.xxxx/xxxxx")
 
@@ -370,7 +515,7 @@ def render_articles() -> None:
                 "titulo": title,
                 "ano": int(year),
                 "venue": venue,
-                "tarefa": stratum,
+                "modalidade": modality,
                 "doi": doi,
                 "empirico": True if empirical_selection == "Sim" else False if empirical_selection == "Não" else None,
                 "just_empirico": empirical_reason,
@@ -408,13 +553,13 @@ def render_eligibility() -> None:
     steps[2].metric("Empíricos e quantitativos", len(funnel["quantitative"]))
     steps[3].metric("Elegíveis para sorteio", len(eligible))
 
-    stratum_counts = {
-        stratum: int(eligible["tarefa"].astype(str).str.upper().eq(stratum).sum())
-        for stratum in ("FER", "SER", "MULTI")
+    modality_counts = {
+        modality: int(eligible["modalidade"].astype(str).str.upper().eq(modality).sum())
+        for modality in ("FER", "SER", "MULTI")
     }
     st.markdown(
-        f"**Distribuição dos elegíveis:** FER {stratum_counts['FER']} · "
-        f"SER {stratum_counts['SER']} · MULTI {stratum_counts['MULTI']}"
+        f"**Distribuição dos elegíveis:** FER {modality_counts['FER']} · "
+        f"SER {modality_counts['SER']} · MULTI {modality_counts['MULTI']}"
     )
 
     st.subheader("Gerar novo sorteio")
@@ -425,11 +570,11 @@ def render_eligibility() -> None:
 
     sampling_defaults = sampling_configuration()
     total_eligible = len(eligible)
-    smallest_stratum = min(stratum_counts.values()) if stratum_counts else 0
+    smallest_modality = min(modality_counts.values()) if modality_counts else 0
     default_target = min(sampling_defaults["target_total"], max(1, total_eligible))
     default_minimum = min(
-        sampling_defaults["minimum_per_stratum"],
-        smallest_stratum,
+        sampling_defaults["minimum_per_modality"],
+        smallest_modality,
         default_target // 3,
     )
     parameter_cols = st.columns(2)
@@ -443,23 +588,23 @@ def render_eligibility() -> None:
             help="Quantidade total de artigos titulares distribuídos entre FER, SER e MULTI.",
         )
     )
-    minimum_per_stratum = int(
+    minimum_per_modality = int(
         parameter_cols[1].number_input(
-            "Mínimo por estrato",
+            "Mínimo por modalidade",
             min_value=0,
-            max_value=smallest_stratum,
+            max_value=smallest_modality,
             value=default_minimum,
             step=1,
-            help="Quantidade mínima de titulares garantida para cada um dos três estratos.",
+            help="Quantidade mínima de titulares garantida para cada uma das três modalidades.",
         )
     )
 
     preview = None
     try:
         preview = sampling_allocation_preview(
-            stratum_counts,
+            modality_counts,
             target_total,
-            minimum_per_stratum,
+            minimum_per_modality,
         )
         titulars = preview["titulars"]
         reserves = preview["reserves"]
@@ -488,7 +633,7 @@ def render_eligibility() -> None:
         width="stretch",
     ):
         with st.spinner("Atualizando o funil e sorteando a amostra..."):
-            sample_run = generate_audit_sample(target_total, minimum_per_stratum)
+            sample_run = generate_audit_sample(target_total, minimum_per_modality)
         st.session_state["eligibility_sample_results"] = sample_run
         st.rerun()
 
@@ -520,7 +665,7 @@ def render_eligibility() -> None:
     )
     st.dataframe(
         eligible[
-            ["artigo_id", "titulo", "ano", "tarefa", "selecao_amostra"]
+            ["artigo_id", "titulo", "ano", "modalidade", "selecao_amostra"]
         ],
         width="stretch",
         hide_index=True,
@@ -528,7 +673,7 @@ def render_eligibility() -> None:
             "artigo_id": "ID",
             "titulo": st.column_config.TextColumn("Título", width="large"),
             "ano": "Ano",
-            "tarefa": "Estrato",
+            "modalidade": "Modalidade",
             "selecao_amostra": "Resultado do sorteio",
         },
     )
@@ -565,7 +710,7 @@ def render_audit() -> None:
                     "artigo_id",
                     "titulo",
                     "ano",
-                    "tarefa",
+                    "modalidade",
                     "selecao_amostra",
                     "status_auditoria",
                     "itens_unicos",
@@ -577,7 +722,7 @@ def render_audit() -> None:
                 "artigo_id": "ID",
                 "titulo": st.column_config.TextColumn("Título", width="large"),
                 "ano": "Ano",
-                "tarefa": "Estrato",
+                "modalidade": "Modalidade",
                 "selecao_amostra": "Seleção na amostra",
                 "status_auditoria": "Situação",
                 "itens_unicos": "Itens registrados",
@@ -755,8 +900,8 @@ def render_scenarios() -> None:
             temporal = second.selectbox("Dependência temporal", ["NA", "sim", "nao"])
             pretraining = third.selectbox("Pré-treinamento *", ["nao", "sim"])
 
-            modalities_present = st.multiselect(
-                "Modalidades presentes",
+            data_channels_present = st.multiselect(
+                "Canais de dados presentes",
                 ["video", "audio", "texto", "fisiologia", "conhecimento"],
             )
 
@@ -796,7 +941,7 @@ def render_scenarios() -> None:
                 "dependencia_temporal": temporal,
                 "n_amostras_total": "NA" if sample_count == 0 else int(sample_count),
                 "pretreino": pretraining,
-                "modalidades_presentes": modalities_present,
+                "canais_dados_presentes": data_channels_present,
                 "modelo_familia": family,
                 "modelo_especifico": specific_model,
                 "protocolo_person_indep": person_independent,
@@ -871,13 +1016,13 @@ def render_recommendation() -> None:
         temporal = first.selectbox("Dependência temporal", ["Qualquer"] + temporal_options)
         compatible = apply_optional_filter(compatible, "dependencia_temporal", temporal)
 
-        modality_sets = available_values(
+        data_channel_sets = available_values(
             compatible,
-            "modalidades_presentes",
+            "canais_dados_presentes",
             include_na=False,
         )
 
-        def format_modality_set(value):
+        def format_data_channel_set(value):
             if value == "Qualquer":
                 return value
             try:
@@ -886,10 +1031,10 @@ def render_recommendation() -> None:
                 return value
             return ", ".join(parsed) if isinstance(parsed, list) else str(parsed)
 
-        modality_set = second.selectbox(
-            "Combinação de modalidades",
-            ["Qualquer"] + modality_sets,
-            format_func=format_modality_set,
+        data_channel_set = second.selectbox(
+            "Combinação de canais de dados",
+            ["Qualquer"] + data_channel_sets,
+            format_func=format_data_channel_set,
         )
         submit = st.button("Gerar recomendação", type="primary", width="stretch")
 
@@ -900,7 +1045,7 @@ def render_recommendation() -> None:
         "ambiente_coleta": None if environment == "Qualquer" else environment,
         "pretreino": None if pretraining == "Qualquer" else pretraining,
         "dependencia_temporal": None if temporal == "Qualquer" else temporal,
-        "modalidades_presentes": None if modality_set == "Qualquer" else modality_set,
+        "canais_dados_presentes": None if data_channel_set == "Qualquer" else data_channel_set,
     }
     if submit:
         try:
@@ -1025,6 +1170,7 @@ with st.sidebar:
         "Navegação",
         [
             "Visão geral",
+            "Como usar",
             "Artigos",
             "Elegibilidade",
             "Auditoria",
@@ -1038,6 +1184,7 @@ with st.sidebar:
 
 PAGES = {
     "Visão geral": render_overview,
+    "Como usar": render_help,
     "Artigos": render_articles,
     "Elegibilidade": render_eligibility,
     "Auditoria": render_audit,

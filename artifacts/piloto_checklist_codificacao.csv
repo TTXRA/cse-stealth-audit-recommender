@@ -1,4 +1,4 @@
-artigo_id,estrato,item_id,grau,NA,justificativa_NA,evidencia,observacoes
+artigo_id,modalidade,item_id,grau,NA,justificativa_NA,evidencia,observacoes
 ID_17,FER,DAD,1,0,-,"Identifica datasets (RAF-DB, JAFFE, FER+), mas só reporta demografia de JAFFE e omite contagens exatas de split para todos.",Falha parcial em demografia.
 ID_17,FER,ROT,0,0,-,"Lista classes, mas não detalha métricas de qualidade ou concordância dos rótulos (mesmo para o dataset corrigido FER+).",Confia cegamente no dataset.
 ID_17,FER,ESC,1,0,-,Construto: 7 expressões faciais. Evidência: pixels via CNN. Aceita a validade do dataset sem análise crítica de construto.,Mapeamento direto e superficial.

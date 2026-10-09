@@ -1,7 +1,7 @@
 import pandas as pd
 from scripts.utils.common import norm_text, normalize_columns, require_cols, require_unique, parse_bin01
 from scripts.utils.config import (IN_DIR, MID_DIR, OUT_ELEGIVEIS_DIR, MID_CORPUS_JANELA, INPUT_ROTULOS_ELEG,
-                                  MID_CORPUS_EMP_QUANT, OUT_ELEG_FER, OUT_ELEG_SER, OUT_ELEG_MULTI, TAREFAS_VALIDAS)
+                                  MID_CORPUS_EMP_QUANT, OUT_ELEG_FER, OUT_ELEG_SER, OUT_ELEG_MULTI, MODALIDADES_VALIDAS)
 
 IN_DIR.mkdir(parents=True, exist_ok=True)
 MID_DIR.mkdir(parents=True, exist_ok=True)
@@ -9,7 +9,7 @@ OUT_ELEGIVEIS_DIR.mkdir(parents=True, exist_ok=True)
 
 df = pd.read_csv(MID_CORPUS_JANELA, dtype=str, keep_default_na=False)
 df = normalize_columns(df)
-require_cols(df, ["artigo_id", "ano", "tarefa", "titulo", "venue", "doi"], MID_CORPUS_JANELA.name)
+require_cols(df, ["artigo_id", "ano", "modalidade", "titulo", "venue", "doi"], MID_CORPUS_JANELA.name)
 require_unique(df, "artigo_id", MID_CORPUS_JANELA.name)
 df["artigo_id"] = df["artigo_id"].map(norm_text)
 
@@ -30,14 +30,14 @@ if falt.any():
 
 df_eq = df2[(df2["empirico"] == 1) & (df2["quantitativo"] == 1)].copy()
 
-df_eq["tarefa"] = df_eq["tarefa"].map(lambda x: norm_text(x).upper() if norm_text(x) != "" else "NA")
-inv = ~df_eq["tarefa"].isin(TAREFAS_VALIDAS)
+df_eq["modalidade"] = df_eq["modalidade"].map(lambda x: norm_text(x).upper() if norm_text(x) != "" else "NA")
+inv = ~df_eq["modalidade"].isin(MODALIDADES_VALIDAS)
 if inv.any():
-    raise ValueError("tarefa inválida em: " + ", ".join(df_eq.loc[inv, "artigo_id"].tolist()))
+    raise ValueError("modalidade inválida em: " + ", ".join(df_eq.loc[inv, "artigo_id"].tolist()))
 
 df_eq = df_eq.drop(columns=["empirico", "quantitativo"])
 df_eq.to_csv(MID_CORPUS_EMP_QUANT, index=False)
 
-df_eq[df_eq["tarefa"] == "FER"].to_csv(OUT_ELEG_FER, index=False)
-df_eq[df_eq["tarefa"] == "SER"].to_csv(OUT_ELEG_SER, index=False)
-df_eq[df_eq["tarefa"] == "MULTI"].to_csv(OUT_ELEG_MULTI, index=False)
+df_eq[df_eq["modalidade"] == "FER"].to_csv(OUT_ELEG_FER, index=False)
+df_eq[df_eq["modalidade"] == "SER"].to_csv(OUT_ELEG_SER, index=False)
+df_eq[df_eq["modalidade"] == "MULTI"].to_csv(OUT_ELEG_MULTI, index=False)

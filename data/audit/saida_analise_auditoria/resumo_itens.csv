@@ -1,4 +1,4 @@
-﻿config_pesos,estrato,item_id,item_label,n,media,mediana,q1,q3,ic95_media_inf,ic95_media_sup,ic95_mediana_inf,ic95_mediana_sup
+﻿config_pesos,modalidade,item_id,item_label,n,media,mediana,q1,q3,ic95_media_inf,ic95_media_sup,ic95_mediana_inf,ic95_mediana_sup
 nucleares,FER,CAL,Calibracao,9,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
 nucleares,FER,CST,Custo e Latencia,8,56.25,50.0,50.0,62.5,37.5,75.0,50.0,100.0
 nucleares,FER,DAD,Dados e Demografia,9,50.0,50.0,50.0,50.0,27.77777777777778,72.22222222222223,50.0,100.0

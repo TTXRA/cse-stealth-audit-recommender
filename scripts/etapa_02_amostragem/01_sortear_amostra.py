@@ -5,14 +5,14 @@ import numpy as np
 import pandas as pd
 
 from scripts.utils.common import norm_text, normalize_columns, require_cols, require_unique, read_csv, sha256_file
-from scripts.utils.config import (OUT_AMOSTRAS_DIR, OUT_LOGS_DIR, ELEGIVEIS_POR_TAREFA, AMOSTRA_POR_TAREFA,
-                                  OUT_REGISTRO_SORTEIO, MID_CORPUS_EMP_QUANT, RNG_SEED, N_ALVO_TOTAL, MIN_POR_ESTRATO,
+from scripts.utils.config import (OUT_AMOSTRAS_DIR, OUT_LOGS_DIR, ELEGIVEIS_POR_MODALIDADE, AMOSTRA_POR_MODALIDADE,
+                                  OUT_REGISTRO_SORTEIO, MID_CORPUS_EMP_QUANT, RNG_SEED, N_ALVO_TOTAL, MIN_POR_MODALIDADE,
                                   N_SUPLENTES, META_COLS, OUT_LOG_CONTINGENCIA, OUT_ALOCACAO_SORTEIO)
 
 OUT_AMOSTRAS_DIR.mkdir(parents=True, exist_ok=True)
 OUT_LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
-ESTRATOS = ["FER", "SER", "MULTI"]
+MODALIDADES = ["FER", "SER", "MULTI"]
 
 
 def read_ids(path):
@@ -40,24 +40,24 @@ def read_meta():
     return df
 
 
-def redistribui(n_eleg, n_alvo_total, min_por_estrato):
-    base = {e: min(int(min_por_estrato), int(n_eleg[e])) for e in ESTRATOS}
+def redistribui(n_eleg, n_alvo_total, min_por_modalidade):
+    base = {e: min(int(min_por_modalidade), int(n_eleg[e])) for e in MODALIDADES}
     n_base = sum(base.values())
     resto = int(n_alvo_total) - n_base
     if resto < 0:
         raise ValueError("N_ALVO_TOTAL menor que a soma dos mínimos aplicáveis.")
-    cap = {e: max(0, int(n_eleg[e]) - int(base[e])) for e in ESTRATOS}
+    cap = {e: max(0, int(n_eleg[e]) - int(base[e])) for e in MODALIDADES}
     cap_total = sum(cap.values())
     if resto > cap_total:
-        raise ValueError("N_ALVO_TOTAL maior que o total elegível disponível nos estratos.")
+        raise ValueError("N_ALVO_TOTAL maior que o total elegível disponível nas modalidades.")
     aloc = base.copy()
     if resto == 0:
         return aloc
-    quotas = {e: (cap[e] / cap_total) * resto if cap_total > 0 else 0 for e in ESTRATOS}
-    floors = {e: int(quotas[e] // 1) for e in ESTRATOS}
-    aloc = {e: aloc[e] + floors[e] for e in ESTRATOS}
+    quotas = {e: (cap[e] / cap_total) * resto if cap_total > 0 else 0 for e in MODALIDADES}
+    floors = {e: int(quotas[e] // 1) for e in MODALIDADES}
+    aloc = {e: aloc[e] + floors[e] for e in MODALIDADES}
     rem = resto - sum(floors.values())
-    frac = sorted(ESTRATOS, key=lambda e: (quotas[e] - floors[e], cap[e]), reverse=True)
+    frac = sorted(MODALIDADES, key=lambda e: (quotas[e] - floors[e], cap[e]), reverse=True)
     for i in range(rem):
         e = frac[i % len(frac)]
         if aloc[e] < n_eleg[e]:
@@ -70,10 +70,10 @@ def redistribui(n_eleg, n_alvo_total, min_por_estrato):
     return aloc
 
 
-def sortear_estrato(estrato, df_meta_stratum, n_titulares, n_suplentes, rng):
-    df = df_meta_stratum.copy()
+def sortear_modalidade(modalidade, df_meta_modality, n_titulares, n_suplentes, rng):
+    df = df_meta_modality.copy()
     df = df.sort_values(["artigo_id"], kind="stable").reset_index(drop=True)
-    df["numero_estrato"] = (df.index + 1).astype(int)
+    df["numero_modalidade"] = (df.index + 1).astype(int)
 
     perm = rng.permutation(len(df))
     df = df.iloc[perm].reset_index(drop=True)
@@ -86,12 +86,12 @@ def sortear_estrato(estrato, df_meta_stratum, n_titulares, n_suplentes, rng):
 
     def pack(sub, tipo):
         if len(sub) == 0:
-            return pd.DataFrame(columns=["estrato", "tipo", "ordem"] + META_COLS + ["numero_estrato"])
+            return pd.DataFrame(columns=["modalidade", "tipo", "ordem"] + [c for c in META_COLS if c != "modalidade"] + ["numero_modalidade"])
         out = sub.copy()
         out.insert(0, "ordem", (np.arange(len(out)) + 1).astype(int))
         out.insert(0, "tipo", tipo)
-        out.insert(0, "estrato", estrato)
-        cols = ["estrato", "tipo", "ordem"] + META_COLS + ["numero_estrato"]
+        out["modalidade"] = modalidade
+        cols = ["modalidade", "tipo", "ordem"] + [c for c in META_COLS if c != "modalidade"] + ["numero_modalidade"]
         for c in cols:
             if c not in out.columns:
                 out[c] = ""
@@ -104,21 +104,21 @@ def sortear_estrato(estrato, df_meta_stratum, n_titulares, n_suplentes, rng):
 
 
 def validate_params():
-    if int(N_ALVO_TOTAL) <= 0 or int(MIN_POR_ESTRATO) < 0:
+    if int(N_ALVO_TOTAL) <= 0 or int(MIN_POR_MODALIDADE) < 0:
         raise ValueError("Parâmetros inválidos.")
-    if int(MIN_POR_ESTRATO) * len(ESTRATOS) > int(N_ALVO_TOTAL):
-        raise ValueError("MIN_POR_ESTRATO * n_estratos não pode ser maior que N_ALVO_TOTAL.")
+    if int(MIN_POR_MODALIDADE) * len(MODALIDADES) > int(N_ALVO_TOTAL):
+        raise ValueError("MIN_POR_MODALIDADE * n_modalidades não pode ser maior que N_ALVO_TOTAL.")
 
 
 def main():
     validate_params()
 
-    ids = {s: read_ids(p) for s, p in ELEGIVEIS_POR_TAREFA.items()}
+    ids = {s: read_ids(p) for s, p in ELEGIVEIS_POR_MODALIDADE.items()}
     meta = read_meta()
 
     dfs = {}
     counts = {}
-    for s in ESTRATOS:
+    for s in MODALIDADES:
         id_list = ids.get(s, [])
         s_ids = set(id_list)
         m = meta[meta["artigo_id"].isin(s_ids)].copy()
@@ -128,8 +128,8 @@ def main():
         dfs[s] = m
         counts[s] = int(m["artigo_id"].nunique())
 
-    faltantes = {e: max(0, int(MIN_POR_ESTRATO) - int(counts[e])) for e in ESTRATOS}
-    aloc = redistribui(counts, N_ALVO_TOTAL, MIN_POR_ESTRATO)
+    faltantes = {e: max(0, int(MIN_POR_MODALIDADE) - int(counts[e])) for e in MODALIDADES}
+    aloc = redistribui(counts, N_ALVO_TOTAL, MIN_POR_MODALIDADE)
 
     now = datetime.now().isoformat(timespec="seconds")
     script = Path(__file__).name
@@ -139,7 +139,7 @@ def main():
         "script": script,
         "seed": RNG_SEED,
         "n_alvo_total": N_ALVO_TOTAL,
-        "min_por_estrato": MIN_POR_ESTRATO,
+        "min_por_modalidade": MIN_POR_MODALIDADE,
         "fer_elegiveis": counts["FER"],
         "ser_elegiveis": counts["SER"],
         "multi_elegiveis": counts["MULTI"],
@@ -156,33 +156,33 @@ def main():
     log.to_csv(OUT_LOG_CONTINGENCIA, index=False)
     OUT_LOG_CONTINGENCIA.with_suffix(".sha256").write_text(sha256_file(OUT_LOG_CONTINGENCIA) + "\n", encoding="utf-8")
 
-    pd.DataFrame([{"estrato": e, "n_titulares_planejado": aloc[e], "n_elegiveis": counts[e]} for e in ESTRATOS]).to_csv(
+    pd.DataFrame([{"modalidade": e, "n_titulares_planejado": aloc[e], "n_elegiveis": counts[e]} for e in MODALIDADES]).to_csv(
         OUT_ALOCACAO_SORTEIO, index=False)
     OUT_ALOCACAO_SORTEIO.with_suffix(".sha256").write_text(sha256_file(OUT_ALOCACAO_SORTEIO) + "\n", encoding="utf-8")
 
     rng = np.random.default_rng(RNG_SEED)
 
     registro_rows = []
-    for s in ESTRATOS:
-        df_out, tit_ids, sup_ids, n_eleg = sortear_estrato(s, dfs[s], aloc.get(s, 0), N_SUPLENTES, rng)
-        df_out.to_csv(AMOSTRA_POR_TAREFA[s], index=False)
-        h = sha256_file(AMOSTRA_POR_TAREFA[s])
+    for s in MODALIDADES:
+        df_out, tit_ids, sup_ids, n_eleg = sortear_modalidade(s, dfs[s], aloc.get(s, 0), N_SUPLENTES, rng)
+        df_out.to_csv(AMOSTRA_POR_MODALIDADE[s], index=False)
+        h = sha256_file(AMOSTRA_POR_MODALIDADE[s])
 
         registro_rows.append({
             "data_execucao": now,
             "script": script,
             "seed": RNG_SEED,
             "n_alvo_total": N_ALVO_TOTAL,
-            "min_por_estrato": MIN_POR_ESTRATO,
-            "n_suplentes_por_estrato": N_SUPLENTES,
-            "estrato": s,
+            "min_por_modalidade": MIN_POR_MODALIDADE,
+            "n_suplentes_por_modalidade": N_SUPLENTES,
+            "modalidade": s,
             "n_elegiveis": n_eleg,
             "n_titulares": len(tit_ids),
             "n_suplentes": len(sup_ids),
             "titulares": json.dumps(tit_ids, ensure_ascii=False),
             "suplentes": json.dumps(sup_ids, ensure_ascii=False),
             "sha256_amostra_csv": h,
-            "arquivo_amostra_csv": AMOSTRA_POR_TAREFA[s].as_posix(),
+            "arquivo_amostra_csv": AMOSTRA_POR_MODALIDADE[s].as_posix(),
         })
 
     pd.DataFrame(registro_rows).to_csv(OUT_REGISTRO_SORTEIO, index=False)

@@ -2,25 +2,21 @@
   "query": {
     "modalidade": "FER",
     "tarefa": "multiclasse",
-    "pretreino": "nao",
     "dataset_id": null,
     "ambiente_coleta": null,
+    "pretreino": null,
     "dependencia_temporal": null,
-    "modalidades_presentes": null
+    "canais_dados_presentes": null
   },
   "filtros_obrigatorios": [
     "modalidade",
     "tarefa"
   ],
-  "filtros_opcionais_solicitados": [
-    "pretreino"
-  ],
-  "filtros_opcionais_utilizados": [
-    "pretreino"
-  ],
+  "filtros_opcionais_solicitados": [],
+  "filtros_opcionais_utilizados": [],
   "filtros_relaxados": [],
-  "linhas_elegiveis": 25,
-  "observacoes_agregadas": 14,
+  "linhas_elegiveis": 27,
+  "observacoes_agregadas": 16,
   "familias_candidatas": 6,
   "familias_principais": 2,
   "abstencao": false,

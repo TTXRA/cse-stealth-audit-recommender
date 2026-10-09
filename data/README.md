@@ -65,7 +65,7 @@ Saídas relevantes de `saida_analise_auditoria/`:
 
 - `scores_artigos.csv`: escores por artigo.
 - `scores_itens.csv`: escores por item.
-- `scores_estratos_*.png`: gráficos de distribuição por estrato.
+- `scores_modalidades_*.png`: gráficos de distribuição por modalidade.
 - `itens_criticos.csv`: itens menos atendidos.
 - `heatmap_itens.png`: mapa de calor artigo por item.
 - `sensibilidade_artigos.csv`: análise de sensibilidade por artigo.
@@ -78,8 +78,8 @@ Contém saídas finais e rastreáveis das etapas de amostragem, robustez, recome
 
 Subdiretórios principais:
 
-- `elegiveis/`: listas de artigos elegíveis por estrato e registros de exclusão.
-- `amostras/`: amostras sorteadas por estrato.
+- `elegiveis/`: listas de artigos elegíveis por modalidade e registros de exclusão.
+- `amostras/`: amostras sorteadas por modalidade.
 - `logs/`: registros de sorteio, alocação e contingência.
 - `prisma/`: tabelas para fluxograma PRISMA.
 - `robustez/`: índices de robustez, rankings de recomendação e gráficos.
@@ -119,3 +119,14 @@ sha256sum -c data/output/logs/registro_sorteio.sha256
 - Arquivos em `intermediate/` podem ser recriados a partir dos scripts da etapa 01.
 - Arquivos em `output/` podem ser recriados pela execução ordenada dos scripts.
 - Alterações manuais em bases de auditoria e cenários devem ser registradas no controle de versão.
+
+## Modalidade e tarefa
+
+Nas bases do corpus, de elegibilidade, de amostragem e de escores da auditoria,
+`modalidade` identifica FER, SER ou MULTI (ou NA quando não informada).
+Na base de cenários,
+`modalidade` mantém seu domínio próprio (FER, SER, HER, MULTIMODAL), enquanto
+`tarefa` identifica multiclasse, multilabel, regressao ou deteccao.
+
+A base mestre, as bases de auditoria e os scripts utilizam exclusivamente a coluna `modalidade`.
+Não há conversão ou leitura alternativa do nome antigo no fluxo do corpus.

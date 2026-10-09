@@ -9,17 +9,17 @@
 ## Mudancas de ranking entre configuracoes
 - Artigos | uniforme_vs_nucleares: media abs ranking=0.36; max abs ranking=2.00; media abs score=1.63; max abs score=6.62
 - Artigos | uniforme_vs_robustez: media abs ranking=0.91; max abs ranking=2.00; media abs score=3.27; max abs score=8.93
-- Estratos | uniforme_vs_nucleares: media abs ranking=0.00; max abs ranking=0.00; media abs mediana=0.93; max abs mediana=1.71
-- Estratos | uniforme_vs_robustez: media abs ranking=0.00; max abs ranking=0.00; media abs mediana=4.25; max abs mediana=5.00
+- Modalidades | uniforme_vs_nucleares: media abs ranking=0.00; max abs ranking=0.00; media abs mediana=0.93; max abs mediana=1.71
+- Modalidades | uniforme_vs_robustez: media abs ranking=0.00; max abs ranking=0.00; media abs mediana=4.25; max abs mediana=5.00
 
 ## Correlacoes de Spearman
-- Interpretar as correlacoes dos estratos com cautela, pois ha apenas tres estratos.
+- Interpretar as correlacoes das modalidades com cautela, pois ha apenas tres modalidades.
 - artigos | uniforme vs nucleares: rho=0.9946; p=3.619e-21
 - artigos | uniforme vs robustez: rho=0.9864; p=3.725e-17
 - artigos | nucleares vs robustez: rho=0.9878; p=1.224e-17
-- estratos | uniforme vs nucleares: rho=1.0000; p=<1e-300
-- estratos | uniforme vs robustez: rho=1.0000; p=<1e-300
-- estratos | nucleares vs robustez: rho=1.0000; p=<1e-300
+- modalidades | uniforme vs nucleares: rho=1.0000; p=<1e-300
+- modalidades | uniforme vs robustez: rho=1.0000; p=<1e-300
+- modalidades | nucleares vs robustez: rho=1.0000; p=<1e-300
 
 ## Itens mais criticos no esquema uniforme
 - CAL (Calibracao): media=2.27; IC95%=[0.00, 6.82]

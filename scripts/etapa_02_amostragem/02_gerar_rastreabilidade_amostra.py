@@ -1,12 +1,12 @@
 import pandas as pd
 
 from scripts.utils.common import norm_text, normalize_columns, require_cols, require_unique, read_csv, sha256_file
-from scripts.utils.config import (OUT_LOGS_DIR, OUT_PRISMA_DIR, OUT_PRISMA, AMOSTRA_POR_TAREFA, ELEGIVEIS_POR_TAREFA)
+from scripts.utils.config import (OUT_LOGS_DIR, OUT_PRISMA_DIR, OUT_PRISMA, AMOSTRA_POR_MODALIDADE, ELEGIVEIS_POR_MODALIDADE)
 
 OUT_LOGS_DIR.mkdir(parents=True, exist_ok=True)
 OUT_PRISMA_DIR.mkdir(parents=True, exist_ok=True)
 
-ESTRATOS = ["FER", "SER", "MULTI"]
+MODALIDADES = ["FER", "SER", "MULTI"]
 OUT_PRISMA_FINAL = OUT_PRISMA_DIR / "prisma_final.csv"
 
 def read_ids(path):
@@ -23,9 +23,9 @@ def read_amostra(path):
         raise FileNotFoundError(f"Arquivo de amostra não encontrado: {path.as_posix()}")
     df = read_csv(path)
     df = normalize_columns(df)
-    require_cols(df, ["artigo_id", "estrato", "tipo"], path.name)
+    require_cols(df, ["artigo_id", "modalidade", "tipo"], path.name)
     df["artigo_id"] = df["artigo_id"].map(norm_text)
-    df["estrato"] = df["estrato"].map(lambda x: norm_text(x).upper())
+    df["modalidade"] = df["modalidade"].map(lambda x: norm_text(x).upper())
     df["tipo"] = df["tipo"].map(lambda x: norm_text(x).lower())
     df = df[df["artigo_id"].ne("")]
     return df
@@ -55,10 +55,10 @@ def main():
     cont_tit = {}
     cont_sup = {}
 
-    for s in ESTRATOS:
-        eleg_ids = set(read_ids(ELEGIVEIS_POR_TAREFA[s]))
-        df_a = read_amostra(AMOSTRA_POR_TAREFA[s])
-        df_a = df_a[df_a["estrato"] == s].copy()
+    for s in MODALIDADES:
+        eleg_ids = set(read_ids(ELEGIVEIS_POR_MODALIDADE[s]))
+        df_a = read_amostra(AMOSTRA_POR_MODALIDADE[s])
+        df_a = df_a[df_a["modalidade"] == s].copy()
 
         tit = df_a[df_a["tipo"] == "titular"]["artigo_id"].drop_duplicates().tolist()
         sup = df_a[df_a["tipo"] == "suplente"]["artigo_id"].drop_duplicates().tolist()
@@ -74,11 +74,11 @@ def main():
     n_supl_total = sum(cont_sup.values())
 
     linhas = []
-    for s in ESTRATOS:
+    for s in MODALIDADES:
         linhas.append({"etapa": f"amostra_final_{s}", "n": cont_tit[s]})
     linhas.append({"etapa": "amostra_final_total", "n": n_amostra_total})
 
-    for s in ESTRATOS:
+    for s in MODALIDADES:
         linhas.append({"etapa": f"suplentes_{s}", "n": cont_sup[s]})
     linhas.append({"etapa": "suplentes_total", "n": n_supl_total})
 

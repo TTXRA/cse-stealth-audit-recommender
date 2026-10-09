@@ -55,16 +55,16 @@ if len(sem_q) > 0:
     sem_q["motivo_exclusao"] = "sem_resultados_quantitativos"
     excl.append(sem_q)
 
-df_eq = read(MID_CORPUS_EMP_QUANT, usecols=["artigo_id", "tarefa"])
+df_eq = read(MID_CORPUS_EMP_QUANT, usecols=["artigo_id", "modalidade"])
 df_eq = normalize_columns(df_eq)
-require_cols(df_eq, ["artigo_id", "tarefa"], MID_CORPUS_EMP_QUANT.name)
+require_cols(df_eq, ["artigo_id", "modalidade"], MID_CORPUS_EMP_QUANT.name)
 require_unique(df_eq, "artigo_id", MID_CORPUS_EMP_QUANT.name)
 
-df_eq["tarefa"] = df_eq["tarefa"].map(lambda x: norm_text(x).upper() if norm_text(x) != "" else "NA")
-na_task = df_eq[df_eq["tarefa"] == "NA"][["artigo_id"]].copy()
-if len(na_task) > 0:
-    na_task["motivo_exclusao"] = "tarefa_na_fora_estratos"
-    excl.append(na_task)
+df_eq["modalidade"] = df_eq["modalidade"].map(lambda x: norm_text(x).upper() if norm_text(x) != "" else "NA")
+na_modality = df_eq[df_eq["modalidade"] == "NA"][["artigo_id"]].copy()
+if len(na_modality) > 0:
+    na_modality["motivo_exclusao"] = "modalidade_na_fora_modalidades"
+    excl.append(na_modality)
 
 if excl:
     excl_df = pd.concat(excl, ignore_index=True).sort_values(["artigo_id"], kind="stable")
@@ -93,8 +93,8 @@ df_multi = read(OUT_ELEG_MULTI, usecols=["artigo_id"])
 require_cols(df_multi, ["artigo_id"], OUT_ELEG_MULTI.name)
 n_multi = int(df_multi["artigo_id"].nunique())
 
-n_na = int(na_task["artigo_id"].nunique())
-n_in_strata = n_fer + n_ser + n_multi
+n_na = int(na_modality["artigo_id"].nunique())
+n_in_modalities = n_fer + n_ser + n_multi
 
 prisma = pd.DataFrame([
     {"etapa": "corpus_padronizado", "n": n_pad},
@@ -104,7 +104,7 @@ prisma = pd.DataFrame([
     {"etapa": "elegiveis_FER", "n": n_fer},
     {"etapa": "elegiveis_SER", "n": n_ser},
     {"etapa": "elegiveis_MULTI", "n": n_multi},
-    {"etapa": "fora_estratos_tarefa_NA", "n": n_na},
-    {"etapa": "elegiveis_em_estratos", "n": n_in_strata},
+    {"etapa": "fora_modalidades_modalidade_NA", "n": n_na},
+    {"etapa": "elegiveis_em_modalidades", "n": n_in_modalities},
 ])
 prisma.to_csv(OUT_PRISMA, index=False)

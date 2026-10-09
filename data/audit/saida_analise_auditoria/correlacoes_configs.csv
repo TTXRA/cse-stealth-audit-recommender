@@ -2,6 +2,6 @@
 artigos,uniforme,nucleares,0.994614944432482,3.619279584397459e-21,3.619e-21
 artigos,uniforme,robustez,0.9863882687043152,3.725450485306185e-17,3.725e-17
 artigos,nucleares,robustez,0.9878290800453794,1.2242019958705268e-17,1.224e-17
-estratos,uniforme,nucleares,1.0,0.0,<1e-300
-estratos,uniforme,robustez,1.0,0.0,<1e-300
-estratos,nucleares,robustez,1.0,0.0,<1e-300
+modalidades,uniforme,nucleares,1.0,0.0,<1e-300
+modalidades,uniforme,robustez,1.0,0.0,<1e-300
+modalidades,nucleares,robustez,1.0,0.0,<1e-300

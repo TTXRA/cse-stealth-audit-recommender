@@ -19,7 +19,7 @@ SAÍDA
 
 Retorne apenas CSV puro, com uma única linha de cabeçalho e a seguinte ordem fixa de colunas:
 
-artigo_titulo,dataset_id,modalidade,tarefa,ambiente_coleta,dependencia_temporal,n_amostras_total,pretreino,modalidades_presentes,modelo_familia,modelo_especifico,protocolo_person_independent,protocolo_cross_dataset,metricas_principais,metrica_principal_valor,code_available,weights_available,augmentations,observacoes
+artigo_titulo,dataset_id,modalidade,tarefa,ambiente_coleta,dependencia_temporal,n_amostras_total,pretreino,canais_dados_presentes,modelo_familia,modelo_especifico,protocolo_person_independent,protocolo_cross_dataset,metricas_principais,metrica_principal_valor,code_available,weights_available,augmentations,observacoes
 
 Não escreva nada antes ou depois do CSV.
 
@@ -77,7 +77,7 @@ Use exatamente estes domínios:
 - ambiente_coleta: controlado | misto | selvagem | NA
 - dependencia_temporal: sim | nao | NA
 - n_amostras_total: inteiro positivo ou NA
-- modalidades_presentes: lista JSON válida, subset de ["video","audio","texto","fisiologia","conhecimento"] ou NA
+- canais_dados_presentes: lista JSON válida, subset de ["video","audio","texto","fisiologia","conhecimento"] ou NA
 - modelo_familia: um dos valores controlados definidos abaixo
 - modelo_especifico: nome textual do modelo exatamente ou quase exatamente como no artigo
 - protocolo_person_independent: sim | nao
@@ -124,8 +124,8 @@ modalidade
 - Use FER para reconhecimento de expressões faciais.
 - Use SER para reconhecimento de emoções na fala.
 - Use HER para reconhecimento de emoções humanas quando não se encaixar claramente em FER/SER e não houver fusão multimodal.
-- Use MULTIMODAL apenas quando houver mais de uma modalidade presente e o modelo utilizar explicitamente fusão de informações para classificação.
-- Se houver mais de uma modalidade presente mas não houver fusão explícita para classificação, não use MULTIMODAL; gere linhas unimodais separadas se o artigo reportar resultados separados.
+- Use MULTIMODAL apenas quando houver mais de um canal de dados presente e o modelo utilizar explicitamente fusão de informações para classificação.
+- Se houver mais de um canal de dados presente mas não houver fusão explícita para classificação, não use MULTIMODAL; gere linhas unimodais separadas se o artigo reportar resultados separados.
 
 tarefa
 - multiclasse para classificação com mais de duas classes exclusivas
@@ -161,11 +161,11 @@ pretreino
 - Se o mesmo modelo tiver pretreino explícito em um dataset e reaparecer em outro dataset do mesmo artigo sem negação explícita, mantenha sim para esse mesmo modelo.
 - Quando pretreino for mantido por consistência intra-artigo e não por menção explícita naquela linha específica, registre isso em observacoes.
 
-modalidades_presentes
+canais_dados_presentes
 - Use lista JSON válida com itens entre:
   "video", "audio", "texto", "fisiologia", "conhecimento"
-- Use apenas modalidades explicitamente presentes no experimento.
-- Não infira modalidade a partir do tema geral do artigo.
+- Use apenas canais de dados explicitamente presentes no experimento.
+- Não infira canais de dados a partir do tema geral do artigo.
 - Se não for possível identificar, use NA.
 
 observacoes
@@ -325,7 +325,7 @@ Antes de produzir o CSV final, faça silenciosamente esta checagem:
 7. metrica_principal_valor está em [0,1] ou NA.
 8. protocolo_person_independent, protocolo_cross_dataset, pretreino, code_available e weights_available usam apenas sim ou nao.
 9. Há uma linha por artigo_titulo × dataset_id × modelo_especifico × regime_relevante.
-10. Se modalidades_presentes tiver mais de um item e houver fusão explícita para classificação, modalidade deve ser MULTIMODAL e modelo_familia deve ser Multimodal.
+10. Se canais_dados_presentes tiver mais de um item e houver fusão explícita para classificação, modalidade deve ser MULTIMODAL e modelo_familia deve ser Multimodal.
 11. Se metricas_principais incluir apenas uma métrica principal com valor disponível, metrica_principal_valor não pode ser NA.
 12. Se augmentations contiver termo genérico, substitua por NA.
 13. Se modelo_especifico for nome inventado ou excessivamente genérico não apoiado no texto do artigo, substitua pelo nome realmente usado no artigo ou por NA.

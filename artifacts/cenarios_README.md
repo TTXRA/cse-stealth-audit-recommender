@@ -26,7 +26,7 @@ Ambos contêm os mesmos registros, em formatos diferentes.
 
 - Linhas: **53**
 - Artigos únicos (`artigo_id`): **22**
-- Modalidades presentes: **FER, HER, MULTIMODAL, SER**
+- Modalidades operacionais: **FER, HER, MULTIMODAL, SER**
 - Tarefas presentes: **deteccao, multiclasse, regressao**
 - Famílias de modelos presentes: **ANN, Boosting_ML, CNN, Ensemble_ML, Multimodal, RF, RNN, SVM, Transformer**
 
@@ -68,13 +68,13 @@ Assim, `NA` deve ser reservado aos campos cujo esquema admite ausência sem impu
 | `artigo_id` | string | Identificador único do artigo no mapeamento mestre | obrigatório |
 | `artigo_titulo` | string | Título do artigo fonte | obrigatório |
 | `dataset_id` | string ou NA | Conjunto de dados utilizado | livre; usar NA quando ausente |
-| `modalidade` | string | Modalidade principal do estudo | `FER`, `SER`, `MULTIMODAL`, `HER` |
-| `tarefa` | string | Tipo de tarefa | `multiclasse`, `multilabel`, `regressao`, `deteccao` |
+| `modalidade` | string | Categoria operacional do cenário experimental | `FER`, `SER`, `MULTIMODAL`, `HER` |
+| `tarefa` | string | Tipo de problema de aprendizagem | `multiclasse`, `multilabel`, `regressao`, `deteccao` |
 | `ambiente_coleta` | string ou NA | Ambiente de coleta do conjunto de dados | `controlado`, `misto`, `selvagem`, `NA` |
 | `dependencia_temporal` | string ou NA | Dependência temporal entre amostras | `sim`, `nao`, `NA` |
 | `n_amostras_total` | inteiro ou NA | Total de amostras usadas no treino | inteiro positivo ou NA |
 | `pretreino` | string | Indica uso de pré-treinamento / transferência | `sim`, `nao` |
-| `modalidades_presentes` | lista JSON ou NA | Modalidades presentes no experimento | subconjunto de `["video","audio","texto","fisiologia","conhecimento"]` |
+| `canais_dados_presentes` | lista JSON ou NA | Canais de dados presentes no experimento | subconjunto de `["video","audio","texto","fisiologia","conhecimento"]` |
 | `modelo_familia` | string | Família do modelo | `CNN`, `Transformer`, `RNN`, `ANN`, `SVM`, `RF`, `Boosting_ML`, `Ensemble_ML`, `HMM`, `CRF`, `Autoencoder`, `Multimodal` |
 | `modelo_especifico` | string ou NA | Nome específico do modelo | livre; usar NA quando ausente |
 | `protocolo_person_indep` | string | Indica divisão independente por sujeito/pessoa | `sim`, `nao` |
@@ -119,7 +119,7 @@ Quando o artigo apresentava múltiplas métricas, buscou-se preservar apenas a m
 
 Os campos abaixo foram gravados como texto JSON no CSV:
 
-- `modalidades_presentes`
+- `canais_dados_presentes`
 - `metricas_principais`
 - `augmentations`
 

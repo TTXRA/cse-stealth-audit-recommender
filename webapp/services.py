@@ -15,10 +15,11 @@ from typing import Any
 
 import pandas as pd
 
+from scripts.utils.common import require_cols
 from scripts.utils.config import (
     ANO_FIM,
     ANO_INICIO,
-    MIN_POR_ESTRATO,
+    MIN_POR_MODALIDADE,
     N_ALVO_TOTAL,
     N_SUPLENTES,
     RNG_SEED,
@@ -83,7 +84,7 @@ SCENARIO_COLUMNS = [
     "dependencia_temporal",
     "n_amostras_total",
     "pretreino",
-    "modalidades_presentes",
+    "canais_dados_presentes",
     "modelo_familia",
     "modelo_especifico",
     "protocolo_person_indep",
@@ -133,7 +134,10 @@ def prepare_storage() -> dict[str, str | bool]:
 def _read_csv(path: Path) -> pd.DataFrame:
     if not path.exists():
         raise FileNotFoundError(f"Arquivo não encontrado: {path}")
-    return pd.read_csv(path, dtype=str, keep_default_na=False)
+    df = pd.read_csv(path, dtype=str, keep_default_na=False)
+    if path in {ARTICLES_PATH, AUDIT_PATH}:
+        require_cols(df, ["modalidade"], path.name)
+    return df
 
 
 def load_articles() -> pd.DataFrame:
@@ -259,14 +263,14 @@ def load_sample_selection() -> pd.DataFrame:
 def audit_selection_funnel() -> dict[str, Any]:
     status = audit_status_table()
     status["ano_num"] = pd.to_numeric(status["ano"], errors="coerce")
-    status["tarefa"] = status["tarefa"].astype(str).str.strip().str.upper().replace("", "NA")
+    status["modalidade"] = status["modalidade"].astype(str).str.strip().str.upper().replace("", "NA")
     status["empirico"] = status["empirico"].fillna("").astype(str).str.strip()
     status["quantitativo"] = status["quantitativo"].fillna("").astype(str).str.strip()
 
     in_window = status.loc[status["ano_num"].between(ANO_INICIO, ANO_FIM, inclusive="both")].copy()
     empirical = in_window.loc[in_window["empirico"].eq("1")].copy()
     quantitative = empirical.loc[empirical["quantitativo"].eq("1")].copy()
-    eligible = quantitative.loc[quantitative["tarefa"].isin(["FER", "SER", "MULTI"])].copy()
+    eligible = quantitative.loc[quantitative["modalidade"].isin(["FER", "SER", "MULTI"])].copy()
 
     sample = load_sample_selection()
     sample_type = sample.set_index("artigo_id")["tipo"].astype(str).str.strip().str.lower()
@@ -342,7 +346,7 @@ def normalize_scenario(payload: dict[str, Any]) -> dict[str, Any]:
     row = {column: "NA" for column in SCENARIO_COLUMNS}
     row.update(payload)
 
-    for field in ("modalidades_presentes", "metricas_principais", "augmentations"):
+    for field in ("canais_dados_presentes", "metricas_principais", "augmentations"):
         row[field] = _list_as_json(row.get(field))
 
     for field in (
@@ -437,7 +441,7 @@ def _write_scenarios_json(df: pd.DataFrame) -> None:
     records = []
     for raw_record in df.to_dict(orient="records"):
         record = dict(raw_record)
-        for field in ("modalidades_presentes", "metricas_principais", "augmentations"):
+        for field in ("canais_dados_presentes", "metricas_principais", "augmentations"):
             value = record.get(field)
             if value not in {None, "", "NA"}:
                 record[field] = json.loads(str(value))
@@ -544,7 +548,7 @@ def _validate_audit_values(values: pd.DataFrame) -> list[str]:
     return errors
 
 
-def _audit_rows(article_id: str, stratum: str, values: pd.DataFrame) -> pd.DataFrame:
+def _audit_rows(article_id: str, modality: str, values: pd.DataFrame) -> pd.DataFrame:
     rows = []
     for _, value in values.iterrows():
         score = str(value["pontuacao"]).strip().upper()
@@ -552,7 +556,7 @@ def _audit_rows(article_id: str, stratum: str, values: pd.DataFrame) -> pd.DataF
         rows.append(
             {
                 "artigo_id": article_id,
-                "estrato": stratum,
+                "modalidade": modality,
                 "item_id": str(value["item_id"]).strip(),
                 "grau": 0 if is_na else int(score),
                 "NA": 1 if is_na else 0,
@@ -570,9 +574,9 @@ def save_article_audit(article_id: str, audit_values: pd.DataFrame) -> dict[str,
     selected = articles.loc[articles["artigo_id"].astype(str).str.strip().eq(str(article_id).strip())]
     if selected.empty:
         raise ValueError("O artigo selecionado não existe na base mestre.")
-    stratum = str(selected.iloc[0]["tarefa"]).strip().upper()
-    if stratum not in {"FER", "SER", "MULTI"}:
-        raise ValueError("Defina o estrato FER, SER ou MULTI antes de auditar este artigo.")
+    modality = str(selected.iloc[0]["modalidade"]).strip().upper()
+    if modality not in {"FER", "SER", "MULTI"}:
+        raise ValueError("Defina a modalidade FER, SER ou MULTI antes de auditar este artigo.")
 
     errors = _validate_audit_values(audit_values)
     if errors:
@@ -580,7 +584,7 @@ def save_article_audit(article_id: str, audit_values: pd.DataFrame) -> dict[str,
 
     audit = _read_csv(AUDIT_PATH)
     remaining = audit.loc[~audit["artigo_id"].astype(str).str.strip().eq(str(article_id).strip())]
-    new_rows = _audit_rows(str(article_id).strip(), stratum, audit_values)
+    new_rows = _audit_rows(str(article_id).strip(), modality, audit_values)
     updated = pd.concat([remaining, new_rows[audit.columns]], ignore_index=True)
 
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
@@ -618,7 +622,7 @@ def add_article(payload: dict[str, Any], audit_values: pd.DataFrame | None = Non
     title = str(payload.get("titulo", "")).strip()
     venue = str(payload.get("venue", "")).strip()
     doi = str(payload.get("doi", "")).strip()
-    stratum = str(payload.get("tarefa", "NA")).strip().upper() or "NA"
+    modality = str(payload.get("modalidade", "NA")).strip().upper() or "NA"
     is_audited = audit_values is not None
     empirical = payload.get("empirico")
     quantitative = payload.get("quantitativo")
@@ -633,14 +637,14 @@ def add_article(payload: dict[str, Any], audit_values: pd.DataFrame | None = Non
     except (TypeError, ValueError):
         year = 0
         errors.append("O ano do artigo é obrigatório.")
-    if stratum not in {"FER", "SER", "MULTI", "NA"}:
-        errors.append("O estrato deve ser FER, SER, MULTI ou NA.")
+    if modality not in {"FER", "SER", "MULTI", "NA"}:
+        errors.append("A modalidade deve ser FER, SER, MULTI ou NA.")
     if not isinstance(empirical, bool):
         errors.append("Informe explicitamente se o artigo apresenta investigação empírica.")
     if not isinstance(quantitative, bool):
         errors.append("Informe explicitamente se o artigo apresenta resultados quantitativos.")
-    if is_audited and stratum == "NA":
-        errors.append("Um artigo auditado deve pertencer aos estratos FER, SER ou MULTI.")
+    if is_audited and modality == "NA":
+        errors.append("Um artigo auditado deve pertencer aas modalidades FER, SER ou MULTI.")
     if title and articles["titulo"].astype(str).str.strip().str.casefold().eq(title.casefold()).any():
         errors.append("Já existe um artigo com este título na base mestre.")
     if doi and articles["doi"].astype(str).str.strip().str.casefold().eq(doi.casefold()).any():
@@ -656,7 +660,7 @@ def add_article(payload: dict[str, Any], audit_values: pd.DataFrame | None = Non
         "titulo": title,
         "ano": str(year),
         "venue": venue,
-        "tarefa": "" if stratum == "NA" else stratum,
+        "modalidade": "" if modality == "NA" else modality,
         "doi": doi,
     }
     updated_articles = pd.concat(
@@ -669,7 +673,7 @@ def add_article(payload: dict[str, Any], audit_values: pd.DataFrame | None = Non
         {
             "artigo_id": article_id,
             "ano": str(year),
-            "tarefa": stratum,
+            "modalidade": modality,
             "titulo": title,
             "empirico": "1" if empirical else "0",
             "just_empirico": str(payload.get("just_empirico", "")).strip(),
@@ -685,7 +689,7 @@ def add_article(payload: dict[str, Any], audit_values: pd.DataFrame | None = Non
     updated_audit = audit
     audit_rows = 0
     if is_audited:
-        new_audit = _audit_rows(article_id, stratum, audit_values)
+        new_audit = _audit_rows(article_id, modality, audit_values)
         audit_rows = len(new_audit)
         updated_audit = pd.concat([audit, new_audit[audit.columns]], ignore_index=True)
 
@@ -806,8 +810,8 @@ def recommend(query: dict[str, Any]) -> tuple[dict[str, Any], pd.DataFrame]:
 def sampling_configuration() -> dict[str, int]:
     return {
         "target_total": int(N_ALVO_TOTAL),
-        "minimum_per_stratum": int(MIN_POR_ESTRATO),
-        "reserves_per_stratum": int(N_SUPLENTES),
+        "minimum_per_modality": int(MIN_POR_MODALIDADE),
+        "reserves_per_modality": int(N_SUPLENTES),
         "seed": int(RNG_SEED),
     }
 
@@ -815,28 +819,28 @@ def sampling_configuration() -> dict[str, int]:
 def sampling_allocation_preview(
     eligible_counts: dict[str, int],
     target_total: int,
-    minimum_per_stratum: int,
+    minimum_per_modality: int,
 ) -> dict[str, Any]:
-    strata = ("FER", "SER", "MULTI")
-    counts = {stratum: int(eligible_counts.get(stratum, 0)) for stratum in strata}
+    modalities = ("FER", "SER", "MULTI")
+    counts = {modality: int(eligible_counts.get(modality, 0)) for modality in modalities}
     target_total = int(target_total)
-    minimum_per_stratum = int(minimum_per_stratum)
+    minimum_per_modality = int(minimum_per_modality)
 
     if target_total <= 0:
         raise ValueError("O total de titulares deve ser maior que zero.")
-    if minimum_per_stratum < 0:
-        raise ValueError("O mínimo por estrato não pode ser negativo.")
+    if minimum_per_modality < 0:
+        raise ValueError("O mínimo por modalidade não pode ser negativo.")
     unavailable = [
-        stratum for stratum in strata if counts[stratum] < minimum_per_stratum
+        modality for modality in modalities if counts[modality] < minimum_per_modality
     ]
     if unavailable:
-        details = ", ".join(f"{stratum} ({counts[stratum]})" for stratum in unavailable)
+        details = ", ".join(f"{modality} ({counts[modality]})" for modality in unavailable)
         raise ValueError(
             "O mínimo informado excede a quantidade elegível em: " + details + "."
         )
-    if minimum_per_stratum * len(strata) > target_total:
+    if minimum_per_modality * len(modalities) > target_total:
         raise ValueError(
-            "O total de titulares deve ser pelo menos três vezes o mínimo por estrato."
+            "O total de titulares deve ser pelo menos três vezes o mínimo por modalidade."
         )
     total_eligible = sum(counts.values())
     if target_total > total_eligible:
@@ -844,34 +848,34 @@ def sampling_allocation_preview(
             f"O total de titulares não pode exceder os {total_eligible} artigos elegíveis."
         )
 
-    allocation = {stratum: minimum_per_stratum for stratum in strata}
+    allocation = {modality: minimum_per_modality for modality in modalities}
     remaining = target_total - sum(allocation.values())
-    capacity = {stratum: counts[stratum] - allocation[stratum] for stratum in strata}
+    capacity = {modality: counts[modality] - allocation[modality] for modality in modalities}
     capacity_total = sum(capacity.values())
     if remaining:
         quotas = {
-            stratum: (capacity[stratum] / capacity_total) * remaining
+            modality: (capacity[modality] / capacity_total) * remaining
             if capacity_total
             else 0
-            for stratum in strata
+            for modality in modalities
         }
-        floors = {stratum: int(quotas[stratum] // 1) for stratum in strata}
+        floors = {modality: int(quotas[modality] // 1) for modality in modalities}
         allocation = {
-            stratum: allocation[stratum] + floors[stratum] for stratum in strata
+            modality: allocation[modality] + floors[modality] for modality in modalities
         }
         remainder = remaining - sum(floors.values())
         order = sorted(
-            strata,
-            key=lambda stratum: (
-                quotas[stratum] - floors[stratum],
-                capacity[stratum],
+            modalities,
+            key=lambda modality: (
+                quotas[modality] - floors[modality],
+                capacity[modality],
             ),
             reverse=True,
         )
         for index in range(remainder):
-            stratum = order[index % len(order)]
-            if allocation[stratum] < counts[stratum]:
-                allocation[stratum] += 1
+            modality = order[index % len(order)]
+            if allocation[modality] < counts[modality]:
+                allocation[modality] += 1
             else:
                 for candidate in order:
                     if allocation[candidate] < counts[candidate]:
@@ -879,15 +883,15 @@ def sampling_allocation_preview(
                         break
 
     reserves = {
-        stratum: min(N_SUPLENTES, counts[stratum] - allocation[stratum])
-        for stratum in strata
+        modality: min(N_SUPLENTES, counts[modality] - allocation[modality])
+        for modality in modalities
     }
     return {
         "eligible": counts,
         "titulars": allocation,
         "reserves": reserves,
         "target_total": target_total,
-        "minimum_per_stratum": minimum_per_stratum,
+        "minimum_per_modality": minimum_per_modality,
         "selected_total": target_total + sum(reserves.values()),
         "not_selected_total": total_eligible - target_total - sum(reserves.values()),
     }
@@ -925,8 +929,8 @@ def _append_sampling_history(metadata: dict[str, Any]) -> None:
                 "versao": metadata["version_id"],
                 "gerado_em": metadata["generated_at"],
                 "n_alvo_total": metadata["target_total"],
-                "min_por_estrato": metadata["minimum_per_stratum"],
-                "n_suplentes_por_estrato": metadata["reserves_per_stratum"],
+                "min_por_modalidade": metadata["minimum_per_modality"],
+                "n_suplentes_por_modalidade": metadata["reserves_per_modality"],
                 "seed": metadata["seed"],
                 "elegiveis": sum(metadata["eligible"].values()),
                 "titulares": sum(metadata["titulars"].values()),
@@ -986,19 +990,19 @@ def _run_steps(
 @_synchronized
 def generate_audit_sample(
     target_total: int = N_ALVO_TOTAL,
-    minimum_per_stratum: int = MIN_POR_ESTRATO,
+    minimum_per_modality: int = MIN_POR_MODALIDADE,
 ) -> dict[str, Any]:
     """Rebuild eligibility outputs and create a versioned, reproducible sample."""
     funnel = audit_selection_funnel()
     eligible = funnel["eligible"]
     eligible_counts = {
-        stratum: int(eligible["tarefa"].astype(str).str.upper().eq(stratum).sum())
-        for stratum in ("FER", "SER", "MULTI")
+        modality: int(eligible["modalidade"].astype(str).str.upper().eq(modality).sum())
+        for modality in ("FER", "SER", "MULTI")
     }
     preview = sampling_allocation_preview(
         eligible_counts,
         target_total,
-        minimum_per_stratum,
+        minimum_per_modality,
     )
 
     version_id = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
@@ -1012,7 +1016,7 @@ def generate_audit_sample(
             ELIGIBILITY_SAMPLE_STEPS,
             {
                 "CSE_N_ALVO_TOTAL": str(int(target_total)),
-                "CSE_MIN_POR_ESTRATO": str(int(minimum_per_stratum)),
+                "CSE_MIN_POR_MODALIDADE": str(int(minimum_per_modality)),
             },
         )
     except Exception as exc:
@@ -1031,8 +1035,8 @@ def generate_audit_sample(
         "generated_at": generated_at,
         "status": "concluido" if succeeded else "falhou",
         "target_total": int(target_total),
-        "minimum_per_stratum": int(minimum_per_stratum),
-        "reserves_per_stratum": int(N_SUPLENTES),
+        "minimum_per_modality": int(minimum_per_modality),
+        "reserves_per_modality": int(N_SUPLENTES),
         "seed": int(RNG_SEED),
         "eligible": preview["eligible"],
         "titulars": preview["titulars"],

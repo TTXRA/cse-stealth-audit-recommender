@@ -1,4 +1,4 @@
-artigo_id,ano,tarefa,titulo,venue,doi,elegivel_etapa1,motivo_exclusao,observacoes_elegibilidade
+artigo_id,ano,modalidade,titulo,venue,doi,elegivel_etapa1,motivo_exclusao,observacoes_elegibilidade
 ID_06,2020,FER,An Academic Affect Dataset: Spontaneous Facial Expressions and Head poses Collected during Online Examination,"The 4th International Conference on E-Society, E-Education and E-Technology",10.1145/3421682.3421692,,,
 ID_07,2022,FER,An Adaptive Deep Belief Feature Learning Model for Cognitive Emotion Recognition,8th International Conference on Advanced Computing and Communication Systems,10.1109/ICACCS54159.2022.9785267,,,
 ID_17,2023,FER,Cross-Database Facial Expression Recognition using CNN with Attention Mechanism,IEEE ICCCNT 2023,10.1109/ICCCNT56998.2023.10308238,,,

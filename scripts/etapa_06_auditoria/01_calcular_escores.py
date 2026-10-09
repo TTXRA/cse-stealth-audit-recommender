@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from scripts.utils.common import read_csv, normalize_columns, parse_bin01
+from scripts.utils.common import read_csv, normalize_columns, parse_bin01, require_cols
 from scripts.utils.config import INPUT_AUDITORIA, INPUT_MAPEAMENTO_MASTER, OUT_ANALISE_AUDITORIA_DIR, ANALISE_AUDITORIA_N_BOOTSTRAP, ANALISE_AUDITORIA_SEED, CONFIGS
 
 ROTULOS_ITENS = {
@@ -45,7 +45,7 @@ def aplicar_pesos(df, pesos):
 
 
 def scores_artigos(df, meta, config):
-    out = df.groupby(['artigo_id', 'estrato'], as_index=False).agg(
+    out = df.groupby(['artigo_id', 'modalidade'], as_index=False).agg(
         n_itens=('item_id', 'size'),
         n_na=('na', 'sum'),
         soma=('contrib', 'sum'),
@@ -53,26 +53,26 @@ def scores_artigos(df, meta, config):
     )
     out['score_global'] = np.where(out['denom'].gt(0), out['soma'] / out['denom'] * 100.0, np.nan)
     out['config_pesos'] = config
-    out = out.merge(meta, on='artigo_id', how='left')
-    cols = ['config_pesos', 'artigo_id', 'estrato', 'tarefa', 'score_global', 'n_itens', 'n_na', 'titulo', 'ano', 'venue', 'doi']
-    return out[cols].sort_values(['config_pesos', 'estrato', 'score_global', 'artigo_id'], ascending=[True, True, False, True])
+    out = out.merge(meta, on=['artigo_id', 'modalidade'], how='left', validate='many_to_one')
+    cols = ['config_pesos', 'artigo_id', 'modalidade', 'score_global', 'n_itens', 'n_na', 'titulo', 'ano', 'venue', 'doi']
+    return out[cols].sort_values(['config_pesos', 'modalidade', 'score_global', 'artigo_id'], ascending=[True, True, False, True])
 
 
 def scores_itens(df, meta, config):
-    out = df.groupby(['artigo_id', 'estrato', 'item_id', 'item_label'], as_index=False).agg(
+    out = df.groupby(['artigo_id', 'modalidade', 'item_id', 'item_label'], as_index=False).agg(
         score_item=('score_item', 'mean'),
         na=('na', 'max'),
     )
     out['config_pesos'] = config
-    out = out.merge(meta, on='artigo_id', how='left')
-    cols = ['config_pesos', 'artigo_id', 'estrato', 'tarefa', 'item_id', 'item_label', 'score_item', 'na', 'titulo', 'ano', 'venue', 'doi']
-    return out[cols].sort_values(['config_pesos', 'estrato', 'artigo_id', 'item_id'])
+    out = out.merge(meta, on=['artigo_id', 'modalidade'], how='left', validate='many_to_one')
+    cols = ['config_pesos', 'artigo_id', 'modalidade', 'item_id', 'item_label', 'score_item', 'na', 'titulo', 'ano', 'venue', 'doi']
+    return out[cols].sort_values(['config_pesos', 'modalidade', 'artigo_id', 'item_id'])
 
 
-def reamostra_estratos(df, rng):
+def reamostra_modalidades(df, rng):
     return pd.concat([
         grupo.sample(n=len(grupo), replace=True, random_state=int(rng.integers(0, 2**32 - 1)))
-        for _, grupo in df.groupby('tarefa', sort=True)
+        for _, grupo in df.groupby('modalidade', sort=True)
     ], ignore_index=True)
 
 
@@ -89,15 +89,15 @@ def bootstrap_scores(valores, n_boot, rng):
 
 def resumo_artigos(df, n_boot, seed):
     rng = np.random.default_rng(seed)
-    base = df[['artigo_id', 'estrato', 'tarefa', 'score_global']].drop_duplicates()
-    ids = base[['artigo_id', 'estrato', 'tarefa']].drop_duplicates()
+    base = df[['artigo_id', 'modalidade', 'score_global']].drop_duplicates()
+    ids = base[['artigo_id', 'modalidade']].drop_duplicates()
     config = df['config_pesos'].iat[0]
     valores = base['score_global'].dropna().to_numpy(dtype=float)
 
     medias_boot = []
     medianas_boot = []
     for _ in range(n_boot):
-        amostra = reamostra_estratos(ids, rng).merge(base, on=['artigo_id', 'estrato', 'tarefa'], how='left')
+        amostra = reamostra_modalidades(ids, rng).merge(base, on=['artigo_id', 'modalidade'], how='left')
         vals = amostra['score_global'].dropna().to_numpy(dtype=float)
         medias_boot.append(np.mean(vals))
         medianas_boot.append(np.median(vals))
@@ -105,7 +105,7 @@ def resumo_artigos(df, n_boot, seed):
     linhas = [{
         'config_pesos': config,
         'escopo': 'global',
-        'estrato': 'TODOS',
+        'modalidade': 'TODOS',
         'n': int(len(valores)),
         'media': float(np.mean(valores)),
         'mediana': float(np.median(valores)),
@@ -117,13 +117,13 @@ def resumo_artigos(df, n_boot, seed):
         'ic95_mediana_sup': float(np.quantile(medianas_boot, 0.975)),
     }]
 
-    for estrato, grupo in base.groupby('estrato', sort=True):
+    for modalidade, grupo in base.groupby('modalidade', sort=True):
         valores = grupo['score_global'].dropna().to_numpy(dtype=float)
         medias, medianas = bootstrap_scores(valores, n_boot, rng)
         linhas.append({
             'config_pesos': config,
-            'escopo': 'estrato',
-            'estrato': estrato,
+            'escopo': 'modalidade',
+            'modalidade': modalidade,
             'n': int(len(valores)),
             'media': float(np.mean(valores)),
             'mediana': float(np.median(valores)),
@@ -141,12 +141,12 @@ def resumo_itens(df, n_boot, seed):
     rng = np.random.default_rng(seed)
     linhas = []
     base = df[df['na'].eq(0)]
-    for (config, estrato, item_id, item_label), grupo in base.groupby(['config_pesos', 'estrato', 'item_id', 'item_label'], sort=True):
+    for (config, modalidade, item_id, item_label), grupo in base.groupby(['config_pesos', 'modalidade', 'item_id', 'item_label'], sort=True):
         valores = grupo['score_item'].dropna().to_numpy(dtype=float)
         medias, medianas = bootstrap_scores(valores, n_boot, rng)
         linhas.append({
             'config_pesos': config,
-            'estrato': estrato,
+            'modalidade': modalidade,
             'item_id': item_id,
             'item_label': item_label,
             'n': int(len(valores)),
@@ -166,8 +166,9 @@ def main():
     OUT_ANALISE_AUDITORIA_DIR.mkdir(parents=True, exist_ok=True)
 
     auditoria = normalize_columns(read_csv(INPUT_AUDITORIA))
+    require_cols(auditoria, ['artigo_id', 'modalidade', 'item_id', 'grau', 'na'], INPUT_AUDITORIA.name)
     auditoria['artigo_id'] = auditoria['artigo_id'].astype(str).str.strip()
-    auditoria['estrato'] = auditoria['estrato'].astype(str).str.strip().str.upper()
+    auditoria['modalidade'] = auditoria['modalidade'].astype(str).str.strip().str.upper()
     auditoria['item_id'] = auditoria['item_id'].astype(str).str.strip().str.upper()
     auditoria['grau'] = pd.to_numeric(auditoria['grau'], errors='coerce').astype(float)
     auditoria['na'] = parse_bin01(auditoria['na'], 'NA', auditoria['artigo_id']).astype(int)
@@ -175,8 +176,12 @@ def main():
 
     meta = normalize_columns(read_csv(INPUT_MAPEAMENTO_MASTER))
     meta['artigo_id'] = meta['artigo_id'].astype(str).str.strip()
-    meta['tarefa'] = meta['tarefa'].astype(str).str.strip().str.upper()
-    meta = meta[meta['artigo_id'].isin(auditoria['artigo_id'].unique())][['artigo_id', 'titulo', 'ano', 'venue', 'tarefa', 'doi']].drop_duplicates()
+    meta['modalidade'] = meta['modalidade'].astype(str).str.strip().str.upper()
+    meta = meta[meta['artigo_id'].isin(auditoria['artigo_id'].unique())][['artigo_id', 'titulo', 'ano', 'venue', 'modalidade', 'doi']].drop_duplicates()
+    categorias = auditoria[['artigo_id', 'modalidade']].drop_duplicates()
+    conferidas = categorias.merge(meta[['artigo_id', 'modalidade']], on=['artigo_id', 'modalidade'], how='left', indicator=True, validate='one_to_one')
+    if conferidas['_merge'].ne('both').any():
+        raise ValueError('A modalidade da auditoria deve coincidir com a modalidade do artigo na base mestre.')
 
     tabela_pesos = mapa_pesos(sorted(auditoria['item_id'].unique()))
     todos_artigos = []

@@ -10,14 +10,14 @@ def heatmap_itens(df_itens, df_artigos, df_sensibilidade_artigos, arquivo):
     base = df_itens[df_itens['na'].eq(0)][['artigo_id', 'item_id', 'score_item']].copy()
 
     artigos_df = (
-        df_artigos[['artigo_id', 'estrato', 'score_global', 'n_na']]
+        df_artigos[['artigo_id', 'modalidade', 'score_global', 'n_na']]
         .drop_duplicates('artigo_id')
         .merge(
             df_sensibilidade_artigos[['artigo_id', 'delta_uniforme_robustez']].drop_duplicates('artigo_id'),
             on='artigo_id',
             how='left'
         )
-        .sort_values(['estrato', 'score_global', 'artigo_id'], ascending=[True, False, True])
+        .sort_values(['modalidade', 'score_global', 'artigo_id'], ascending=[True, False, True])
         .reset_index(drop=True)
     )
 
@@ -102,7 +102,7 @@ def heatmap_itens(df_itens, df_artigos, df_sensibilidade_artigos, arquivo):
     ax_delta.tick_params(axis='y', left=False, labelleft=False)
     ax_delta.set_xlim(-0.5, 0.5)
 
-    contagens = artigos_df['estrato'].value_counts(sort=False)
+    contagens = artigos_df['modalidade'].value_counts(sort=False)
     limites = np.cumsum(contagens.to_numpy())[:-1] - 0.5
 
     for y in limites:
@@ -124,20 +124,20 @@ def heatmap_itens(df_itens, df_artigos, df_sensibilidade_artigos, arquivo):
     plt.close(fig)
 
 
-def plot_scores_estratos(df, resumo, config, arquivo):
-    base = df[['estrato', 'score_global']].dropna().copy()
-    estratos = sorted(base['estrato'].unique().tolist())
-    xpos = np.arange(len(estratos))
-    grupos = [base.loc[base['estrato'].eq(e), 'score_global'].to_numpy(dtype=float) for e in estratos]
+def plot_scores_modalidades(df, resumo, config, arquivo):
+    base = df[['modalidade', 'score_global']].dropna().copy()
+    modalidades = sorted(base['modalidade'].unique().tolist())
+    xpos = np.arange(len(modalidades))
+    grupos = [base.loc[base['modalidade'].eq(e), 'score_global'].to_numpy(dtype=float) for e in modalidades]
 
     stats = (
         resumo[
             resumo['config_pesos'].eq(config) &
-            resumo['escopo'].eq('estrato')
-        ][['estrato', 'mediana', 'ic95_mediana_inf', 'ic95_mediana_sup']]
-        .drop_duplicates('estrato')
-        .set_index('estrato')
-        .reindex(estratos)
+            resumo['escopo'].eq('modalidade')
+        ][['modalidade', 'mediana', 'ic95_mediana_inf', 'ic95_mediana_sup']]
+        .drop_duplicates('modalidade')
+        .set_index('modalidade')
+        .reindex(modalidades)
     )
 
     fig, ax = plt.subplots(figsize=(10.5, 6.2))
@@ -187,10 +187,10 @@ def plot_scores_estratos(df, resumo, config, arquivo):
     )
 
     ax.set_xticks(xpos)
-    ax.set_xticklabels([f'{e}\n(n={len(g)})' for e, g in zip(estratos, grupos)])
+    ax.set_xticklabels([f'{e}\n(n={len(g)})' for e, g in zip(modalidades, grupos)])
     ax.set_ylabel('Score Global')
     ax.set_ylim(0, 100)
-    ax.set_title(f'Distribuição do Score Global por Estrato ({config.title()})')
+    ax.set_title(f'Distribuição do Score Global por Modalidade ({config.title()})')
 
     ax.grid(axis='y', alpha=0.22, linewidth=0.8)
     ax.set_axisbelow(True)
@@ -203,7 +203,7 @@ def plot_scores_estratos(df, resumo, config, arquivo):
     plt.close(fig)
 
 
-def plot_itens_criticos_estratos(resumo_itens, criticos, arquivo):
+def plot_itens_criticos_modalidades(resumo_itens, criticos, arquivo):
     base_criticos = (
         criticos[criticos['config_pesos'].eq('uniforme')]
         .nsmallest(5, 'media_item')
@@ -220,54 +220,54 @@ def plot_itens_criticos_estratos(resumo_itens, criticos, arquivo):
         .copy()
     )
 
-    estratos = ['FER', 'MULTI', 'SER']
+    modalidades = ['FER', 'MULTI', 'SER']
     desloc = {'FER': -0.18, 'MULTI': 0.0, 'SER': 0.18}
     marcadores = {'FER': 'o', 'MULTI': 's', 'SER': '^'}
     ypos_base = np.arange(len(itens))
 
     fig, ax = plt.subplots(figsize=(12.0, 6.8), constrained_layout=True)
 
-    for estrato in estratos:
+    for modalidade in modalidades:
         parte = (
-            base[base['estrato'].eq(estrato)]
+            base[base['modalidade'].eq(modalidade)]
             .set_index('label')
             .reindex(itens['label'].tolist())
         )
         x = parte['mediana'].to_numpy(dtype=float)
         x_inf = parte['ic95_mediana_inf'].to_numpy(dtype=float)
         x_sup = parte['ic95_mediana_sup'].to_numpy(dtype=float)
-        y = ypos_base + desloc[estrato]
+        y = ypos_base + desloc[modalidade]
 
         ax.errorbar(
             x,
             y,
             xerr=[x - x_inf, x_sup - x],
-            fmt=marcadores[estrato],
+            fmt=marcadores[modalidade],
             capsize=5,
             linewidth=1.5,
             markersize=6.5,
-            label=estrato
+            label=modalidade
         )
 
     ax.set_yticks(ypos_base)
     ax.set_yticklabels(itens['label'].tolist())
     ax.set_xlim(0, 100)
     ax.set_xlabel('Mediana do Item com IC95%')
-    ax.set_title('Itens Menos Atendidos no Esquema Uniforme, por Estrato', pad=14)
+    ax.set_title('Itens Menos Atendidos no Esquema Uniforme, por Modalidade', pad=14)
 
     ax.grid(axis='x', linestyle='--', linewidth=0.8, alpha=0.35)
     ax.set_axisbelow(True)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
-    ax.legend(title='Estrato', frameon=False, loc='lower right')
+    ax.legend(title='Modalidade', frameon=False, loc='lower right')
 
     fig.savefig(arquivo, dpi=300, bbox_inches='tight')
     plt.close(fig)
 
 
-def medianas_estratos(df, resumo, arquivo):
-    estratos = df['estrato'].tolist()
-    xpos = np.arange(len(estratos))
+def medianas_modalidades(df, resumo, arquivo):
+    modalidades = df['modalidade'].tolist()
+    xpos = np.arange(len(modalidades))
 
     dx_cfg = {
         'uniforme': -0.22,
@@ -286,11 +286,11 @@ def medianas_estratos(df, resumo, arquivo):
         stats_cfg[config] = (
             resumo[
                 resumo['config_pesos'].eq(config) &
-                resumo['escopo'].eq('estrato')
-            ][['estrato', 'ic95_mediana_inf', 'ic95_mediana_sup']]
-            .drop_duplicates('estrato')
-            .set_index('estrato')
-            .reindex(estratos)
+                resumo['escopo'].eq('modalidade')
+            ][['modalidade', 'ic95_mediana_inf', 'ic95_mediana_sup']]
+            .drop_duplicates('modalidade')
+            .set_index('modalidade')
+            .reindex(modalidades)
         )
 
     y_max = np.nanmax([
@@ -436,7 +436,7 @@ def medianas_estratos(df, resumo, arquivo):
     ax.set_ylabel('Mediana do Score Global')
     ax.set_ylim(base, topo)
     ax.set_yticks(np.arange(base, topo + 0.1, passo_y))
-    ax.set_title('Medianas por Estrato e Configuração de Pesos', pad=12)
+    ax.set_title('Medianas por Modalidade e Configuração de Pesos', pad=12)
 
     ax.grid(axis='y', linestyle='--', linewidth=0.8, alpha=0.4)
     ax.set_axisbelow(True)
@@ -451,8 +451,8 @@ def medianas_estratos(df, resumo, arquivo):
     )
 
     ax_delta.set_xticks(xpos)
-    ax_delta.set_xticklabels(estratos)
-    ax_delta.set_xlabel('Estratos')
+    ax_delta.set_xticklabels(modalidades)
+    ax_delta.set_xlabel('Modalidades')
     ax_delta.set_ylabel('Δ vs U')
     ax_delta.grid(axis='y', linestyle='--', linewidth=0.8, alpha=0.35)
     ax_delta.set_axisbelow(True)
@@ -482,7 +482,7 @@ def plot_sensibilidade_artigos(df, arquivo):
     ax.axvline(0, linewidth=1.0, alpha=0.6)
     ax.barh(y, base['delta_uniforme_robustez'].to_numpy(dtype=float), alpha=0.85)
     ax.set_yticks(y)
-    ax.set_yticklabels((base['artigo_id'] + ' - ' + base['estrato']).tolist())
+    ax.set_yticklabels((base['artigo_id'] + ' - ' + base['modalidade']).tolist())
     ax.set_xlabel('Δ de Score Global: Uniforme → Robustez')
     ax.set_title('Artigos Mais Sensíveis à Mudança de Pesos', pad=14)
 
@@ -498,24 +498,24 @@ def plot_sensibilidade_artigos(df, arquivo):
     plt.close(fig)
 
 
-def montar_relatorio(resumo, resumo_itens, scores_itens, scores_artigos, mudancas_artigos, mudancas_estratos, correlacoes, criticos, estabilidade, sensibilidade_artigos):
+def montar_relatorio(resumo, resumo_itens, scores_itens, scores_artigos, mudancas_artigos, mudancas_modalidades, correlacoes, criticos, estabilidade, sensibilidade_artigos):
     global_uniforme = resumo[resumo['config_pesos'].eq('uniforme') & resumo['escopo'].eq('global')].iloc[0]
     piores_itens = criticos[criticos['config_pesos'].eq('uniforme')].nsmallest(5, 'media_item')
-    top_itens = resumo_itens[resumo_itens['config_pesos'].eq('uniforme')].sort_values(['mediana', 'estrato'], ascending=[False, True]).head(5)
-    bottom_itens = resumo_itens[resumo_itens['config_pesos'].eq('uniforme')].sort_values(['mediana', 'estrato'], ascending=[True, True]).head(5)
+    top_itens = resumo_itens[resumo_itens['config_pesos'].eq('uniforme')].sort_values(['mediana', 'modalidade'], ascending=[False, True]).head(5)
+    bottom_itens = resumo_itens[resumo_itens['config_pesos'].eq('uniforme')].sort_values(['mediana', 'modalidade'], ascending=[True, True]).head(5)
 
-    total = scores_itens[['config_pesos', 'estrato', 'item_id']].drop_duplicates()
-    observado = resumo_itens[['config_pesos', 'estrato', 'item_id']].drop_duplicates()
-    faltantes = total.merge(observado, on=['config_pesos', 'estrato', 'item_id'], how='left', indicator=True)
-    faltantes = faltantes[faltantes['_merge'].eq('left_only')][['config_pesos', 'estrato', 'item_id']].sort_values(['config_pesos', 'estrato', 'item_id'])
+    total = scores_itens[['config_pesos', 'modalidade', 'item_id']].drop_duplicates()
+    observado = resumo_itens[['config_pesos', 'modalidade', 'item_id']].drop_duplicates()
+    faltantes = total.merge(observado, on=['config_pesos', 'modalidade', 'item_id'], how='left', indicator=True)
+    faltantes = faltantes[faltantes['_merge'].eq('left_only')][['config_pesos', 'modalidade', 'item_id']].sort_values(['config_pesos', 'modalidade', 'item_id'])
 
     base_uniforme_itens = scores_itens[scores_itens['config_pesos'].eq('uniforme')].copy()
     cobertura = (
-        base_uniforme_itens.groupby(['estrato', 'item_id'], as_index=False)
+        base_uniforme_itens.groupby(['modalidade', 'item_id'], as_index=False)
         .agg(item_label=('item_label', 'first'), prop_na=('na', 'mean'), n=('na', 'size'))
     )
     cobertura['pct_na'] = 100 * cobertura['prop_na']
-    piores_coberturas = cobertura.sort_values(['pct_na', 'estrato', 'item_id'], ascending=[False, True, True]).head(5)
+    piores_coberturas = cobertura.sort_values(['pct_na', 'modalidade', 'item_id'], ascending=[False, True, True]).head(5)
 
     artigos_uniforme = scores_artigos[scores_artigos['config_pesos'].eq('uniforme')].copy()
     rho_na_score = artigos_uniforme['n_na'].corr(artigos_uniforme['score_global'], method='spearman')
@@ -545,10 +545,10 @@ def montar_relatorio(resumo, resumo_itens, scores_itens, scores_artigos, mudanca
 
     for _, row in mudancas_artigos.iterrows():
         linhas.append(f"- Artigos | {row['comparacao']}: media abs ranking={row['mudanca_media_absoluta_ranking']:.2f}; max abs ranking={row['mudanca_maxima_absoluta_ranking']:.2f}; media abs score={row['mudanca_media_absoluta_score']:.2f}; max abs score={row['mudanca_maxima_absoluta_score']:.2f}")
-    for _, row in mudancas_estratos.iterrows():
-        linhas.append(f"- Estratos | {row['comparacao']}: media abs ranking={row['mudanca_media_absoluta_ranking']:.2f}; max abs ranking={row['mudanca_maxima_absoluta_ranking']:.2f}; media abs mediana={row['mudanca_media_absoluta_mediana']:.2f}; max abs mediana={row['mudanca_maxima_absoluta_mediana']:.2f}")
+    for _, row in mudancas_modalidades.iterrows():
+        linhas.append(f"- Modalidades | {row['comparacao']}: media abs ranking={row['mudanca_media_absoluta_ranking']:.2f}; max abs ranking={row['mudanca_maxima_absoluta_ranking']:.2f}; media abs mediana={row['mudanca_media_absoluta_mediana']:.2f}; max abs mediana={row['mudanca_maxima_absoluta_mediana']:.2f}")
 
-    linhas += ['', '## Correlacoes de Spearman', '- Interpretar as correlacoes dos estratos com cautela, pois ha apenas tres estratos.']
+    linhas += ['', '## Correlacoes de Spearman', '- Interpretar as correlacoes das modalidades com cautela, pois ha apenas tres modalidades.']
     for _, row in correlacoes.iterrows():
         linhas.append(f"- {row['escopo']} | {row['config_a']} vs {row['config_b']}: rho={row['spearman_rho']:.4f}; p={row['p_fmt']}")
 
@@ -562,15 +562,15 @@ def montar_relatorio(resumo, resumo_itens, scores_itens, scores_artigos, mudanca
 
     linhas += ['', '## Itens com maiores medianas no esquema uniforme']
     for _, row in top_itens.iterrows():
-        linhas.append(f"- {row['estrato']} | {row['item_id']} ({row['item_label']}): mediana={row['mediana']:.2f}")
+        linhas.append(f"- {row['modalidade']} | {row['item_id']} ({row['item_label']}): mediana={row['mediana']:.2f}")
 
     linhas += ['', '## Itens com menores medianas no esquema uniforme']
     for _, row in bottom_itens.iterrows():
-        linhas.append(f"- {row['estrato']} | {row['item_id']} ({row['item_label']}): mediana={row['mediana']:.2f}")
+        linhas.append(f"- {row['modalidade']} | {row['item_id']} ({row['item_label']}): mediana={row['mediana']:.2f}")
 
     linhas += ['', '## Cobertura dos itens no esquema uniforme']
     for _, row in piores_coberturas.iterrows():
-        linhas.append(f"- {row['estrato']} | {row['item_id']} ({row['item_label']}): NA={row['pct_na']:.1f}% em n={int(row['n'])}")
+        linhas.append(f"- {row['modalidade']} | {row['item_id']} ({row['item_label']}): NA={row['pct_na']:.1f}% em n={int(row['n'])}")
 
     linhas += ['', '## Relacao entre faltantes e score global']
     linhas.append(f'- Spearman entre n_na e score_global: rho={rho_na_score:.4f}')
@@ -579,12 +579,12 @@ def montar_relatorio(resumo, resumo_itens, scores_itens, scores_artigos, mudanca
 
     linhas += ['', '## Artigos mais sensiveis a mudanca de pesos']
     for _, row in mais_sensiveis.iterrows():
-        linhas.append(f"- {row['artigo_id']} ({row['estrato']}): Δ uniforme→nucleares={row['delta_uniforme_nucleares']:+.2f}; Δ uniforme→robustez={row['delta_uniforme_robustez']:+.2f}")
+        linhas.append(f"- {row['artigo_id']} ({row['modalidade']}): Δ uniforme→nucleares={row['delta_uniforme_nucleares']:+.2f}; Δ uniforme→robustez={row['delta_uniforme_robustez']:+.2f}")
 
     if len(faltantes):
         linhas += ['', '## Combinacoes sem resumo de item', '- As combinacoes abaixo ficaram fora de resumo_itens.csv porque todos os registros eram NA:']
         for _, row in faltantes.iterrows():
-            linhas.append(f"- {row['config_pesos']} | {row['estrato']} | {row['item_id']}")
+            linhas.append(f"- {row['config_pesos']} | {row['modalidade']} | {row['item_id']}")
 
     linhas.append('')
     return '\n'.join(linhas)
@@ -599,9 +599,9 @@ def main():
     resumo_itens = pd.read_csv(out_dir / 'resumo_itens.csv')
     criticos = pd.read_csv(out_dir / 'itens_criticos.csv')
     sensibilidade_artigos = pd.read_csv(out_dir / 'sensibilidade_artigos.csv')
-    sensibilidade = pd.read_csv(out_dir / 'sensibilidade_estratos.csv')
+    sensibilidade = pd.read_csv(out_dir / 'sensibilidade_modalidades.csv')
     mudancas_artigos = pd.read_csv(out_dir / 'mudancas_artigos.csv')
-    mudancas_estratos = pd.read_csv(out_dir / 'mudancas_estratos.csv')
+    mudancas_modalidades = pd.read_csv(out_dir / 'mudancas_modalidades.csv')
     correlacoes = pd.read_csv(out_dir / 'correlacoes_configs.csv')
     estabilidade = pd.read_csv(out_dir / 'estabilidade_criticos.csv')
 
@@ -612,17 +612,17 @@ def main():
         out_dir / 'heatmap_itens.png'
     )
 
-    medianas_estratos(sensibilidade, resumo, out_dir / 'medianas_estratos.png')
+    medianas_modalidades(sensibilidade, resumo, out_dir / 'medianas_modalidades.png')
 
     for config in CONFIGS:
-        plot_scores_estratos(
+        plot_scores_modalidades(
             artigos[artigos['config_pesos'].eq(config)].copy(),
             resumo,
             config,
-            out_dir / f'scores_estratos_{config}.png'
+            out_dir / f'scores_modalidades_{config}.png'
         )
 
-    plot_itens_criticos_estratos(resumo_itens.copy(), criticos.copy(), out_dir / 'itens_criticos_estratos.png')
+    plot_itens_criticos_modalidades(resumo_itens.copy(), criticos.copy(), out_dir / 'itens_criticos_modalidades.png')
     plot_sensibilidade_artigos(sensibilidade_artigos.copy(), out_dir / 'sensibilidade_artigos.png')
 
     relatorio = montar_relatorio(
@@ -631,7 +631,7 @@ def main():
         itens,
         artigos,
         mudancas_artigos,
-        mudancas_estratos,
+        mudancas_modalidades,
         correlacoes,
         criticos,
         estabilidade,

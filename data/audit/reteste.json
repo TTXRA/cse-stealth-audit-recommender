@@ -1,7 +1,7 @@
 [
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "DAD",
     "grau": 0,
     "NA": 0,
@@ -11,7 +11,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "DAD",
     "grau": 1,
     "NA": 0,
@@ -21,7 +21,7 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "DAD",
     "grau": 1,
     "NA": 0,
@@ -31,7 +31,7 @@
   },
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "ROT",
     "grau": 0,
     "NA": 0,
@@ -41,7 +41,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "ROT",
     "grau": 1,
     "NA": 0,
@@ -51,16 +51,17 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "ROT",
     "grau": 1,
     "NA": 0,
+    "justificativa_NA": "",
     "evidencia": "p. 2; Sec. 3. DATA PREPARATION; --; descreve os anotadores (listeners) e o protocolo de coleta em tempo real, mas omite métrica de concordância.",
     "observacoes": "Grau 1. O artigo descreve como os rótulos de impressões (warmth e competence) foram obtidos: os 40 participantes assistiram aos estímulos e realizaram as anotações contínuas em tempo real. No entanto, o texto não apresenta nenhuma medida quantitativa de concordância ou confiabilidade entre os anotadores, dependendo estritamente do rótulo herdado do conjunto de dados."
   },
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "ESC",
     "grau": 0,
     "NA": 0,
@@ -70,7 +71,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "ESC",
     "grau": 2,
     "NA": 0,
@@ -80,7 +81,7 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "ESC",
     "grau": 2,
     "NA": 0,
@@ -90,7 +91,7 @@
   },
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "PRE",
     "grau": 1,
     "NA": 0,
@@ -100,7 +101,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "PRE",
     "grau": 1,
     "NA": 0,
@@ -110,7 +111,7 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "PRE",
     "grau": 1,
     "NA": 0,
@@ -120,7 +121,7 @@
   },
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "PRT",
     "grau": 0,
     "NA": 0,
@@ -130,7 +131,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "PRT",
     "grau": 1,
     "NA": 0,
@@ -140,7 +141,7 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "PRT",
     "grau": 0,
     "NA": 0,
@@ -150,7 +151,7 @@
   },
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "MOD",
     "grau": 1,
     "NA": 0,
@@ -160,7 +161,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "MOD",
     "grau": 2,
     "NA": 0,
@@ -170,7 +171,7 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "MOD",
     "grau": 1,
     "NA": 0,
@@ -180,7 +181,7 @@
   },
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "MET",
     "grau": 0,
     "NA": 0,
@@ -190,7 +191,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "MET",
     "grau": 1,
     "NA": 0,
@@ -200,7 +201,7 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "MET",
     "grau": 0,
     "NA": 0,
@@ -210,7 +211,7 @@
   },
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "CAL",
     "grau": 0,
     "NA": 0,
@@ -220,7 +221,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "CAL",
     "grau": 0,
     "NA": 0,
@@ -230,7 +231,7 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "CAL",
     "grau": 0,
     "NA": 0,
@@ -240,7 +241,7 @@
   },
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "SUB",
     "grau": 0,
     "NA": 0,
@@ -250,7 +251,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "SUB",
     "grau": 1,
     "NA": 0,
@@ -260,7 +261,7 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "SUB",
     "grau": 0,
     "NA": 0,
@@ -270,7 +271,7 @@
   },
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "ROB",
     "grau": 1,
     "NA": 0,
@@ -280,7 +281,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "ROB",
     "grau": 1,
     "NA": 0,
@@ -290,7 +291,7 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "ROB",
     "grau": 2,
     "NA": 0,
@@ -300,7 +301,7 @@
   },
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "REP",
     "grau": 0,
     "NA": 0,
@@ -310,7 +311,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "REP",
     "grau": 0,
     "NA": 0,
@@ -320,7 +321,7 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "REP",
     "grau": 0,
     "NA": 0,
@@ -330,7 +331,7 @@
   },
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "ETH",
     "grau": 0,
     "NA": 0,
@@ -340,7 +341,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "ETH",
     "grau": 2,
     "NA": 0,
@@ -350,7 +351,7 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "ETH",
     "grau": 0,
     "NA": 0,
@@ -360,7 +361,7 @@
   },
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "VZ",
     "grau": 0,
     "NA": 0,
@@ -370,7 +371,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "VZ",
     "grau": 2,
     "NA": 0,
@@ -380,7 +381,7 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "VZ",
     "grau": 0,
     "NA": 0,
@@ -390,7 +391,7 @@
   },
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "EXT",
     "grau": 0,
     "NA": 0,
@@ -400,7 +401,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "EXT",
     "grau": 1,
     "NA": 0,
@@ -410,7 +411,7 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "EXT",
     "grau": 0,
     "NA": 0,
@@ -420,7 +421,7 @@
   },
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "CST",
     "grau": 0,
     "NA": 0,
@@ -430,7 +431,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "CST",
     "grau": 0,
     "NA": 0,
@@ -440,7 +441,7 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "CST",
     "grau": 0,
     "NA": 0,
@@ -450,7 +451,7 @@
   },
   {
     "artigo_id": "ID_12",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "SIN",
     "grau": 0,
     "NA": 1,
@@ -460,7 +461,7 @@
   },
   {
     "artigo_id": "ID_41",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "SIN",
     "grau": 1,
     "NA": 0,
@@ -470,7 +471,7 @@
   },
   {
     "artigo_id": "ID_33",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "SIN",
     "grau": 1,
     "NA": 0,
@@ -480,7 +481,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "DAD",
     "grau": 0,
     "NA": 0,
@@ -490,7 +491,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "ROT",
     "grau": 0,
     "NA": 0,
@@ -500,7 +501,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "ESC",
     "grau": 0,
     "NA": 0,
@@ -510,7 +511,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "PRE",
     "grau": 1,
     "NA": 0,
@@ -520,7 +521,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "PRT",
     "grau": 0,
     "NA": 0,
@@ -530,7 +531,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "MOD",
     "grau": 1,
     "NA": 0,
@@ -540,7 +541,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "MET",
     "grau": 0,
     "NA": 0,
@@ -550,7 +551,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "CAL",
     "grau": 0,
     "NA": 0,
@@ -560,7 +561,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "SUB",
     "grau": 0,
     "NA": 0,
@@ -570,7 +571,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "ROB",
     "grau": 0,
     "NA": 0,
@@ -580,7 +581,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "REP",
     "grau": 0,
     "NA": 0,
@@ -590,7 +591,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "ETH",
     "grau": 0,
     "NA": 0,
@@ -600,7 +601,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "VZ",
     "grau": 0,
     "NA": 0,
@@ -610,7 +611,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "EXT",
     "grau": 0,
     "NA": 0,
@@ -620,7 +621,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "CST",
     "grau": 0,
     "NA": 0,
@@ -630,7 +631,7 @@
   },
   {
     "artigo_id": "ID_15",
-    "estrato": "FER",
+    "modalidade": "FER",
     "item_id": "SIN",
     "grau": 0,
     "NA": 1,
@@ -640,7 +641,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "DAD",
     "grau": 1,
     "NA": 0,
@@ -650,7 +651,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "ROT",
     "grau": 1,
     "NA": 0,
@@ -660,7 +661,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "ESC",
     "grau": 2,
     "NA": 0,
@@ -670,7 +671,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "PRE",
     "grau": 2,
     "NA": 0,
@@ -680,7 +681,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "PRT",
     "grau": 1,
     "NA": 0,
@@ -690,7 +691,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "MOD",
     "grau": 1,
     "NA": 0,
@@ -700,7 +701,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "MET",
     "grau": 0,
     "NA": 0,
@@ -710,7 +711,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "CAL",
     "grau": 1,
     "NA": 0,
@@ -720,7 +721,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "SUB",
     "grau": 0,
     "NA": 0,
@@ -730,7 +731,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "ROB",
     "grau": 1,
     "NA": 0,
@@ -740,7 +741,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "REP",
     "grau": 0,
     "NA": 0,
@@ -750,7 +751,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "ETH",
     "grau": 1,
     "NA": 0,
@@ -760,7 +761,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "VZ",
     "grau": 2,
     "NA": 0,
@@ -770,7 +771,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "EXT",
     "grau": 0,
     "NA": 0,
@@ -780,7 +781,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "CST",
     "grau": 1,
     "NA": 0,
@@ -790,7 +791,7 @@
   },
   {
     "artigo_id": "ID_43",
-    "estrato": "SER",
+    "modalidade": "SER",
     "item_id": "SIN",
     "grau": 0,
     "NA": 1,
@@ -800,7 +801,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "DAD",
     "grau": 1,
     "NA": 0,
@@ -810,7 +811,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "ROT",
     "grau": 1,
     "NA": 0,
@@ -820,7 +821,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "ESC",
     "grau": 2,
     "NA": 0,
@@ -830,7 +831,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "PRE",
     "grau": 1,
     "NA": 0,
@@ -840,7 +841,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "PRT",
     "grau": 0,
     "NA": 0,
@@ -850,7 +851,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "MOD",
     "grau": 1,
     "NA": 0,
@@ -860,7 +861,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "MET",
     "grau": 0,
     "NA": 0,
@@ -870,7 +871,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "CAL",
     "grau": 0,
     "NA": 0,
@@ -880,7 +881,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "SUB",
     "grau": 0,
     "NA": 0,
@@ -890,7 +891,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "ROB",
     "grau": 0,
     "NA": 0,
@@ -900,7 +901,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "REP",
     "grau": 0,
     "NA": 0,
@@ -910,7 +911,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "ETH",
     "grau": 0,
     "NA": 0,
@@ -920,7 +921,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "VZ",
     "grau": 0,
     "NA": 0,
@@ -930,7 +931,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "EXT",
     "grau": 0,
     "NA": 0,
@@ -940,7 +941,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "CST",
     "grau": 1,
     "NA": 0,
@@ -950,7 +951,7 @@
   },
   {
     "artigo_id": "ID_19",
-    "estrato": "MULTI",
+    "modalidade": "MULTI",
     "item_id": "SIN",
     "grau": 0,
     "NA": 0,

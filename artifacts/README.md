@@ -35,13 +35,16 @@ Modelo de planilha para codificação da auditoria.
 A unidade esperada é a combinação artigo por item, com campos como:
 
 - `artigo_id`;
-- `estrato`;
+- `modalidade`;
 - `item_id`;
 - `grau`;
 - `NA`;
 - `justificativa_NA`;
 - `evidencia`;
 - `observacoes`.
+
+O campo `modalidade` registra a categoria do artigo (FER, SER ou MULTI)
+utilizada na estratificação amostral.
 
 A escala de pontuação é ordinal, com valores `0`, `1` e `2`. Itens marcados como `NA` devem ter justificativa técnica.
 

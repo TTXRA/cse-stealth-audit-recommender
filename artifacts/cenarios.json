@@ -9,7 +9,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "fisiologia",
       "audio",
       "video"
@@ -37,7 +37,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 7356,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "ANN",
@@ -63,7 +63,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 7356,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "ANN",
@@ -89,7 +89,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 7356,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "ANN",
@@ -115,7 +115,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 7356,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "ANN",
@@ -141,7 +141,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 7356,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -167,7 +167,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 7356,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "ANN",
@@ -193,7 +193,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 2879,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "audio"
     ],
     "modelo_familia": "CNN",
@@ -219,7 +219,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 2879,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -245,7 +245,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 2879,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video",
       "audio"
     ],
@@ -272,7 +272,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": 10000,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -301,7 +301,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": 10000,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "Transformer",
@@ -330,7 +330,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": 10000,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "audio"
     ],
     "modelo_familia": "CNN",
@@ -356,7 +356,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": 10000,
     "pretreino": "sim",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "audio"
     ],
     "modelo_familia": "CNN",
@@ -382,7 +382,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -412,7 +412,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "RNN",
@@ -442,7 +442,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "SVM",
@@ -472,7 +472,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "RF",
@@ -502,7 +502,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "Ensemble_ML",
@@ -532,7 +532,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": 22400,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -558,7 +558,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "fisiologia"
     ],
     "modelo_familia": "CNN",
@@ -584,7 +584,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -614,7 +614,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -644,7 +644,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "SVM",
@@ -674,7 +674,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 15339,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -708,7 +708,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 15339,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -742,7 +742,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 15339,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -776,7 +776,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 15339,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -810,7 +810,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 15339,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -844,7 +844,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 15339,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -878,7 +878,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 15339,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -912,7 +912,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": "NA",
     "pretreino": "sim",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -938,7 +938,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 35000,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -964,7 +964,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 1000,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -990,7 +990,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": 1440,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "audio"
     ],
     "modelo_familia": "RNN",
@@ -1016,7 +1016,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": 1440,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video",
       "audio"
     ],
@@ -1043,7 +1043,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": "NA",
     "pretreino": "sim",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "audio",
       "texto"
     ],
@@ -1070,7 +1070,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": 40727,
     "pretreino": "sim",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "audio",
       "texto"
     ],
@@ -1097,7 +1097,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": 40727,
     "pretreino": "sim",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "audio",
       "texto"
     ],
@@ -1124,7 +1124,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": 40727,
     "pretreino": "sim",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "audio",
       "texto"
     ],
@@ -1151,7 +1151,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": 544,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "Boosting_ML",
@@ -1177,7 +1177,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": "NA",
     "pretreino": "sim",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -1207,7 +1207,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 6300,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "CNN",
@@ -1233,7 +1233,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": 2800,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "audio"
     ],
     "modelo_familia": "ANN",
@@ -1259,7 +1259,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video"
     ],
     "modelo_familia": "RNN",
@@ -1285,7 +1285,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video",
       "fisiologia"
     ],
@@ -1312,7 +1312,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video",
       "fisiologia"
     ],
@@ -1339,7 +1339,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video",
       "fisiologia"
     ],
@@ -1366,7 +1366,7 @@
     "dependencia_temporal": "nao",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video",
       "fisiologia"
     ],
@@ -1393,7 +1393,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": 44923,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "audio",
       "video",
       "fisiologia"
@@ -1421,7 +1421,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": "NA",
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "audio"
     ],
     "modelo_familia": "CNN",
@@ -1447,7 +1447,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": 138703,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video",
       "audio"
     ],
@@ -1474,7 +1474,7 @@
     "dependencia_temporal": "sim",
     "n_amostras_total": 138703,
     "pretreino": "nao",
-    "modalidades_presentes": [
+    "canais_dados_presentes": [
       "video",
       "audio"
     ],

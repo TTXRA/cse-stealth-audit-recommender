@@ -1,10 +1,10 @@
 import pandas as pd
 from scripts.utils.common import norm_text, normalize_columns, require_cols, require_unique, read_csv
 from scripts.utils.config import (IN_DIR, MID_DIR, INPUT_MAPEAMENTO_MASTER, MID_CORPUS_PADRONIZADO,
-                                  MID_CORPUS_JANELA, ANO_INICIO, ANO_FIM, TAREFAS_VALIDAS)
+                                  MID_CORPUS_JANELA, ANO_INICIO, ANO_FIM, MODALIDADES_VALIDAS)
 
 
-def norm_tarefa(x):
+def norm_modalidade(x):
     s = norm_text(x).upper()
     if s == "":
         return "NA"
@@ -29,7 +29,7 @@ if ANO_INICIO > ANO_FIM:
 df = read_csv(INPUT_MAPEAMENTO_MASTER)
 df = normalize_columns(df)
 
-required = ["titulo", "ano", "venue", "tarefa", "doi"]
+required = ["titulo", "ano", "venue", "modalidade", "doi"]
 require_cols(df, required, INPUT_MAPEAMENTO_MASTER.name)
 
 df["titulo"] = df["titulo"].map(norm_text)
@@ -37,7 +37,7 @@ df["venue"] = df["venue"].map(norm_text)
 df["doi"] = df["doi"].map(norm_text)
 
 df["ano"] = pd.to_numeric(df["ano"].map(norm_text), errors="coerce").astype("Int64")
-df["tarefa"] = df["tarefa"].map(norm_tarefa)
+df["modalidade"] = df["modalidade"].map(norm_modalidade)
 
 df = make_artigo_id(df)
 
@@ -50,16 +50,16 @@ require_unique(df, "artigo_id", MID_CORPUS_PADRONIZADO.name)
 errs = []
 if df["ano"].isna().any():
     errs.append("ano inválido em: " + ", ".join(df.loc[df["ano"].isna(), "artigo_id"].tolist()))
-inv_task = ~df["tarefa"].isin(TAREFAS_VALIDAS)
-if inv_task.any():
-    errs.append("tarefa inválida em: " + ", ".join(df.loc[inv_task, "artigo_id"].tolist()))
+inv_modality = ~df["modalidade"].isin(MODALIDADES_VALIDAS)
+if inv_modality.any():
+    errs.append("modalidade inválida em: " + ", ".join(df.loc[inv_modality, "artigo_id"].tolist()))
 if errs:
     raise ValueError("\n".join(errs))
 
 cols = [
     "artigo_id",
     "ano",
-    "tarefa",
+    "modalidade",
     "titulo",
     "venue",
     "doi",
@@ -67,7 +67,7 @@ cols = [
     "motivo_exclusao",
     "observacoes_elegibilidade",
 ]
-df = df[cols].sort_values(["tarefa", "ano", "artigo_id"], kind="stable")
+df = df[cols].sort_values(["modalidade", "ano", "artigo_id"], kind="stable")
 
 df.to_csv(MID_CORPUS_PADRONIZADO, index=False)
 

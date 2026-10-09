@@ -1,4 +1,4 @@
-artigo_id,ano,tarefa,titulo,venue,doi,elegivel_etapa1,motivo_exclusao,observacoes_elegibilidade
+artigo_id,ano,modalidade,titulo,venue,doi,elegivel_etapa1,motivo_exclusao,observacoes_elegibilidade
 ID_38,2022,MULTI,Toward Personalized Affect-Aware Socially Assistive Robot Tutors for Long-Term Interventions with Children with Autism,ACM Transactions on Human-Robot Interaction,10.1145/3526111,,,
 ID_04,2023,MULTI,Advanced Deep Learning Architectures for Real-Time Human Emotion Recognition and Behavioral Prediction,"International Conference on Communication, Computer Sciences and Engineering",10.1109/IC3SE62002.2024.10592940,,,
 ID_08,2023,MULTI,An Approach of Analyzing Classroom Student Engagement in Multimodal Environment by Using Deep Learning,IEEE 9th International Women in Engineering Conference on Electrical and Computer Engineering,10.1109/WIECON-ECE60392.2023.10456488,,,

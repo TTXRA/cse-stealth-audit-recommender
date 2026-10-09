@@ -14,7 +14,7 @@ AUDIT_DIR.mkdir(parents=True, exist_ok=True)
 OUT_CONSISTENCIA_DIR.mkdir(parents=True, exist_ok=True)
 
 KEY_COLS = ["artigo_id", "item_id"]
-REQUIRED_COLS = ["artigo_id", "estrato", "item_id", "grau", "na", "justificativa_na", "evidencia", "observacoes"]
+REQUIRED_COLS = ["artigo_id", "modalidade", "item_id", "grau", "na", "justificativa_na", "evidencia", "observacoes"]
 NUCLEAR_ITEMS = ["DAD", "ROT", "ESC", "PRT", "MOD", "MET", "REP", "VZ", "EXT"]
 
 
@@ -33,7 +33,7 @@ def load_audit_csv(path: Path) -> pd.DataFrame:
 
     df["artigo_id"] = df["artigo_id"].map(norm_text)
     df["item_id"] = df["item_id"].map(norm_text)
-    df["estrato"] = df["estrato"].map(lambda x: norm_text(x).upper())
+    df["modalidade"] = df["modalidade"].map(lambda x: norm_text(x).upper())
     df["justificativa_na"] = df["justificativa_na"].map(norm_text)
     df["evidencia"] = df["evidencia"].map(norm_text)
     df["observacoes"] = df["observacoes"].map(norm_text)
@@ -72,7 +72,7 @@ def score_article(df: pd.DataFrame) -> pd.DataFrame:
     out = (
         x.groupby("artigo_id", as_index=False)
         .agg(
-            estrato=("estrato", lambda s: s.dropna().astype(str).iloc[0] if len(s.dropna()) else np.nan),
+            modalidade=("modalidade", lambda s: s.dropna().astype(str).iloc[0] if len(s.dropna()) else np.nan),
             soma_graus_aplicaveis=("grau_aplicavel", "sum"),
             n_itens_aplicaveis=("aplicavel", "sum"),
             n_itens_na=("na", "sum"),
@@ -98,7 +98,8 @@ def weighted_kappa(y1: pd.Series, y2: pd.Series, weighting: str = "quadratic") -
         return np.nan
 
     if np.array_equal(a, b) and len(np.unique(np.r_[a, b])) == 1:
-        return 1.0
+        # Sem variação nas duas rodadas, o kappa é indefinido.
+        return np.nan
 
     return float(cohen_kappa_score(a, b, labels=[0, 1, 2], weights=weighting))
 

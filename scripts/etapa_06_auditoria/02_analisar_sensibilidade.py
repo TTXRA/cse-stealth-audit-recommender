@@ -4,7 +4,7 @@ import pandas as pd
 from scipy.stats import spearmanr
 from scripts.utils.config import OUT_ANALISE_AUDITORIA_DIR, ANALISE_AUDITORIA_N_BOOTSTRAP, ANALISE_AUDITORIA_SEED, CONFIGS
 
-COLS_META = ['artigo_id', 'estrato', 'tarefa', 'titulo', 'ano', 'venue', 'doi']
+COLS_META = ['artigo_id', 'modalidade', 'titulo', 'ano', 'venue', 'doi']
 
 
 def formatar_p(valor):
@@ -15,10 +15,10 @@ def formatar_p(valor):
     return f'{valor:.3e}'
 
 
-def reamostra_estratos(df, rng):
+def reamostra_modalidades(df, rng):
     return pd.concat([
         grupo.sample(n=len(grupo), replace=True, random_state=int(rng.integers(0, 2**32 - 1)))
-        for _, grupo in df.groupby('tarefa', sort=True)
+        for _, grupo in df.groupby('modalidade', sort=True)
     ], ignore_index=True)
 
 
@@ -61,8 +61,8 @@ def sensibilidade_artigos(df):
     return out.sort_values('rank_uniforme').reset_index(drop=True), mudancas, correlacoes_configs(out, 'artigos')
 
 
-def sensibilidade_estratos(df):
-    out = df[df['escopo'].eq('estrato')].pivot(index='estrato', columns='config_pesos', values='mediana').reset_index()
+def sensibilidade_modalidades(df):
+    out = df[df['escopo'].eq('modalidade')].pivot(index='modalidade', columns='config_pesos', values='mediana').reset_index()
 
     for config in CONFIGS:
         out[f'rank_{config}'] = out[config].rank(method='min', ascending=False)
@@ -80,7 +80,7 @@ def sensibilidade_estratos(df):
         'mudanca_maxima_absoluta_mediana': [float(out['delta_uniforme_nucleares'].abs().max()), float(out['delta_uniforme_robustez'].abs().max())],
     })
 
-    return out.sort_values('rank_uniforme').reset_index(drop=True), mudancas, correlacoes_configs(out, 'estratos')
+    return out.sort_values('rank_uniforme').reset_index(drop=True), mudancas, correlacoes_configs(out, 'modalidades')
 
 
 def itens_criticos(df, n_boot, seed):
@@ -91,10 +91,10 @@ def itens_criticos(df, n_boot, seed):
     for config, grupo in base.groupby('config_pesos', sort=True):
         observado = grupo.groupby(['item_id', 'item_label'], as_index=False)['score_item'].mean().rename(columns={'score_item': 'media_item'})
         bolsa = {item: [] for item in observado['item_id']}
-        artigos = grupo[['artigo_id', 'estrato', 'tarefa']].drop_duplicates()
+        artigos = grupo[['artigo_id', 'modalidade']].drop_duplicates()
 
         for _ in range(n_boot):
-            amostra = reamostra_estratos(artigos, rng).merge(grupo[['artigo_id', 'estrato', 'tarefa', 'item_id', 'score_item']], on=['artigo_id', 'estrato', 'tarefa'], how='left')
+            amostra = reamostra_modalidades(artigos, rng).merge(grupo[['artigo_id', 'modalidade', 'item_id', 'score_item']], on=['artigo_id', 'modalidade'], how='left')
             medias = amostra.groupby('item_id')['score_item'].mean()
             for item in observado['item_id']:
                 bolsa[item].append(float(medias.get(item, np.nan)))
@@ -146,15 +146,15 @@ def main():
     itens = pd.read_csv(out_dir / 'scores_itens.csv')
 
     tabela_artigos, mudancas_artigos, corr_artigos = sensibilidade_artigos(artigos)
-    tabela_estratos, mudancas_estratos, corr_estratos = sensibilidade_estratos(resumo)
+    tabela_modalidades, mudancas_modalidades, corr_modalidades = sensibilidade_modalidades(resumo)
     criticos = itens_criticos(itens, ANALISE_AUDITORIA_N_BOOTSTRAP, ANALISE_AUDITORIA_SEED)
     ranks, estabilidade = estabilidade_criticos(criticos)
 
     tabela_artigos.to_csv(out_dir / 'sensibilidade_artigos.csv', index=False, encoding='utf-8-sig')
-    tabela_estratos.to_csv(out_dir / 'sensibilidade_estratos.csv', index=False, encoding='utf-8-sig')
+    tabela_modalidades.to_csv(out_dir / 'sensibilidade_modalidades.csv', index=False, encoding='utf-8-sig')
     mudancas_artigos.to_csv(out_dir / 'mudancas_artigos.csv', index=False, encoding='utf-8-sig')
-    mudancas_estratos.to_csv(out_dir / 'mudancas_estratos.csv', index=False, encoding='utf-8-sig')
-    pd.concat([corr_artigos, corr_estratos], ignore_index=True).to_csv(out_dir / 'correlacoes_configs.csv', index=False, encoding='utf-8-sig')
+    mudancas_modalidades.to_csv(out_dir / 'mudancas_modalidades.csv', index=False, encoding='utf-8-sig')
+    pd.concat([corr_artigos, corr_modalidades], ignore_index=True).to_csv(out_dir / 'correlacoes_configs.csv', index=False, encoding='utf-8-sig')
     criticos.to_csv(out_dir / 'itens_criticos.csv', index=False, encoding='utf-8-sig')
     ranks.to_csv(out_dir / 'ranks_criticos.csv', index=False, encoding='utf-8-sig')
     estabilidade.to_csv(out_dir / 'estabilidade_criticos.csv', index=False, encoding='utf-8-sig')

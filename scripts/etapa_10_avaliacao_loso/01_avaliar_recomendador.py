@@ -8,7 +8,7 @@ def normalizar_valor(coluna, value):
         return None
     if coluna == "dataset_id":
         return as_text(value)
-    if coluna == "modalidades_presentes":
+    if coluna == "canais_dados_presentes":
         return normalizar_lista(value)
     return normalizar_dominio(coluna, value)
 
@@ -65,7 +65,7 @@ def filtrar_por_query(df, query, filtros):
         value = query[coluna]
         if value is not None:
             df = df.loc[df[coluna].notna()]
-            df = df.loc[df[coluna].map(lambda x: x == value)] if coluna == "modalidades_presentes" else df.loc[df[coluna] == value]
+            df = df.loc[df[coluna].map(lambda x: x == value)] if coluna == "canais_dados_presentes" else df.loc[df[coluna] == value]
     return df
 
 

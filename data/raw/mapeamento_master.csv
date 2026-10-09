@@ -1,4 +1,4 @@
-artigo_id,titulo,ano,venue,tarefa,doi
+artigo_id,titulo,ano,venue,modalidade,doi
 ID_01,A Mathematical Description of Emotional Processes and Its Potential Applications to Affective Computing,2021,IEEE Transactions on Affective Computing,,10.1109/TAFFC.2018.2887385
 ID_02,A system for collecting emotionally annotated physiological signals in daily life using wearables,2021,IEEE ACIIW 2021,,10.1109/ACIIW52867.2021.9666272
 ID_03,Adapting the Interplay Between Personalized and Generalized Affect Recognition Based on an Unsupervised Neural Framework,2022,IEEE Transactions on Affective Computing,,10.1109/TAFFC.2020.3002657

@@ -45,22 +45,22 @@ OUT_REGISTRO_SORTEIO = OUT_LOGS_DIR / "registro_sorteio.csv"
 ANO_INICIO = 2021
 ANO_FIM = date.today().year
 
-TAREFAS_VALIDAS = {"FER", "SER", "MULTI", "NA"}
+MODALIDADES_VALIDAS = {"FER", "SER", "MULTI", "NA"}
 
 RNG_SEED = 2025
 N_ALVO_TOTAL = int(os.environ.get("CSE_N_ALVO_TOTAL", "16"))
-MIN_POR_ESTRATO = int(os.environ.get("CSE_MIN_POR_ESTRATO", "4"))
+MIN_POR_MODALIDADE = int(os.environ.get("CSE_MIN_POR_MODALIDADE", "4"))
 N_SUPLENTES = 3
 
-META_COLS = ["artigo_id", "ano", "titulo", "venue", "doi", "tarefa"]
+META_COLS = ["artigo_id", "ano", "titulo", "venue", "doi", "modalidade"]
 
-ELEGIVEIS_POR_TAREFA = {
+ELEGIVEIS_POR_MODALIDADE = {
     "FER": OUT_ELEG_FER,
     "SER": OUT_ELEG_SER,
     "MULTI": OUT_ELEG_MULTI,
 }
 
-AMOSTRA_POR_TAREFA = {
+AMOSTRA_POR_MODALIDADE = {
     "FER": OUT_AMOSTRA_FER,
     "SER": OUT_AMOSTRA_SER,
     "MULTI": OUT_AMOSTRA_MULTI,
@@ -176,7 +176,7 @@ COLUNAS_OBRIGATORIAS = {
 }
 
 COLUNAS_NUMERICAS = {"R", "metrica_principal_valor"}
-COLUNAS_LISTA = {"modalidades_presentes", "metricas_principais", "augmentations"}
+COLUNAS_LISTA = {"canais_dados_presentes", "metricas_principais", "augmentations"}
 
 ARQUIVO_SAIDA_ROBUSTEZ_CLEAN = OUT_ROBUSTEZ_DIR / "robustez_cenarios_clean.csv"
 ARQUIVO_ISSUES_ROBUSTEZ = OUT_ROBUSTEZ_DIR / "robustez_cenarios_issues.csv"
@@ -188,7 +188,7 @@ FILTROS_OBRIGATORIOS = ["modalidade", "tarefa"]
 FILTROS_OPCIONAIS = [
     "dataset_id",
     "ambiente_coleta",
-    "modalidades_presentes",
+    "canais_dados_presentes",
     "pretreino",
     "dependencia_temporal",
 ]
