@@ -182,7 +182,3 @@ See [CITATION.cff](CITATION.cff) for authors, ORCIDs, the intended version `1.0.
 - Documents, tabular data, and other non-code artifacts: [CC BY 4.0](LICENSE).
 
 The existing licenses have been preserved. Providing literature-derived records does not grant rights to third-party articles or datasets.
-
-## Archival preparation status
-
-See [ARCHIVAL_READINESS.md](ARCHIVAL_READINESS.md) for checks and outstanding items. `CITATION.cff` supplies metadata for future GitHub–Zenodo integration; no additional `.zenodo.json` was needed. No tag, release, or Zenodo deposit has been created.
