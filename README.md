@@ -4,13 +4,11 @@ English | [Português](README.pt-BR.md)
 
 Research repository for auditing reporting quality in stealth assessment of social-emotional competencies and recommending model families using literature as data. It contains auditing instruments, tabular data, processing scripts, intermediate results, and analytical outputs supporting the stages of the master's research.
 
-## Relationship to the scientific article
+## Research archive
 
-This repository provides the computational materials and instruments associated with the master's research and the following scientific article:
+This repository contains the computational materials, instruments, structured data, scripts, and analytical outputs produced as part of the master's research.
 
-*Auditing Reporting Quality in Affective Computing for Stealth Assessment: Development and Evaluation of a 16-Item Checklist*.
-
-Publication details for the associated article are not yet available. An archival release (v1.0.0) of the research materials has been created and deposited on Zenodo under DOI: https://doi.org/10.5281/zenodo.23271851.
+The archival release `v1.0.0` is available on Zenodo under DOI: https://doi.org/10.5281/zenodo.23271851.
 
 ## Repository structure
 
@@ -151,8 +149,6 @@ In scenarios, `modalidade` identifies the operational category (FER, SER, MULTIM
 - [data/output/robustez/ranking_recomendacao.csv](data/output/robustez/ranking_recomendacao.csv): model-family ranking.
 - [data/output/avaliacao_loso/avaliacao_loso.csv](data/output/avaliacao_loso/avaliacao_loso.csv): leave-one-study-out evaluation.
 
-The complete checklist scoring-anchor manual is not included in this snapshot. The extraction protocol documents scenarios, not the complete audit scoring manual.
-
 ## Limitations and preservation of the version
 
 - Evidence is limited to the selected literature and its available reporting; it does not guarantee performance in new applications.
@@ -174,7 +170,7 @@ Corresponding author: Thiago Teixeira — [thiago.070790@alunos.utfpr.edu.br](ma
 
 ## Citation
 
-See [CITATION.cff](CITATION.cff) for authors, ORCIDs, and version information. When reusing the repository, also record the actual commit or version used. The archival release v1.0.0 is available on Zenodo under DOI: https://doi.org/10.5281/zenodo.23271851. Journal publication details will be added when available.
+See [CITATION.cff](CITATION.cff) for authors, ORCIDs, and version information. When reusing the repository, record the actual commit or version used. The archival release `v1.0.0` is available on Zenodo under DOI: https://doi.org/10.5281/zenodo.23271851.
 
 ## Licenses
 
