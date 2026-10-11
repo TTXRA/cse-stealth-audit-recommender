@@ -6,17 +6,11 @@ Repositório da pesquisa de mestrado sobre auditoria de qualidade de relato em a
 
 O projeto reúne instrumentos de auditoria, bases tabulares, scripts de processamento, resultados intermediários e saídas analíticas para apoiar a reprodução das etapas propostas na pesquisa.
 
-## Relação com o artigo científico
+## Arquivamento da pesquisa
 
-Este repositório disponibiliza o material computacional e os instrumentos da
-pesquisa de mestrado e será associado ao artigo:
+Este repositório reúne os materiais computacionais, instrumentos, dados estruturados, scripts e saídas analíticas produzidos no desenvolvimento da pesquisa de mestrado.
 
-*Auditing Reporting Quality in Affective Computing for Stealth Assessment:
-Development and Evaluation of a 16-Item Checklist*.
-
-Os metadados bibliográficos de publicação não foram fornecidos. Não há DOI de
-arquivamento atribuído nesta preparação. A versão `1.0.0` em [CITATION.cff](CITATION.cff)
-identifica a versão pretendida para arquivamento; nenhuma tag ou release foi criada.
+A versão arquivada `v1.0.0` está disponível no Zenodo sob o DOI: https://doi.org/10.5281/zenodo.23271851.
 
 ## Estrutura do repositório
 
@@ -197,8 +191,6 @@ A [planilha de auditoria](artifacts/auditoria_modelo.csv) apoia a codificação;
 [artifacts/README.md](artifacts/README.md) descreve os instrumentos. O
 [protocolo de extração](artifacts/protocolo_extracao_cenarios.md) e o
 [dicionário de cenários](artifacts/cenarios_README.md) orientam os registros experimentais.
-O manual completo das âncoras de pontuação do checklist não está incluído nesta cópia.
-
 Para detalhes dos arquivos, consulte [data/README.md](data/README.md) e
 [scripts/README.md](scripts/README.md).
 
@@ -233,10 +225,7 @@ Autor correspondente: Thiago Teixeira —
 
 ## Como citar
 
-Consulte [CITATION.cff](CITATION.cff) para os autores, ORCIDs, a versão pretendida
-`1.0.0` e a referência preferida ao artigo associado. Ao reutilizar o repositório,
-registre também o commit ou a versão efetivamente utilizada. Data de release,
-DOI e detalhes de periódico não foram inventados; serão completados quando disponíveis.
+Consulte [CITATION.cff](CITATION.cff) para autores, ORCIDs e informações de versão. Ao reutilizar o repositório, registre também o commit ou a versão efetivamente utilizada. A versão arquivada `v1.0.0` está disponível no Zenodo sob o DOI: https://doi.org/10.5281/zenodo.23271851.
 
 ## Licenças
 
@@ -246,9 +235,8 @@ DOI e detalhes de periódico não foram inventados; serão completados quando di
 As licenças existentes foram preservadas. A disponibilização de registros
 extraídos da literatura não concede direitos sobre artigos ou datasets de terceiros.
 
-## Estado de preparação para arquivamento
+## Arquivamento
 
-Veja [ARCHIVAL_READINESS.md](ARCHIVAL_READINESS.md) para verificações e pendências.
-O `CITATION.cff` fornece os metadados para a futura integração GitHub–Zenodo;
-nenhum `.zenodo.json` adicional foi necessário. Nenhuma tag, release ou depósito
-no Zenodo foi criado nesta etapa.
+A versão `v1.0.0` foi publicada como release do repositório e arquivada no Zenodo sob o DOI: https://doi.org/10.5281/zenodo.23271851.
+
+O arquivo [CITATION.cff](CITATION.cff) registra os metadados de autoria, afiliação e versão utilizados para citação e preservação do repositório.
