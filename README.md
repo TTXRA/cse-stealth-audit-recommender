@@ -10,7 +10,7 @@ This repository provides the computational materials and instruments associated 
 
 *Auditing Reporting Quality in Affective Computing for Stealth Assessment: Development and Evaluation of a 16-Item Checklist*.
 
-Publication details have not been supplied. No archival DOI has been assigned during this preparation. Version `1.0.0` in [CITATION.cff](CITATION.cff) identifies the intended archival version; no tag or release has been created.
+Publication details for the associated article are not yet available. An archival release (v1.0.0) of the research materials has been created and deposited on Zenodo under DOI: https://doi.org/10.5281/zenodo.23271851.
 
 ## Repository structure
 
@@ -174,7 +174,7 @@ Corresponding author: Thiago Teixeira — [thiago.070790@alunos.utfpr.edu.br](ma
 
 ## Citation
 
-See [CITATION.cff](CITATION.cff) for authors, ORCIDs, the intended version `1.0.0`, and the preferred citation to the associated article. When reusing the repository, also record the actual commit or version used. Release date, DOI, and journal details have not been invented; they can be completed when available.
+See [CITATION.cff](CITATION.cff) for authors, ORCIDs, and version information. When reusing the repository, also record the actual commit or version used. The archival release v1.0.0 is available on Zenodo under DOI: https://doi.org/10.5281/zenodo.23271851. Journal publication details will be added when available.
 
 ## Licenses
 
